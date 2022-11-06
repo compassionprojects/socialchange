@@ -3,6 +3,11 @@
   <head>
     <title>Socialchange</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- The page supports both dark and light color schemes,
+         and the page author prefers / default is light. -->
+    <meta name="color-scheme" content="light dark">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,8 +16,10 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= render "includes/header" %>
+    <div class="container">
+      <%= render "includes/flash" %>
+      <%= yield %>
+    </div>
   </body>
 </html>
