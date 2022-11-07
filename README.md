@@ -1,24 +1,31 @@
-# README
+# Social Change Stories
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An effort to collect all social change stories where NVC is a part of. Along side, it offers a community to run and support many of these projects.
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+- ruby 3.1.2 (use [rbenv](https://github.com/rbenv/rbenv) to manage ruby versions)
+- postgres 14.5
 
-* System dependencies
+## Development
 
-* Configuration
+Clone the repo
 
-* Database creation
+```sh
+bundle install
+rake db:create
+rake db:migrate
+cp .env .env.development.local # replace necessary values
+cp .env .env.test.local
+bin/dev
+```
 
-* Database initialization
+## Tests
 
-* How to run the test suite
+```sh
+rails test
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Deployment
 
-* Deployment instructions
-
-* ...
+The app gets continuously deployed to heroku.
