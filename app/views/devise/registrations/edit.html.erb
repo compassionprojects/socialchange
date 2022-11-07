@@ -4,12 +4,12 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="mb-3">
-    <%= f.label :name, :class => "form-label" %><br />
+    <%= f.label :name, :class => "form-label" %>
     <%= f.text_field :name, autofocus: true, :class => "form-control" %>
   </div>
 
   <div class="mb-3">
-    <%= f.label :email, :class => "form-label" %><br />
+    <%= f.label :email, :class => "form-label" %>
     <%= f.email_field :email, autofocus: true, :class => "form-control" %>
   </div>
 
@@ -18,21 +18,20 @@
   <% end %>
 
   <div class="mb-3">
-    <%= f.label :password, :class => "form-label" %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password, :class => "form-label" %> <i>(leave blank if you don't want to change it)</i>
     <%= f.password_field :password, :class => "form-control" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <div class="form-text"><%= @minimum_password_length %> characters minimum</div>
     <% end %>
   </div>
 
   <div class="mb-3">
-    <%= f.label :password_confirmation, :class => "form-label" %><br />
+    <%= f.label :password_confirmation, :class => "form-label" %>
     <%= f.password_field :password_confirmation, :class => "form-control" %>
   </div>
 
   <div class="mb-3">
-    <%= f.label :current_password, :class => "form-label" %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password, :class => "form-label" %> <i>(we need your current password to confirm your changes)</i>
     <%= f.password_field :current_password, :class => "form-control" %>
   </div>
 

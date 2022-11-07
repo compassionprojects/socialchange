@@ -4,25 +4,25 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="mb-3">
-    <%= f.label :name, :class => "form-label" %><br />
+    <%= f.label :name, :class => "form-label" %>
     <%= f.text_field :name, autofocus: true, :class => "form-control" %>
   </div>
 
   <div class="mb-3">
-    <%= f.label :email, :class => "form-label" %><br />
+    <%= f.label :email, :class => "form-label" %>
     <%= f.email_field :email, autofocus: true, :class => "form-control" %>
   </div>
 
   <div class="mb-3">
     <%= f.label :password, :class => "form-label" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
     <%= f.password_field :password, :class => "form-control" %>
+    <% if @minimum_password_length %>
+      <div class="form-text">(<%= @minimum_password_length %> characters minimum)</div>
+    <% end %>
   </div>
 
   <div class="mb-3">
-    <%= f.label :password_confirmation, :class => "form-label" %><br />
+    <%= f.label :password_confirmation, :class => "form-label" %>
     <%= f.password_field :password_confirmation, :class => "form-control" %>
   </div>
 
