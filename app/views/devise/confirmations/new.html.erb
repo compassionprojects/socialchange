@@ -1,4 +1,6 @@
-<h2>Resend confirmation instructions</h2>
+<% content_for(:title, t('users.resend_confirmation')) %>
+
+<h2><%= yield(:title) %></h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -9,8 +11,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend confirmation instructions", :class => "btn btn-primary", data: { turbo: false } %>
+    <%= f.submit t('users.resend_confirmation'), :class => "btn btn-primary", data: { turbo: false } %>
   </div>
 <% end %>
 
+<br>
 <%= render "devise/shared/links" %>

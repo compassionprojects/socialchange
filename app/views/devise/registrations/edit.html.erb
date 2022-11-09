@@ -1,4 +1,6 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% content_for :title, t('users.edit_profile') %>
+
+<h2><%= yield(:title) %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -14,14 +16,14 @@
   </div>
 
   <% if resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div><%= t('users.awaiting_confirmation', email: resource.unconfirmed_email) %></div>
   <% end %>
 
   <div class="mb-3">
     <%= f.label :password, :class => "form-label" %> <i>(leave blank if you don't want to change it)</i>
     <%= f.password_field :password, :class => "form-control" %>
     <% if @minimum_password_length %>
-      <div class="form-text"><%= @minimum_password_length %> characters minimum</div>
+      <div class="form-text">(<%= t('users.minimum_password_characters', count: @minimum_password_length) %>)</div>
     <% end %>
   </div>
 
@@ -31,19 +33,22 @@
   </div>
 
   <div class="mb-3">
-    <%= f.label :current_password, :class => "form-label" %> <i>(we need your current password to confirm your changes)</i>
+    <%= f.label :current_password, t('users.current_password'), :class => "form-label" %>
     <%= f.password_field :current_password, :class => "form-control" %>
+    <div class="form-text">
+      <i>(<%= t('users.confirm_current_password') %>)</i>
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update", :class => "btn btn-primary", data: { turbo: false } %>
+    <%= f.submit t('form_actions.update'), :class => "btn btn-primary", data: { turbo: false } %>
   </div>
 <% end %>
 
-<h3 class="mt-5">Cancel my account</h3>
+<h3 class="mt-5"><%= t('users.cancel_account') %></h3>
 
 <div class="mb-3">
-  <p>Unhappy?</p>
-  <%= link_to "Cancel my account", registration_path(resource_name), :class => "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  <p><%= t('users.cancel_account_notice') %></p>
+  <%= link_to t('users.cancel_account'), registration_path(resource_name), :class => "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } %>
 </div>
 <%= link_to "Back", :back %>

@@ -1,4 +1,6 @@
-<h2>Resend unlock instructions</h2>
+<% content_for :title, t('users.unlock') %>
+
+<h2><%= yield(:title) %></h2>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -9,7 +11,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend unlock instructions", :class => "btn btn-primary", data: { turbo: false } %>
+    <%= f.submit t('users.unlock'), :class => "btn btn-primary", data: { turbo: false } %>
   </div>
 <% end %>
 
