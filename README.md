@@ -17,15 +17,16 @@ rake db:create
 rake db:migrate
 cp .env .env.development.local # replace necessary values
 cp .env .env.test.local
+cp .env .env.production.local
 bin/dev
 ```
 
 ## Tests
 
 ```sh
-rails test
+bin/rspec
 ```
 
 ## Deployment
 
-The app gets continuously deployed to heroku.
+The app is deployed to heroku. Check with madhu@nomaddev.co in order to be invited to heroku.
