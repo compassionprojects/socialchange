@@ -1,0 +1,25 @@
+name: Brakeman
+on: [pull_request]
+
+jobs:
+  brakeman:
+    name: Brakeman
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: false # Don't install gems. Brakeman installs the gem by itself
+
+      - name: brakeman
+        # https://github.com/reviewdog/action-brakeman
+        uses: reviewdog/action-brakeman@v2
+        with:
+          brakeman_flags: --run-all-checks
+          brakeman_version: gemfile
+          fail_on_error: true
+          filter_mode: nofilter
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review

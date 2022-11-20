@@ -1,0 +1,50 @@
+name: Tests
+on: push
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:14-alpine
+        ports: ['5432:5432']
+        env:
+          POSTGRES_DB: test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://test:test@localhost:5432/test
+      CI: "true"
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Ruby based on .ruby-version
+      uses: ruby/setup-ruby@v1
+
+    - name: Restore bundle cache
+      uses: actions/cache@v3
+      with:
+        path: vendor/bundle
+        key: ${{runner.os}}-gems-${{hashFiles('**/Gemfile.lock')}}
+        restore-keys: ${{runner.os}}-gems-
+
+    - name: Bundle install
+      run: |
+        gem install bundler
+        bundle install
+
+    - name: Setup database
+      run: bundle exec rake parallel:create parallel:load_structure
+
+    - name: Run tests
+      run: bin/rspec
