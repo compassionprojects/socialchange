@@ -44,7 +44,7 @@ jobs:
         bundle install
 
     - name: Setup database
-      run: bundle exec rake parallel:create parallel:load_structure
+      run: bundle exec rake db:create db:schema:load
 
     - name: Run tests
       run: bin/rspec
