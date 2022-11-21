@@ -81,3 +81,5 @@ gem "cssbundling-rails", "~> 1.1"
 gem "jsbundling-rails", "~> 1.0"
 
 gem "factory_bot_rails", "~> 6.2"
+
+gem "devise_invitable", "~> 2.0"
