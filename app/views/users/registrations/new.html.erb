@@ -3,7 +3,7 @@
 <h2><%= yield(:title) %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="mb-3">
     <%= f.label :name, :class => "form-label" %>
@@ -34,4 +34,4 @@
 <% end %>
 
 <br>
-<%= render "devise/shared/links" %>
+<%= render "users/shared/links" %>
