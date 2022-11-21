@@ -49,6 +49,8 @@ en:
     confirm_current_password: "We need your current password to confirm your changes"
     cancel_account: "Cancel my account"
     cancel_account_notice: "This is an irreversible action, there is no going back!"
+    profile: "Profile"
+    invite: "Invite"
   form_actions:
     update: "Update"
   common:
