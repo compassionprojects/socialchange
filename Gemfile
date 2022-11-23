@@ -83,3 +83,5 @@ gem "jsbundling-rails", "~> 1.0"
 gem "factory_bot_rails", "~> 6.2"
 
 gem "devise_invitable", "~> 2.0"
+
+gem "rails-i18n", "~> 7.0"
