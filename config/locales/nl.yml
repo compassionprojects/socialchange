@@ -1,0 +1,52 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+
+# Manually translated using deepl
+# @todo have someone native take a look at it
+
+nl:
+  users:
+    signup: "Aanmelden"
+    login: "Inloggen"
+    logout: "Log uit"
+    remember_me: "Onthoud mij"
+    forgot_password: "Wachtwoord vergeten"
+    reset_password: "Wachtwoord opnieuw instellen"
+    resend_confirmation: "Bevestiging opnieuw versturen"
+    unlock: "Unlock"
+    change_password: "Wijzig wachtwoord"
+    new_password: "Nieuw wachtwoord"
+    confirm_new_password: "Bevestig nieuw wachtwoord"
+    minimum_password_characters: "%{count} tekens minimaal"
+    edit_profile: "Bewerk profiel"
+    awaiting_confirmation: "Momenteel wachten op bevestiging voor %{email}"
+    current_password: "Huidig wachtwoord"
+    confirm_current_password: "We hebben je huidige wachtwoord nodig om je wijzigingen te bevestigen"
+    cancel_account: "Annuleer mijn account"
+    cancel_account_notice: "Dit is een onomkeerbare actie, er is geen weg terug!"
+    profile: "Profiel"
+    invite: "Uitnodigen"
+  form_actions:
+    update: "Update"
+  common:
+    are_you_sure: "Weet je het zeker?"
+    home: "Home"
+  activerecord:
+    attributes:
+      user:
+        name: "Naam"
+        email: "Email address"
+        password: "Wachtwoord"
+        password_confirmation: "Wachtwoord bevestiging"
+    errors:
+      models:
+        user:
+          # Override the format for all Person attributes:
+          format: "Ongeldig %{attribute} (%{message})"
+          attributes:
+            age:
+              # Override the format for the age attribute:
+              format: "%{message}"
+              blank: "Alsjeblieft vul uw %{attribute}"

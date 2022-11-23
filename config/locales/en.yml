@@ -63,3 +63,13 @@ en:
         email: "Email address"
         password: "Password"
         password_confirmation: "Password confirmation"
+    errors:
+      models:
+        user:
+          # Override the format for all Person attributes:
+          format: "Invalid %{attribute} (%{message})"
+          attributes:
+            age:
+              # Override the format for the age attribute:
+              format: "%{message}"
+              blank: "Please fill in your %{attribute}"
