@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :confirmable, :trackable, :lockable
 
   validates :name, presence: true
+  validates :language, inclusion: { in: I18n.available_locales.map(&:to_s) }, allow_nil: true
 end
