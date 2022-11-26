@@ -41,8 +41,9 @@ group :development, :test do
 end
 
 group :development do
-  gem "web-console"             # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "web-console"                 # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "guard"
+  gem "guard-rspec", require: false
 
   # @todo review the below commented out gems
 
