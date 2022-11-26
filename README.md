@@ -27,6 +27,12 @@ bin/dev
 bin/rspec
 ```
 
+or if you want to watch tests while developing
+
+```sh
+bin/guard
+```
+
 ## Deployment
 
 The app is deployed to heroku. Check with madhu@nomaddev.co in order to be invited to heroku.
