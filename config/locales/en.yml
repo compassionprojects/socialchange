@@ -31,6 +31,7 @@
 
 en:
   users:
+    # @todo move these to particular views hierarchy where they are called
     signup: "Sign up"
     login: "Log in"
     logout: "Log out"
@@ -56,6 +57,10 @@ en:
   common:
     are_you_sure: "Are you sure?"
     home: "Home"
+  pundit:
+    default: "You cannot perform this action."
+    user_policy:
+      update?: "You are not authorised to perform this action."
   activerecord:
     attributes:
       user:
