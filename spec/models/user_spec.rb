@@ -8,7 +8,7 @@ describe User do
       it "is valid" do
         expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
         expect { subject }.to raise_error(/Email address is invalid/i)
-        expect(User.count).to be 0
+        expect(described_class.count).to be 0
       end
     end
 
@@ -18,7 +18,7 @@ describe User do
       it "is atleast 8 characters" do
         expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
         expect { subject }.to raise_error(/Password is too short/i)
-        expect(User.count).to be 0
+        expect(described_class.count).to be 0
       end
     end
 
@@ -28,7 +28,7 @@ describe User do
       it "validates presence of name" do
         expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
         expect { subject }.to raise_error(/name can't be blank/i)
-        expect(User.count).to be 0
+        expect(described_class.count).to be 0
       end
     end
 
@@ -38,7 +38,7 @@ describe User do
       it "validates language" do
         expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
         expect { subject }.to raise_error(/language is not included in the list/i)
-        expect(User.count).to be 0
+        expect(described_class.count).to be 0
       end
     end
 
@@ -47,7 +47,7 @@ describe User do
 
       it "creates a user" do
         expect { subject }.not_to raise_error
-        expect(User.count).to be 1
+        expect(described_class.count).to be 1
       end
     end
   end
