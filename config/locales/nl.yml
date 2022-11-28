@@ -33,6 +33,10 @@ nl:
   common:
     are_you_sure: "Weet je het zeker?"
     home: "Home"
+  pundit:
+    default: "U kunt deze actie niet uitvoeren."
+    user_policy:
+      update?: "U bent niet bevoegd om deze actie uit te voeren."
   activerecord:
     attributes:
       user:
