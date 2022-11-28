@@ -5,7 +5,7 @@ describe User do
     describe "email" do
       subject { create(:user, email: "test", password: "12345678", name: "abc") }
 
-      it "is valid" do
+      it "is invalid" do
         expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
         expect { subject }.to raise_error(/Email address is invalid/i)
         expect(described_class.count).to be 0
