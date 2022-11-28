@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe "Locales" do
-
   it "the default locale must be English" do
     expect(I18n.default_locale).to be :en
   end
@@ -33,8 +32,9 @@ describe "Locales" do
   end
 
   context "when user is signed in" do
-    let(:user) { create(:user, language: "nl", email: "test@example.com", password: 12345678, name: "test") }
-    before(:each) do
+    let(:user) { create(:user, language: "nl", email: "test@example.com", password: 12_345_678, name: "test") }
+
+    before do
       sign_in user
     end
 

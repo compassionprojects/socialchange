@@ -1,5 +1,4 @@
 class UserPolicy < ApplicationPolicy
-
   class Scope
     def initialize(user, scope)
       @user  = user
@@ -7,9 +6,9 @@ class UserPolicy < ApplicationPolicy
     end
 
     def resolve
-      if user.admin?
-        scope.all
-      end
+      return unless user.admin?
+
+      scope.all
     end
 
     private

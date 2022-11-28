@@ -53,7 +53,7 @@ Rails.application.configure do
   config.log_level = :info
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -65,7 +65,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # Default app url
-  config.action_mailer.default_url_options = { host: ENV['DOMAIN_NAME'] }
+  config.action_mailer.default_url_options = { host: ENV["DOMAIN_NAME"] }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -73,14 +73,14 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              ENV['EMAIL_SERVER_HOST'],
-    port:                 ENV['EMAIL_SERVER_PORT'],
-    user_name:            ENV['EMAIL_SERVER_USER'],
-    password:             ENV['EMAIL_SERVER_PASSWORD'],
-    authentication:       'plain',
-    ssl:                  true,
-    open_timeout:         5,
-    read_timeout:         10
+    address: ENV["EMAIL_SERVER_HOST"],
+    port: ENV["EMAIL_SERVER_PORT"],
+    user_name: ENV["EMAIL_SERVER_USER"],
+    password: ENV["EMAIL_SERVER_PASSWORD"],
+    authentication: "plain",
+    ssl: true,
+    open_timeout: 5,
+    read_timeout: 10
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

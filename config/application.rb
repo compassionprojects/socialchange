@@ -20,7 +20,7 @@ module Socialchange
     # config.eager_load_paths << Rails.root.join("extras")
 
     # https://guides.rubyonrails.org/configuring.html#configuring-i18n
-    config.i18n.available_locales = [:en, :nl]
+    config.i18n.available_locales = %i[en nl]
     config.i18n.default_locale = :en
     config.i18n.fallbacks = true
   end

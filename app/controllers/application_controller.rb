@@ -7,23 +7,21 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def set_locale
-    if user_signed_in?
-      preferred_locale = current_user.language
-    end
+    preferred_locale = current_user.language if user_signed_in?
 
     locale = params[:lang].presence || preferred_locale.presence || locale_from_header
     I18n.locale = valid_locales.include?(locale) ? locale : I18n.default_locale
   end
 
   def locale_from_header
-    request.env.fetch('HTTP_ACCEPT_LANGUAGE', '').scan(/[a-z]{2}/).first
+    request.env.fetch("HTTP_ACCEPT_LANGUAGE", "").scan(/[a-z]{2}/).first
   end
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :language])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name language])
     devise_parameter_sanitizer.permit(:accept_invitation, keys: [:name])
     devise_parameter_sanitizer.permit(:invite, keys: [:name])
   end

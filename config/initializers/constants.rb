@@ -1,1 +1,1 @@
-APPLICATION_NAME = 'Social Change Stories'.freeze
+APPLICATION_NAME = "Social Change Stories".freeze
