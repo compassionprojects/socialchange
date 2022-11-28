@@ -10,4 +10,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :language, inclusion: { in: I18n.available_locales.map(&:to_s) }, allow_nil: true
+
+  def language=(u)
+    self["language"] = u.presence
+  end
 end
