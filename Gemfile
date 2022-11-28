@@ -80,3 +80,5 @@ end
 # gem "image_processing", "~> 1.2"
 
 gem "pundit", "~> 2.2"
+
+gem "administrate", "~> 0.18.0"
