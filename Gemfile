@@ -2,21 +2,21 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Ruby version
-ruby File.read('.ruby-version').strip
+ruby File.read(".ruby-version").strip
 
 # Rails specific
-gem "rails", "~> 7.0.4"
-gem "sprockets-rails"             # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "pg", "~> 1.1"                # Use postgresql as the database for Active Record
 gem "puma", "~> 5.0"              # Use the Puma web server [https://github.com/puma/puma]
+gem "rails", "~> 7.0.4"
+gem "sprockets-rails"             # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 
 # Frontend asset bundling
-gem "importmap-rails"             # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "turbo-rails"                 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "stimulus-rails"              # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "jbuilder"                    # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "cssbundling-rails", "~> 1.1"
+gem "importmap-rails"             # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem "jbuilder"                    # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jsbundling-rails", "~> 1.0"
+gem "stimulus-rails"              # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem "turbo-rails"                 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 
 # Authentication and authorisation
 gem "devise", "~> 4.8"
@@ -26,24 +26,23 @@ gem "devise_invitable", "~> 2.0"
 gem "rails-i18n", "~> 7.0"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "rspec-rails", "~> 6.0.0"
+  gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "dotenv-rails", "~> 2.8"
   gem "factory_bot_rails", "~> 6.2"
+  gem "rspec-rails", "~> 6.0.0"
 end
 
 group :development do
-  gem "web-console"                 # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "guard"
   gem "guard-rspec", require: false
+  gem "web-console" # Use console on exceptions pages [https://github.com/rails/web-console]
 
   # @todo review the below commented out gems
 
@@ -82,3 +81,8 @@ end
 gem "pundit", "~> 2.2"
 
 gem "administrate", "~> 0.18.0"
+
+gem "rubocop", "~> 1.39", require: false
+gem "rubocop-rails", "~> 2.17", require: false
+
+gem "rubocop-rspec", "~> 2.15"
