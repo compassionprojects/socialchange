@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  # please make sure to add any new roles at the end of the array
   enum :role, admin: "admin", moderator: "moderator"
 
   # Include default devise modules. Others available are:
