@@ -90,3 +90,4 @@ gem "rubocop-rspec", "~> 2.15"
 gem "faker", "~> 3.0"
 
 gem "discard", "~> 1.2"
+gem "mobility", "~> 1.2"
