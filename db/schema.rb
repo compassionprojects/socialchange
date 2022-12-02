@@ -43,6 +43,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_124642) do
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
+  create_table "stories", force: :cascade do |t|
+    t.jsonb "title", null: false
+    t.jsonb "description", null: false
+    t.jsonb "outcomes"
+    t.jsonb "source"
+    t.integer "status"
+    t.string "country"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "user_id", null: false
+    t.bigint "updater_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["updater_id"], name: "index_stories_on_updater_id"
+    t.index ["user_id"], name: "index_stories_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", default: ""
     t.string "email", default: "", null: false
@@ -83,4 +100,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_124642) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "stories", "users"
+  add_foreign_key "stories", "users", column: "updater_id"
 end
