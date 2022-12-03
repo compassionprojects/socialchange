@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users
     resources :roles
     resources :permissions
+    resources :stories
 
     root to: "users#index"
   end
