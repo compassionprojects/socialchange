@@ -6,6 +6,8 @@ class StoryPolicy < ApplicationPolicy
     end
 
     def resolve
+      # get all stories
+      # @todo filter by published only for non collaborators
       scope.all
     end
 
