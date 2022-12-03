@@ -37,6 +37,7 @@ class StoryDashboard < Administrate::BaseDashboard
     id
     title
     user
+    status
     created_at
   ].freeze
 
@@ -44,9 +45,9 @@ class StoryDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    status
     title
     description
-    status
     outcomes
     source
     country
@@ -62,9 +63,9 @@ class StoryDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    status
     title
     description
-    status
     outcomes
     source
     country

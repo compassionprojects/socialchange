@@ -1,15 +1,21 @@
+// Field customisations for administrate mobility (translation) fields
 
-$('.mobility-tab-item-link').click(function (e) {
-  e.preventDefault();
+$(document).ready(function() {
+  // Styling
+  // Make the field label appear on the same line as field value
+  $('.mobility-tabs').parent('dd.attribute-data').prev().css("margin-top", "42px");
 
-  const locale = $(this).data('locale');
+  $('.mobility-tab-item-link').click(function (e) {
+    e.preventDefault();
 
-  // make the currently active locale inactive
-  $('.mobility-tab-item.active').removeClass('active');
-  $('.mobility-field-item.active').removeClass('active');
+    const locale = $(this).data('locale');
 
-  // and then make the currently selected locale active
-  $('.mobility-tab-item-' + locale).addClass('active');
-  $('.mobility-field-item-' + locale).addClass('active');
+    // make the currently active locale inactive
+    $('.mobility-tab-item.active').removeClass('active');
+    $('.mobility-field-item.active').removeClass('active');
 
+    // and then make the currently selected locale active
+    $('.mobility-tab-item-' + locale).addClass('active');
+    $('.mobility-field-item-' + locale).addClass('active');
+  });
 });

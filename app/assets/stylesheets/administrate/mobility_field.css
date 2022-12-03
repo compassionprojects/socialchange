@@ -24,6 +24,10 @@ ul.mobility-tabs > li.active {
   border-top-right-radius: 4px;
 }
 
+.mobility-fields {
+  min-height: 40px;
+}
+
 .mobility-fields > .mobility-field-item:not(.active) {
   display: none;
 }
