@@ -20,12 +20,14 @@ class StoryDashboard < Administrate::BaseDashboard
     outcomes: Fields::Mobility::Text.with_options(searchable: true),
     source: Fields::Mobility::Text.with_options(searchable: true),
     start_date: Field::Date,
-    status: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }, include_blank: true),
+    status: Field::Select.with_options(searchable: false, collection: lambda { |field|
+                                                                        field.resource.class.send(field.attribute.to_s.pluralize).keys
+                                                                      }, include_blank: true),
     title: Fields::Mobility::String.with_options(searchable: true),
     updater: Field::BelongsTo,
     user: Field::BelongsTo,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -88,10 +90,10 @@ class StoryDashboard < Administrate::BaseDashboard
     # unfortunately administrate doesn't support `lang:en,nl`
     # i.e, it doesn't take comma separated values, so array.split(",") is not
     # necessary below, however, this would be a "nice to have", so we leave it as is
-    lang: -> (resources, attrs) { resources.where("title ?& array[:keys]", keys: attrs.split(",")) },
+    lang: ->(resources, attrs) { resources.where("title ?& array[:keys]", keys: attrs.split(",")) },
 
     # Status filters for "draft" or "published"
-    status: ->(resources, attrs) { resources.where(status: attrs) },
+    status: ->(resources, attrs) { resources.where(status: attrs) }
   }.freeze
 
   # Overwrite this method to customize how stories are displayed

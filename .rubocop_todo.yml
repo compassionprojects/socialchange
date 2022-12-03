@@ -63,6 +63,8 @@ Rails/FilePath:
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
   Exclude:
+    - 'app/administrate/fields/mobility/string.rb'
+    - 'app/administrate/fields/mobility/text.rb'
     - 'app/controllers/admin/application_controller.rb'
     - 'app/controllers/application_controller.rb'
     - 'app/controllers/home_controller.rb'
@@ -72,6 +74,7 @@ Style/Documentation:
     - 'app/models/user.rb'
     - 'app/policies/application_policy.rb'
     - 'app/policies/user_policy.rb'
+    - 'app/policies/story_policy.rb'
     - 'config/application.rb'
     - 'db/migrate/*'
 
