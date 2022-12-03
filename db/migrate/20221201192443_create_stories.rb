@@ -1,10 +1,10 @@
 class CreateStories < ActiveRecord::Migration[7.0]
   def change
     create_table :stories do |t|
-      t.jsonb :title, null: false
-      t.jsonb :description, null: false
-      t.jsonb :outcomes
-      t.jsonb :source
+      t.jsonb :title, null: false, default: {}
+      t.jsonb :description, null: false, default: {}
+      t.jsonb :outcomes, default: {}
+      t.jsonb :source, default: {}
       t.integer :status
       t.string :country
       t.date :start_date

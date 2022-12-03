@@ -44,10 +44,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_124642) do
   end
 
   create_table "stories", force: :cascade do |t|
-    t.jsonb "title", null: false
-    t.jsonb "description", null: false
-    t.jsonb "outcomes"
-    t.jsonb "source"
+    t.jsonb "title", default: {}, null: false
+    t.jsonb "description", default: {}, null: false
+    t.jsonb "outcomes", default: {}
+    t.jsonb "source", default: {}
     t.integer "status"
     t.string "country"
     t.date "start_date"
