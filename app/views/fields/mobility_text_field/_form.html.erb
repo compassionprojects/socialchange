@@ -1,0 +1,20 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field">
+  <ul class="mobility-tabs">
+    <% I18n.available_locales.each do |locale| %>
+      <li class="mobility-tab-item mobility-tab-item-<%= locale %> <%= 'active' if I18n.locale == locale  %>">
+        <a class="mobility-tab-item-link" data-locale="<%= locale %>" href="#"><%= locale %></a>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="mobility-fields">
+    <% I18n.available_locales.each do |locale| %>
+      <div class="mobility-field-item mobility-field-item-<%= locale %> <%= 'active' if I18n.locale == locale  %>">
+        <%= f.text_area "#{field.attribute}_#{locale}".downcase.underscore, rows: 8 %>
+      </div>
+    <% end %>
+  </div>
+</div>
