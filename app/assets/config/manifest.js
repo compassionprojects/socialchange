@@ -4,5 +4,5 @@
 //= link application.js
 //= link administrate/application.css
 //= link administrate/application.js
-//= link fields/mobility_field.css
-//= link fields/mobility_field.js
+//= link administrate/mobility_field.css
+//= link administrate/mobility_field.js
