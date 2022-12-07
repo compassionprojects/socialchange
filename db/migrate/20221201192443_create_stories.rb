@@ -14,5 +14,10 @@ class CreateStories < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    add_index :stories, :title, :using => :gin
+    add_index :stories, :description, :using => :gin
+    add_index :stories, :outcomes, :using => :gin
+    add_index :stories, :source, :using => :gin
   end
 end

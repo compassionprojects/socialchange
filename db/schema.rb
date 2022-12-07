@@ -56,6 +56,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_124642) do
     t.bigint "updater_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["description"], name: "index_stories_on_description", using: :gin
+    t.index ["outcomes"], name: "index_stories_on_outcomes", using: :gin
+    t.index ["source"], name: "index_stories_on_source", using: :gin
+    t.index ["title"], name: "index_stories_on_title", using: :gin
     t.index ["updater_id"], name: "index_stories_on_updater_id"
     t.index ["user_id"], name: "index_stories_on_user_id"
   end
