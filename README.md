@@ -21,6 +21,12 @@ cp .env .env.production.local
 bin/dev
 ```
 
+To seed the database
+
+```sh
+rake db:seed
+```
+
 ## Tests
 
 ```sh
