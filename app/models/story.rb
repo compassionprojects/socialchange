@@ -4,7 +4,7 @@ class Story < ApplicationRecord
   belongs_to :user
   belongs_to :updater, class_name: "User"
 
-  enum :status, %i[draft published archived]
+  enum :status, %i[draft published]
 
   translates :title, :description, :outcomes, :source
 end
