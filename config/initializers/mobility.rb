@@ -11,6 +11,8 @@ Mobility.configure do
     #
     backend :jsonb
 
+    ransack
+
     # ActiveRecord
     #
     # Defines ActiveRecord as ORM, and enables ActiveRecord-specific plugins.
@@ -102,7 +104,7 @@ Mobility.configure do
     # locale_accessors
     #
     # Or define specific defaults by uncommenting line below
-    locale_accessors I18n.available_locales
+    locale_accessors
 
     # Attribute Methods
     #

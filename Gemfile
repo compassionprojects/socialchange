@@ -93,3 +93,5 @@ gem "discard", "~> 1.2"
 gem "mobility", "~> 1.2"
 
 gem "faker", "~> 3.0"
+
+gem "mobility-ransack", "~> 1.2"

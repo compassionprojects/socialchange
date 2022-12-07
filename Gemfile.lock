@@ -189,6 +189,9 @@ GEM
     mobility (1.2.9)
       i18n (>= 0.6.10, < 2)
       request_store (~> 1.0)
+    mobility-ransack (1.2.1)
+      mobility (>= 1.0.1, < 2.0)
+      ransack (>= 1.8.0, < 3.2)
     msgpack (1.6.0)
     nenv (0.3.0)
     net-imap (0.3.1)
@@ -255,6 +258,10 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    ransack (3.1.0)
+      activerecord (>= 6.0.4)
+      activesupport (>= 6.0.4)
+      i18n
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -383,6 +390,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails (~> 1.0)
   mobility (~> 1.2)
+  mobility-ransack (~> 1.2)
   pg (~> 1.1)
   puma (~> 5.0)
   pundit (~> 2.2)
