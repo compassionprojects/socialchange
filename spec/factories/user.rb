@@ -1,3 +1,5 @@
+# User factory
+#
 FactoryBot.define do
   factory :user do
     confirmed_at { Time.zone.today }
