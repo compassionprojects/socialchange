@@ -12,3 +12,6 @@ Style/FrozenStringLiteralComment:
 
 RSpec/MultipleExpectations:
   Max: 3
+
+Layout/FirstArrayElementIndentation:
+  Enabled: false

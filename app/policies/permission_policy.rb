@@ -1,3 +1,5 @@
+# Permission policy
+#
 class PermissionPolicy < ApplicationPolicy
   def resource
     "permissions"
