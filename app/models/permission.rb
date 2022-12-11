@@ -1,9 +1,11 @@
 class Permission < ApplicationRecord
   has_and_belongs_to_many :roles
 
-  AVAILABLE_PERMISSIONS = ["resources.manage"]
+  # @todo move this somewhere else!
+  ACTIONS = [:read, :list, :create, :update, :delete, :manage]
+  AVAILABLE_PERMISSIONS = []
   ApplicationRecord.descendants.collect(&:name).map(&:pluralize).each do |resource|
-    [:read, :list, :create, :update, :delete, :manage].each do |action|
+    ACTIONS.each do |action|
       AVAILABLE_PERMISSIONS << "#{resource.downcase}.#{action}"
     end
   end

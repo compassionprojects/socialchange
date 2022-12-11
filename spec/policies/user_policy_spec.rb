@@ -3,21 +3,31 @@ require "rails_helper"
 describe UserPolicy do
   subject { described_class }
 
-  let(:user1) { create(:user, email: "1@ex.com", password: "12345678", name: "test1") }
-  let(:user2) { create(:user, email: "2@ex.com", password: "87654321", name: "test2") }
-  let(:admin) { create(:user, email: "admin@ex.com", password: "admin123", name: "admin", role: :admin) }
+  let(:user) { create(:user) }
+  let(:moderator) { create(:user, roles: [
+    create(:role, name: "moderator", permissions: [create(:permission, name: "users.update")])
+  ]) }
+  let(:admin) { create(:user, roles: [
+    create(:role, name: "admin", permissions: [
+      create(:permission, name: "users.manage")
+    ])
+  ]) }
 
   permissions :update? do
-    it "denies access if user is updating another user" do
-      expect(subject).not_to permit(user1, user2)
+    it "denies access if user does not have permission to update another user" do
+      expect(subject).not_to permit(user, moderator)
     end
 
     it "grants access if user is updating himself" do
-      expect(subject).to permit(user1, user1)
+      expect(subject).to permit(user, user)
     end
 
-    it "grants access if admin is updating any other user" do
-      expect(subject).to permit(admin, user1)
+    it "grants access if user with permission is updating another user" do
+      expect(subject).to permit(moderator, user)
+    end
+
+    it "grants access if user with .manage permissions is updating another user" do
+      expect(subject).to permit(admin, user)
     end
   end
 end

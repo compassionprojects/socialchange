@@ -3,7 +3,7 @@ require "rails_helper"
 describe User do
   describe "validations" do
     describe "email" do
-      subject { create(:user, email: "test", password: "12345678", name: "abc") }
+      subject { create(:user, email: "test") }
 
       it "is invalid" do
         expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
@@ -13,7 +13,7 @@ describe User do
     end
 
     describe "password" do
-      subject { create(:user, email: "test@example.com", password: "1234567", name: "abc") }
+      subject { create(:user, password: "1234567") }
 
       it "is atleast 8 characters" do
         expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
@@ -23,7 +23,7 @@ describe User do
     end
 
     describe "name" do
-      subject { create(:user, email: "test@example.com", password: "12345678") }
+      subject { create(:user, name: nil) }
 
       it "validates presence of name" do
         expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
@@ -33,7 +33,7 @@ describe User do
     end
 
     describe "language" do
-      subject { create(:user, language: :fr, name: "Test", email: "test@example.com", password: "12345678") }
+      subject { create(:user, language: :fr) }
 
       it "validates language" do
         expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
@@ -43,7 +43,7 @@ describe User do
     end
 
     context "when valid" do
-      subject { create(:user, name: "Test", email: "test@example.com", password: "12345678") }
+      subject { create(:user) }
 
       it "creates a user" do
         expect { subject }.not_to raise_error
