@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_11_124642) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_11_163823) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -57,8 +57,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_124642) do
     t.bigint "updater_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "discarded_at"
     t.index "((title ->> 'en'::text)) gin_trgm_ops, ((description ->> 'en'::text)) gin_trgm_ops, ((outcomes ->> 'en'::text)) gin_trgm_ops, ((source ->> 'en'::text)) gin_trgm_ops", name: "index_stories_on_title_desc_out_src_en", using: :gin
     t.index "((title ->> 'nl'::text)) gin_trgm_ops, ((description ->> 'nl'::text)) gin_trgm_ops, ((outcomes ->> 'nl'::text)) gin_trgm_ops, ((source ->> 'nl'::text)) gin_trgm_ops", name: "index_stories_on_title_desc_out_src_nl", using: :gin
+    t.index ["discarded_at"], name: "index_stories_on_discarded_at"
     t.index ["updater_id"], name: "index_stories_on_updater_id"
     t.index ["user_id"], name: "index_stories_on_user_id"
   end

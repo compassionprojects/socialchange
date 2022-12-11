@@ -16,6 +16,16 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :language, inclusion: { in: I18n.available_locales.map(&:to_s) }, allow_nil: true
 
+  # After a user is discarded, discard his stories
+  #
+  after_discard do
+    stories.discard_all
+  end
+
+  after_undiscard do
+    stories.undiscard_all
+  end
+
   def language=(u)
     self["language"] = u.presence
   end

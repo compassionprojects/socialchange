@@ -1,4 +1,8 @@
+# Story policy
+#
 class StoryPolicy < ApplicationPolicy
+  # Story scope
+  #
   class Scope
     def initialize(user, scope)
       @user  = user
@@ -6,9 +10,8 @@ class StoryPolicy < ApplicationPolicy
     end
 
     def resolve
-      # get all stories
-      # @todo filter by published only for non collaborators
-      scope.all
+      # get only undiscarded stories
+      scope.kept
     end
 
     private
@@ -16,22 +19,11 @@ class StoryPolicy < ApplicationPolicy
     attr_reader :user, :scope
   end
 
-  def show?
-    true
+  def resource
+    "stories"
   end
 
-  # Allow only creators and site admins to update stories
-  # @todo allow contrinutors to update as well later
-  #
-  def update?
-    user.admin? || user.id == record.user.id
-  end
-
-  def index?
-    true
-  end
-
-  def destroy?
-    user.admin? || user.id == record.user.id
+  def owns_resource?
+    user.id == record.user.id
   end
 end

@@ -42,15 +42,6 @@ describe User do
       end
     end
 
-    describe "role" do
-      subject { create(:user, role: :author) }
-
-      it "validates role" do
-        expect { subject }.to raise_error(/is not a valid role/i)
-        expect(described_class.count).to be 0
-      end
-    end
-
     context "when valid" do
       subject { create(:user) }
 

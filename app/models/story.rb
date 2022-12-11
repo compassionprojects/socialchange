@@ -1,5 +1,6 @@
 class Story < ApplicationRecord
   extend Mobility
+  include Discard::Model
 
   belongs_to :user
   belongs_to :updater, class_name: "User"
