@@ -8,4 +8,6 @@ class Story < ApplicationRecord
   enum :status, %i[draft published]
 
   translates :title, :description, :outcomes, :source
+
+  validates :title, :description, presence: true
 end
