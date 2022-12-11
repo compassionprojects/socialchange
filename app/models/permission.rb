@@ -5,7 +5,7 @@ class Permission < ApplicationRecord
 
   # @todo move this somewhere else!
   ACTIONS = %i[read list create update delete manage].freeze
-  AVAILABLE_PERMISSIONS = [].freeze
+  AVAILABLE_PERMISSIONS = []
   ApplicationRecord.descendants.collect(&:name).map(&:pluralize).each do |resource|
     ACTIONS.each do |action|
       AVAILABLE_PERMISSIONS << "#{resource.downcase}.#{action}"
