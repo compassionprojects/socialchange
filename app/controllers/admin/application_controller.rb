@@ -14,6 +14,7 @@ module Admin
       redirect_to "/" unless user_signed_in? && can_manage_resource?
     end
 
+    # Allow user to enter admin if he has one of the .list or .manage permissions
     def can_manage_resource?
       current_user.permissions.any? { |str| str.include?(".list") || str.include?(".manage") }
     end

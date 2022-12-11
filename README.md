@@ -33,6 +33,10 @@ or if you want to watch tests while developing
 bin/guard
 ```
 
+## Notes
+
+- RBAC: We use a simple role based authorization system with permissions. Inspired by [this article](https://ngaunhien.net/blog/simple-rbac-implementation-with-rails). This gives us fine grained control on which user can do what.
+
 ## Deployment
 
 The app is deployed to heroku. Check with madhu@nomaddev.co in order to be invited to heroku.
