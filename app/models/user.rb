@@ -1,6 +1,8 @@
 # User model
 #
 class User < ApplicationRecord
+  include Discard::Model
+
   has_and_belongs_to_many :roles
 
   # Include default devise modules. Others available are:
@@ -22,5 +24,9 @@ class User < ApplicationRecord
 
   def permissions
     @permissions ||= roles.flat_map(&:permissions).map(&:name).uniq
+  end
+
+  def active_for_authentication?
+    super && !discarded?
   end
 end
