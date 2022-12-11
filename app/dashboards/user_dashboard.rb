@@ -37,7 +37,8 @@ class UserDashboard < Administrate::BaseDashboard
     unconfirmed_email: Field::String,
     unlock_token: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    updated_at: Field::DateTime,
+    discarded_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -79,6 +80,7 @@ class UserDashboard < Administrate::BaseDashboard
     unconfirmed_email
     created_at
     updated_at
+    discarded_at
   ].freeze
 
   # FORM_ATTRIBUTES

@@ -88,3 +88,5 @@ gem "rubocop-rails", "~> 2.17", require: false
 gem "rubocop-rspec", "~> 2.15"
 
 gem "faker", "~> 3.0"
+
+gem "discard", "~> 1.2"
