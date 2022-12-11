@@ -53,6 +53,9 @@ en:
     cancel_account_notice: "This is an irreversible action, there is no going back!"
     profile: "Profile"
     invite: "Invite"
+  stories:
+    nav: "Stories"
+    add: "Add"
   form_actions:
     update: "Update"
   common:

@@ -29,6 +29,9 @@ nl:
     cancel_account_notice: "Dit is een onomkeerbare actie, er is geen weg terug!"
     profile: "Profiel"
     invite: "Uitnodigen"
+  stories:
+    nav: "Stories"
+    add: "Add"
   form_actions:
     update: "Update"
   common:

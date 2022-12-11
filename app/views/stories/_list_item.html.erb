@@ -1,0 +1,6 @@
+<div id="<%= dom_id story %>" class="py-3 border-bottom">
+  <h2><%= link_to story.title, story, :class => "text-reset text-decoration-none" %></h2>
+  <p>
+    <%= story.description.truncate(400) %>
+  </p>
+</div>

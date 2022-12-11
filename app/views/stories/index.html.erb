@@ -1,0 +1,7 @@
+<h1>Stories</h1>
+
+<div id="stories">
+  <% @stories.each do |story| %>
+    <%= render "list_item", story: story %>
+  <% end %>
+</div>

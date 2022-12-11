@@ -1,0 +1,6 @@
+<%= render @story %>
+
+<div>
+  <%= link_to "Edit this story", edit_story_path(@story), :class => "btn btn-primary" %>
+  <%= button_to "Destroy this story", @story, method: :delete, :class => "btn btn-danger mt-2" %>
+</div>

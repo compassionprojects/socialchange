@@ -1,0 +1,35 @@
+<%= form_with(model: story) do |form| %>
+  <% if story.errors.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% story.errors.each do |error| %>
+          <li class="pl-2"><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :title, :class => "form-label" %>
+    <%= form.text_field :title, :class => "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, :class => "form-label" %>
+    <%= form.text_area :description, :class => "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :outcomes, :class => "form-label" %>
+    <%= form.text_area :outcomes, :class => "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :source, :class => "form-label" %>
+    <%= form.text_area :source, :class => "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>
