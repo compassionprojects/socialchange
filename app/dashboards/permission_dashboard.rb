@@ -9,10 +9,10 @@ class PermissionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::Select.with_options(collection: ->(field){ Permission::AVAILABLE_PERMISSIONS }, include_blank: true),
+    name: Field::Select.with_options(collection: ->(_field) { Permission::AVAILABLE_PERMISSIONS }, include_blank: true),
     roles: Field::HasMany,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

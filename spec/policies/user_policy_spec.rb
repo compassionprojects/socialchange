@@ -4,14 +4,18 @@ describe UserPolicy do
   subject { described_class }
 
   let(:user) { create(:user) }
-  let(:moderator) { create(:user, roles: [
-    create(:role, name: "moderator", permissions: [create(:permission, name: "users.update")])
-  ]) }
-  let(:admin) { create(:user, roles: [
-    create(:role, name: "admin", permissions: [
-      create(:permission, name: "users.manage")
+  let(:moderator) do
+    create(:user, roles: [
+      create(:role, name: "moderator", permissions: [create(:permission, name: "users.update")])
     ])
-  ]) }
+  end
+  let(:admin) do
+    create(:user, roles: [
+      create(:role, name: "admin", permissions: [
+        create(:permission, name: "users.manage")
+      ])
+    ])
+  end
 
   permissions :update? do
     it "denies access if user does not have permission to update another user" do

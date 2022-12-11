@@ -2,7 +2,7 @@ class Permission < ApplicationRecord
   has_and_belongs_to_many :roles
 
   # @todo move this somewhere else!
-  ACTIONS = [:read, :list, :create, :update, :delete, :manage]
+  ACTIONS = %i[read list create update delete manage]
   AVAILABLE_PERMISSIONS = []
   ApplicationRecord.descendants.collect(&:name).map(&:pluralize).each do |resource|
     ACTIONS.each do |action|
