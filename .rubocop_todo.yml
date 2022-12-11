@@ -73,10 +73,7 @@ Style/Documentation:
     - 'app/policies/application_policy.rb'
     - 'app/policies/user_policy.rb'
     - 'config/application.rb'
-    - 'db/migrate/20221106113348_devise_create_users.rb'
-    - 'db/migrate/20221121172514_devise_invitable_add_to_users.rb'
-    - 'db/migrate/20221123101707_add_language_to_user.rb'
-    - 'db/migrate/20221128093923_add_role_to_users.rb'
+    - 'db/migrate/*'
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
@@ -84,3 +81,13 @@ Style/Documentation:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 150
+
+Rails/CreateTableWithTimestamps:
+  Exclude:
+    - 'db/migrate/20221210102448_create_roles_and_permissions.rb'
+
+Rails/HasAndBelongsToMany:
+  Exclude:
+    - 'app/models/user.rb'
+    - 'app/models/role.rb'
+    - 'app/models/permission.rb'

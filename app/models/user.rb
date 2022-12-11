@@ -1,3 +1,5 @@
+# User model
+#
 class User < ApplicationRecord
   has_and_belongs_to_many :roles
 
@@ -14,7 +16,7 @@ class User < ApplicationRecord
     self["language"] = u.presence
   end
 
-  def has_permission?(action, resource)
+  def has_permission?(action, resource) # rubocop:disable Naming/PredicateName
     permissions.include?("#{resource}.#{action}")
   end
 

@@ -1,3 +1,5 @@
+# Role policy
+#
 class RolePolicy < ApplicationPolicy
   def resource
     "roles"
