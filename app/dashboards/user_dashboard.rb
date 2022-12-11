@@ -85,10 +85,16 @@ class UserDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = %i[
+  FORM_ATTRIBUTES_NEW = %i[
     name
     email
     password
+    language
+  ].freeze
+
+  FORM_ATTRIBUTES = %i[
+    name
+    email
     language
   ].freeze
 
