@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  enum :role, admin: "admin", moderator: "moderator"
+  has_and_belongs_to_many :roles
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -12,5 +12,13 @@ class User < ApplicationRecord
 
   def language=(u)
     self["language"] = u.presence
+  end
+
+  def has_permission?(action, resource)
+    permissions.include?("#{resource}.#{action}")
+  end
+
+  def permissions
+    @permissions ||= roles.flat_map(&:permissions).map(&:name).uniq
   end
 end

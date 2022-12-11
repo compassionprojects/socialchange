@@ -11,7 +11,11 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      redirect_to "/" unless user_signed_in? && current_user.admin?
+      redirect_to "/" unless user_signed_in? && can_manage_resource?
+    end
+
+    def can_manage_resource?
+      current_user.permissions.any? { |str| str.include?(".list") || str.include?(".manage") }
     end
 
     # Override this value to specify the number of elements to display at a time

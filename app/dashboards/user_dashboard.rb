@@ -29,12 +29,10 @@ class UserDashboard < Administrate::BaseDashboard
     last_sign_in_ip: Field::String,
     locked_at: Field::DateTime,
     name: Field::String,
+    password: Field::Password,
     remember_created_at: Field::DateTime,
     reset_password_sent_at: Field::DateTime,
     reset_password_token: Field::String,
-    role: Field::Select.with_options(searchable: false, collection: lambda { |field|
-                                                                      field.resource.class.send(field.attribute.to_s.pluralize).keys
-                                                                    }, include_blank: true),
     sign_in_count: Field::Number,
     unconfirmed_email: Field::String,
     unlock_token: Field::String,
@@ -52,7 +50,6 @@ class UserDashboard < Administrate::BaseDashboard
     name
     email
     language
-    role
     last_sign_in_at
   ].freeze
 
@@ -63,7 +60,6 @@ class UserDashboard < Administrate::BaseDashboard
     name
     email
     language
-    role
     confirmation_sent_at
     confirmed_at
     current_sign_in_at
@@ -91,8 +87,8 @@ class UserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     name
     email
+    password
     language
-    role
   ].freeze
 
   # COLLECTION_FILTERS
