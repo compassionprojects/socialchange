@@ -5,7 +5,13 @@ class StoriesController < ApplicationController
   before_action :set_story, only: %i[show edit update destroy]
 
   def index
-    @stories = policy_scope(Story)
+    @q = policy_scope(Story).ransack(params[:q])
+    @stories = @q.result(distinct: true)
+  end
+
+  def search
+    index
+    render :index
   end
 
   def show; end

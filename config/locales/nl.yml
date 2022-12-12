@@ -43,6 +43,7 @@ nl:
       title: "Edit %{title}"
   form_actions:
     update: "Update"
+    search: "Zoek"
   common:
     are_you_sure: "Weet je het zeker?"
     home: "Home"

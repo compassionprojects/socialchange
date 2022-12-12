@@ -67,6 +67,7 @@ en:
       title: "Edit %{title}"
   form_actions:
     update: "Update"
+    search: "Search"
   common:
     are_you_sure: "Are you sure?"
     home: "Home"

@@ -1,6 +1,9 @@
-<% content_for :title, t('.title') %>
+<% content_for :title, t(".title") %>
 
 <h1><%= yield(:title) %></h1>
+
+<%= render "search" %>
+<br>
 
 <div id="stories">
   <% @stories.each do |story| %>
