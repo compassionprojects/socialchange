@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :stories do
     collection do
-      match 'search' => 'stories#search', via: [:get, :post], as: :search
+      match "search" => "stories#search", via: %i[get post], as: :search
     end
   end
 
