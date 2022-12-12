@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "/stories", type: :request do
   describe "GET /index" do
@@ -33,7 +33,7 @@ describe "/stories", type: :request do
     end
 
     describe "GET /edit" do
-      let(:story) { create(:story, user: user, updater: user) }
+      let(:story) { create(:story, user:, updater: user) }
 
       it "renders a successful response" do
         get edit_story_url(story)
@@ -44,9 +44,9 @@ describe "/stories", type: :request do
     describe "POST /create" do
       context "with valid parameters" do
         it "creates a new Story" do
-          expect {
+          expect do
             post stories_url, params: { story: attributes_for(:story) }
-          }.to change(Story, :count).by(1)
+          end.to change(Story, :count).by(1)
         end
 
         it "redirects to the created story" do
@@ -57,11 +57,10 @@ describe "/stories", type: :request do
 
       context "with invalid parameters" do
         it "does not create a new Story" do
-          expect {
+          expect do
             post stories_url, params: { story: { title: "Story title" } } # without description
-          }.to change(Story, :count).by(0)
+          end.to change(Story, :count).by(0)
         end
-
 
         it "renders a response with 422 status (i.e. to display the 'new' template)" do
           post stories_url, params: { story: { description: "Story description" } } # without title
@@ -75,14 +74,14 @@ describe "/stories", type: :request do
         let(:new_attributes) { attributes_for(:story) }
 
         it "updates the requested story" do
-          story = create(:story, user: user)
+          story = create(:story, user:)
           patch story_url(story), params: { story: new_attributes }
           story.reload
           expect(story.title).to eql(new_attributes[:title])
         end
 
         it "redirects to the story" do
-          story = create(:story, user: user)
+          story = create(:story, user:)
           patch story_url(story), params: { story: new_attributes }
           story.reload
           expect(response).to redirect_to(story_url(story))
@@ -100,14 +99,14 @@ describe "/stories", type: :request do
 
     describe "DELETE /destroy" do
       it "destroys the requested story" do
-        story = create(:story, user: user)
-        expect {
+        story = create(:story, user:)
+        expect do
           delete story_url(story)
-        }.to change(Story, :count).by(-1)
+        end.to change(Story, :count).by(-1)
       end
 
       it "redirects to the stories list" do
-        story = create(:story, user: user)
+        story = create(:story, user:)
         delete story_url(story)
         expect(response).to redirect_to(stories_url)
       end

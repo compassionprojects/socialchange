@@ -6,8 +6,7 @@ class StoriesController < ApplicationController
     @stories = policy_scope(Story)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @story = Story.new(**creator)
@@ -58,6 +57,7 @@ class StoriesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_story
     @story = policy_scope(Story).find(params[:id])
