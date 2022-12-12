@@ -35,7 +35,7 @@ describe "Locales" do
   end
 
   context "when user is signed in" do
-    let(:user) { create(:user, language: "nl", email: "test@example.com", password: 12_345_678, name: "test") }
+    let(:user) { create(:user, language: "nl") }
 
     before do
       sign_in user

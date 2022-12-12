@@ -32,6 +32,9 @@ nl:
   stories:
     nav: "Stories"
     add: "Add"
+    created: "Story was successfully created"
+    updated: "Story was successfully updated"
+    deleted: "Story was successfully deleted"
   form_actions:
     update: "Update"
   common:
@@ -49,3 +52,8 @@ nl:
         password: "Wachtwoord"
         password_confirmation: "Wachtwoord bevestiging"
         language: "Voorkeurstaal"
+      story:
+        title: "Title"
+        description: "Description"
+        outcomes: "Outcomes"
+        source: "Source"

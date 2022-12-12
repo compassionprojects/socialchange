@@ -1,32 +1,31 @@
 class StoriesController < ApplicationController
-  before_action :set_story, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[new edit create update destroy]
+  before_action :set_story, only: %i[show edit update destroy]
 
-  # GET /stories or /stories.json
   def index
-    @stories = Story.all
+    @stories = policy_scope(Story)
   end
 
-  # GET /stories/1 or /stories/1.json
   def show
   end
 
-  # GET /stories/new
   def new
-    @story = Story.new
+    @story = Story.new(**creator)
+    authorize @story
   end
 
-  # GET /stories/1/edit
   def edit
     authorize @story
   end
 
-  # POST /stories or /stories.json
   def create
-    @story = Story.new(**story_params, user: current_user, updater: current_user)
+    @story = Story.new(**creator)
+    @story.assign_attributes(permitted_attributes(@story))
+    authorize @story
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to story_url(@story), notice: "Story was successfully created." }
+        format.html { redirect_to story_url(@story), notice: I18n.t("stories.created") }
         format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -35,12 +34,11 @@ class StoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /stories/1 or /stories/1.json
   def update
     authorize @story
     respond_to do |format|
-      if @story.update(**story_params, updater: current_user)
-        format.html { redirect_to story_url(@story), notice: "Story was successfully updated." }
+      if @story.update(**permitted_attributes(@story), updater: current_user)
+        format.html { redirect_to story_url(@story), notice: I18n.t("stories.updated") }
         format.json { render :show, status: :ok, location: @story }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,25 +47,28 @@ class StoriesController < ApplicationController
     end
   end
 
-  # DELETE /stories/1 or /stories/1.json
   def destroy
     authorize @story
     @story.destroy
 
     respond_to do |format|
-      format.html { redirect_to stories_url, notice: "Story was successfully destroyed." }
+      format.html { redirect_to stories_url, notice: I18n.t("stories.deleted") }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_story
-      @story = Story.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_story
+    @story = policy_scope(Story).find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def story_params
-      params.require(:story).permit(:title, :description, :outcomes, :source)
-    end
+  # Only allow a list of trusted parameters through.
+  def story_params
+    params.require(:story).permit(:title, :description, :outcomes, :source)
+  end
+
+  def creator
+    { user: current_user, updater: current_user }
+  end
 end

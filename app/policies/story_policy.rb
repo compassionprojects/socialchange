@@ -19,6 +19,12 @@ class StoryPolicy < ApplicationPolicy
     attr_reader :user, :scope
   end
 
+  # Allowed attributes to be updated
+  # can also use `permitted_attributes_for_create`, `permitted_attributes_for_update`
+  def permitted_attributes
+    %i[title description outcomes source]
+  end
+
   def resource
     "stories"
   end

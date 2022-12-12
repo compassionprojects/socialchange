@@ -56,6 +56,9 @@ en:
   stories:
     nav: "Stories"
     add: "Add"
+    created: "Story was successfully created"
+    updated: "Story was successfully updated"
+    deleted: "Story was successfully deleted"
   form_actions:
     update: "Update"
   common:
@@ -73,3 +76,8 @@ en:
         password: "Password"
         password_confirmation: "Password confirmation"
         language: "Preferred language"
+      story:
+        title: "Title"
+        description: "Description"
+        outcomes: "Outcomes"
+        source: "Source"

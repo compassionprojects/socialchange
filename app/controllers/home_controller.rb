@@ -1,3 +1,5 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    # skip_policy_scope # @todo remove after development
+  end
 end
