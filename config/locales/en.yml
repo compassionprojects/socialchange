@@ -59,6 +59,12 @@ en:
     created: "Story was successfully created"
     updated: "Story was successfully updated"
     deleted: "Story was successfully deleted"
+    index:
+      title: "Stories"
+    new:
+      title: "New story"
+    edit:
+      title: "Edit %{title}"
   form_actions:
     update: "Update"
   common:
