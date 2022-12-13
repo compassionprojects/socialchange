@@ -41,6 +41,12 @@ nl:
       title: "New story"
     edit:
       title: "Edit %{title}"
+  pagination:
+    first: "&laquo; First"
+    last: "Last &raquo;"
+    previous: "&lsaquo; Prev"
+    next: "Next &rsaquo;"
+    truncate: "&hellip;"
   form_actions:
     update: "Update"
     search: "Zoek"

@@ -389,6 +389,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jsbundling-rails (~> 1.0)
+  kaminari (~> 1.2)
   mobility (~> 1.2)
   mobility-ransack (~> 1.2)
   pg (~> 1.1)
