@@ -1,0 +1,5 @@
+<% unless defined?(except) && except.include?(:first_page) %>
+  <li class="page-item">
+    <%= link_to_unless current_page.first?, raw(t "pagination.first"), url, remote: remote, class: "page-link" %>
+  </li>
+<% end %>

@@ -6,7 +6,7 @@ class StoriesController < ApplicationController
 
   def index
     @q = policy_scope(Story).ransack(params[:q])
-    @stories = @q.result(distinct: true).page(params[:page]).per(5)
+    @stories = @q.result(distinct: true).page(params[:page])
   end
 
   def search

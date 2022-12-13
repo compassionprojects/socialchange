@@ -65,6 +65,10 @@ en:
       title: "New story"
     edit:
       title: "Edit %{title}"
+      update_story: "Update story"
+    show:
+      edit_story: "Edit story"
+      destroy_story: "Delete story"
   pagination:
     first: "&laquo; First"
     last: "Last &raquo;"

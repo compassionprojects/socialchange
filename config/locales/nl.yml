@@ -41,6 +41,9 @@ nl:
       title: "New story"
     edit:
       title: "Edit %{title}"
+    show:
+      edit_story: "Edit story"
+      destroy_story: "Delete story"
   pagination:
     first: "&laquo; First"
     last: "Last &raquo;"

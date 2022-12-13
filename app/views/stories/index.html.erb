@@ -12,5 +12,5 @@
 </div>
 
 <div class="my-5">
-  <%= paginate @stories %>
+  <%= paginate @stories, except: [:first_page, :last_page] %>
 </div>
