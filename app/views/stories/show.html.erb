@@ -3,6 +3,10 @@
 <%= render @story %>
 
 <div>
-  <%= link_to "Edit this story", edit_story_path(@story), :class => "btn btn-primary" %>
-  <%= button_to "Destroy this story", @story, method: :delete, :class => "btn btn-danger mt-2" %>
+  <% if policy(@story).update? %>
+    <%= link_to "Edit this story", edit_story_path(@story), :class => "btn btn-primary" %>
+  <% end %>
+  <% if policy(@story).destroy? %>
+    <%= button_to "Destroy this story", @story, method: :delete, :class => "btn btn-danger mt-2" %>
+  <% end %>
 </div>
