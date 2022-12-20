@@ -1,5 +1,8 @@
 require "rails_helper"
 
+# @todo these must be moved to concern tests to test
+# spec/controllers/concerns/locale_concerns
+
 describe "Locales" do
   it "the default locale must be English" do
     expect(I18n.default_locale).to be :en

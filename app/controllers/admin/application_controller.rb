@@ -7,6 +7,7 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     include Administrate::Punditize
+    include LocaleConcerns
 
     before_action :authenticate_admin
 
