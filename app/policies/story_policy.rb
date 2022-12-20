@@ -11,7 +11,7 @@ class StoryPolicy < ApplicationPolicy
 
     def resolve
       # get only undiscarded stories
-      scope.kept
+      scope.kept.published
     end
 
     private

@@ -10,4 +10,6 @@ class Story < ApplicationRecord
   translates :title, :description, :outcomes, :source
 
   validates :title, :description, presence: true
+
+  scope :published, -> { where("title ? '#{I18n.locale}'").and(where("description ? '#{I18n.locale}'")) }
 end
