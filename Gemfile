@@ -98,3 +98,5 @@ end
 # gem "image_processing", "~> 1.2"
 
 gem "kaminari", "~> 1.2"
+
+gem "pundit-matchers", "~> 1.8"
