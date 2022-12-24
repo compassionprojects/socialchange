@@ -19,6 +19,10 @@ class StoryPolicy < ApplicationPolicy
     attr_reader :user, :scope
   end
 
+  def show?
+    !record.discarded?
+  end
+
   # Allowed attributes to be updated
   # can also use `permitted_attributes_for_create`, `permitted_attributes_for_update`
   def permitted_attributes

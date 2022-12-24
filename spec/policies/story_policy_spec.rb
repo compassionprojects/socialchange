@@ -1,65 +1,39 @@
 require "rails_helper"
 
 describe StoryPolicy do
-  subject { described_class }
+  subject { described_class.new(user, story) }
 
   let(:user) { create(:user) }
-  let(:another_user) { create(:user) }
-  let(:moderator) do
-    create(:user, roles: [
-      create(:role, name: "moderator", permissions: [create(:permission, name: "stories.update")])
-    ])
-  end
-  let(:admin) do
-    create(:user, roles: [
-      create(:role, name: "admin", permissions: [
-        create(:permission, name: "stories.manage")
-      ])
-    ])
-  end
-  let(:story) do
-    create(:story, updater: user, user:)
+  let(:story) { create(:story) }
+
+  context "when user is modifying someone else's story" do
+    it { is_expected.to permit_actions(%i[show]) }
+    it { is_expected.to forbid_actions(%i[update edit destroy]) }
   end
 
-  permissions :update?, :edit? do
-    it "denies access if user does not have permission to update the story" do
-      expect(subject).not_to permit(another_user, story)
-    end
+  context "when user is modifying his own story" do
+    let(:story) { create(:story, user:) }
 
-    it "grants access if user is the creator" do
-      expect(subject).to permit(user, story)
-    end
-
-    it "grants access if user with permission is updating the story" do
-      expect(subject).to permit(moderator, story)
-    end
-
-    it "grants access if user with .manage permissions is updating the story" do
-      expect(subject).to permit(admin, story)
-    end
+    it { is_expected.to permit_actions(%i[update edit destroy show]) }
   end
 
-  permissions :destroy? do
-    let(:moderator) do
-      create(:user, roles: [
-        create(:role, name: "moderator", permissions: [create(:permission, name: "stories.delete")])
-      ])
-    end
+  context "with stories.update permission" do
+    let(:user) { create(:user_with_permissions, permissions: ["stories.update"]) }
 
-    it "denies access if user does not have permission to destroy the story" do
-      expect(subject).not_to permit(another_user, story)
-    end
+    it { is_expected.to permit_actions(%i[update edit show]) }
+    it { is_expected.to forbid_actions(%i[destroy]) }
+  end
 
-    it "grants access if user is destroying his own story" do
-      expect(subject).to permit(user, story)
-    end
+  context "with stories.delete permission" do
+    let(:user) { create(:user_with_permissions, permissions: ["stories.delete"]) }
 
-    it "grants access if user with permission is destroying a story" do
-      expect(subject).to permit(moderator, story)
-    end
+    it { is_expected.to permit_actions(%i[destroy show]) }
+    it { is_expected.to forbid_actions(%i[update edit]) }
+  end
 
-    it "grants access if user with .manage permissions is destroying a story" do
-      expect(subject).to permit(admin, story)
-    end
+  context "with stories.manage permission" do
+    let(:user) { create(:user_with_permissions, permissions: ["stories.manage"]) }
+
+    it { is_expected.to permit_actions(%i[destroy update edit show]) }
   end
 end
