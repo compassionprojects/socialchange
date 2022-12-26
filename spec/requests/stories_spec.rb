@@ -110,6 +110,13 @@ describe "/stories", type: :request do
         delete story_url(story)
         expect(response).to redirect_to(stories_url)
       end
+
+      it "adds discarded_at timestamp" do
+        story = create(:story, user:)
+        delete story_url(story)
+        story.reload
+        expect(story.discarded_at).not_to be_nil
+      end
     end
   end
 end
