@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_11_163823) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_26_174253) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -65,6 +65,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_163823) do
     t.index ["user_id"], name: "index_stories_on_user_id"
   end
 
+  create_table "story_updates", force: :cascade do |t|
+    t.jsonb "title", default: {}, null: false
+    t.jsonb "description", default: {}, null: false
+    t.bigint "story_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "updater_id", null: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_story_updates_on_discarded_at"
+    t.index ["story_id"], name: "index_story_updates_on_story_id"
+    t.index ["updater_id"], name: "index_story_updates_on_updater_id"
+    t.index ["user_id"], name: "index_story_updates_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", default: ""
     t.string "email", default: "", null: false
@@ -107,4 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_163823) do
 
   add_foreign_key "stories", "users"
   add_foreign_key "stories", "users", column: "updater_id"
+  add_foreign_key "story_updates", "stories"
+  add_foreign_key "story_updates", "users"
+  add_foreign_key "story_updates", "users", column: "updater_id"
 end
