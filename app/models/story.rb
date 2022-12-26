@@ -4,6 +4,7 @@ class Story < ApplicationRecord
 
   belongs_to :user
   belongs_to :updater, class_name: "User"
+  has_many :story_updates
 
   enum :status, %i[draft published]
 
