@@ -102,7 +102,7 @@ describe "/stories", type: :request do
         story = create(:story, user:)
         expect do
           delete story_url(story)
-        end.to change(Story, :count).by(-1)
+        end.to change(Story.kept, :count).by(-1)
       end
 
       it "redirects to the stories list" do

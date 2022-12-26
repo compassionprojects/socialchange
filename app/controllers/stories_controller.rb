@@ -56,7 +56,7 @@ class StoriesController < ApplicationController
 
   def destroy
     authorize @story
-    @story.destroy
+    @story.discard
 
     respond_to do |format|
       format.html { redirect_to stories_url, notice: I18n.t("stories.deleted") }
