@@ -1,10 +1,12 @@
+# Story model
+#
 class Story < ApplicationRecord
   extend Mobility
   include Discard::Model
 
   belongs_to :user
   belongs_to :updater, class_name: "User"
-  has_many :story_updates
+  has_many :story_updates, dependent: :destroy
 
   enum :status, %i[draft published]
 
@@ -13,4 +15,14 @@ class Story < ApplicationRecord
   validates :title, :description, presence: true
 
   scope :published, -> { where("title ? '#{I18n.locale}'").and(where("description ? '#{I18n.locale}'")) }
+
+  # After a story is discarded, discard it's updates
+  #
+  after_discard do
+    story_updates.discard_all
+  end
+
+  after_undiscard do
+    story_updates.undiscard_all
+  end
 end
