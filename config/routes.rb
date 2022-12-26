@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :roles
     resources :permissions
     resources :stories
+    resources :story_updates
 
     root to: "users#index"
   end
