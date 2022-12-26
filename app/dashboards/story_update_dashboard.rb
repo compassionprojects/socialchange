@@ -16,7 +16,7 @@ class StoryUpdateDashboard < Administrate::BaseDashboard
     updater: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    discarded_at: Field::DateTime,
+    discarded_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -41,7 +41,6 @@ class StoryUpdateDashboard < Administrate::BaseDashboard
     updater
     created_at
     updated_at
-    discarded_at
   ].freeze
 
   # FORM_ATTRIBUTES
