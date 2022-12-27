@@ -3,4 +3,7 @@
   <p>
     <%= story.description.truncate(400) %>
   </p>
+  <div class="small text-muted">
+    <%= time_ago(story.created_at) %> <%= t("posted_by", name: story.user.name) %>
+  </div>
 </div>

@@ -8,6 +8,7 @@
 
 nl:
   application_name: "Social Change Stories"
+  posted_by: "by %{name}"
   users:
     signup: "Aanmelden"
     login: "Inloggen"
@@ -44,6 +45,9 @@ nl:
     show:
       edit_story: "Edit story"
       destroy_story: "Delete story"
+      outcomes: "Outcomes"
+      source: "Source"
+      story_updates: "Story Updates"
   pagination:
     first: "&laquo; First"
     last: "Last &raquo;"

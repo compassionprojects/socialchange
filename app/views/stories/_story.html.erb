@@ -2,19 +2,42 @@
   <h1>
     <%= story.title %>
   </h1>
+  <div class="small text-muted">
+    <%= time_ago(story.created_at) %> <%= t("posted_by", name: story.user.name) %>
+  </div>
 
-  <p>
-    <%= story.description %>
-  </p>
+  <section class="my-4">
+    <p>
+      <%= story.description %>
+    </p>
+  </section>
 
-  <p>
-    <strong>Outcomes:</strong>
-    <%= story.outcomes %>
-  </p>
+  <% if story.outcomes %>
+    <section class="my-4">
+      <h2><%= t("stories.show.outcomes") %></h2>
+      <p>
+        <%= story.outcomes %>
+      </p>
+    </section>
+  <% end %>
 
-  <p>
-    <strong>Source:</strong>
-    <%= story.source %>
-  </p>
+  <% if story.source %>
+    <section class="my-4">
+      <h2><%= t("stories.show.source") %></h2>
+      <p>
+        <%= story.source %>
+      </p>
+    </section>
+  <% end %>
 
+  <% if story.story_updates.length > 0 %>
+    <section class="my-5">
+      <h2><%= t("stories.show.story_updates") %></h2>
+      <% story.story_updates.each_with_index do |story_update, idx| %>
+        <div class="px-5 py-4 <%= 'border-bottom' unless idx == story.story_updates.length - 1 %>">
+          <%= render "story_updates/list_item", story_update: %>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
 </div>

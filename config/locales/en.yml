@@ -31,6 +31,7 @@
 
 en:
   application_name: "Social Change Stories"
+  posted_by: "by %{name}"
   users:
     # @todo move these to particular views hierarchy where they are called
     signup: "Sign up"
@@ -69,6 +70,9 @@ en:
     show:
       edit_story: "Edit story"
       destroy_story: "Delete story"
+      outcomes: "Outcomes"
+      source: "Source"
+      story_updates: "Story Updates"
   pagination:
     first: "&laquo; First"
     last: "Last &raquo;"
@@ -98,3 +102,21 @@ en:
         description: "Description"
         outcomes: "Outcomes"
         source: "Source"
+  datetime:
+    distance_in_words:
+      short:
+        about_x_hours:
+          one: 'an hour ago'
+          other: '%{count} hours ago'
+        x_minutes:
+          one: 'a min ago'
+          other: '%{count} mins ago'
+        x_days:
+          one: 'a day ago'
+          other: '%{count} days ago'
+        x_months:
+          one: 'a month ago'
+          other: '%{count} months ago'
+        x_years:
+          one: 'a year'
+          other: '%{count} years ago'

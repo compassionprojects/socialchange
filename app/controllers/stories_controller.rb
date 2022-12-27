@@ -68,7 +68,7 @@ class StoriesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_story
-    @story = policy_scope(Story).find(params[:id])
+    @story = policy_scope(Story).includes(:story_updates).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
