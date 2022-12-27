@@ -1,9 +1,9 @@
-<div id="<%= dom_id story %>" class="py-3 border-bottom">
+<div id="<%= dom_id story %>" class="py-4 border-bottom">
   <h2><%= link_to story.title, story, :class => "text-reset text-decoration-none" %></h2>
-  <p>
+  <p class="mb-1">
     <%= story.description.truncate(400) %>
   </p>
-  <div class="small text-muted">
+  <div class="small text-muted mb-2">
     <%= time_ago(story.created_at) %> <%= t("posted_by", name: story.user.name) %>
   </div>
 </div>
