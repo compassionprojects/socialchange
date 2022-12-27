@@ -12,7 +12,7 @@ describe StoryUpdatePolicy do
   end
 
   context "when user is modifying his own story_update" do
-    let(:story_update) { create(:story_update, user:) }
+    let(:story_update) { create(:story_update, user:, story: create(:story, user:)) }
 
     it { is_expected.to permit_actions(%i[update edit destroy show]) }
   end
