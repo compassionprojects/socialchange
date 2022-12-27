@@ -86,7 +86,7 @@ Layout/LineLength:
   Max: 150
   Exclude:
     - 'db/migrate/20221207193729_add_indexes_to_stories.rb'
-    - 'db/migrate/20221207193729_add_indexes_to_stories.rb'
+    - 'db/migrate/20221227121207_add_indexes_to_story_updates.rb'
 
 Rails/CreateTableWithTimestamps:
   Exclude:
