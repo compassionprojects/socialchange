@@ -70,13 +70,4 @@ class StoriesController < ApplicationController
   def set_story
     @story = policy_scope(Story).includes(:story_updates).find(params[:id])
   end
-
-  # Only allow a list of trusted parameters through.
-  def story_params
-    params.require(:story).permit(:title, :description, :outcomes, :source)
-  end
-
-  def creator
-    { user: current_user, updater: current_user }
-  end
 end

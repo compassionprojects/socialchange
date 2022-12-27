@@ -77,3 +77,24 @@ nl:
         description: "Description"
         outcomes: "Outcomes"
         source: "Source"
+      story_update:
+        title: "Title"
+        description: "Description"
+  datetime:
+    distance_in_words:
+      short:
+        about_x_hours:
+          one: 'an hour ago'
+          other: '%{count} hours ago'
+        x_minutes:
+          one: 'a min ago'
+          other: '%{count} mins ago'
+        x_days:
+          one: 'a day ago'
+          other: '%{count} days ago'
+        x_months:
+          one: 'a month ago'
+          other: '%{count} months ago'
+        x_years:
+          one: 'a year'
+          other: '%{count} years ago'

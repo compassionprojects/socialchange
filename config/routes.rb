@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       match "search" => "stories#search", via: %i[get post], as: :search
     end
+    resources :story_updates, as: :updates
   end
 
   namespace :admin do

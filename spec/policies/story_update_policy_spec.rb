@@ -6,9 +6,9 @@ describe StoryUpdatePolicy do
   let(:user) { create(:user) }
   let(:story_update) { create(:story_update) }
 
-  context "when user is modifying someone else's story_update" do
+  context "when user is acting on someone else's story" do
     it { is_expected.to permit_actions(%i[show]) }
-    it { is_expected.to forbid_actions(%i[update edit destroy]) }
+    it { is_expected.to forbid_actions(%i[new update edit destroy]) }
   end
 
   context "when user is modifying his own story_update" do

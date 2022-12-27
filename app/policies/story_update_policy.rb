@@ -34,6 +34,6 @@ class StoryUpdatePolicy < ApplicationPolicy
   end
 
   def owns_resource?
-    user.id == record.user.id
+    user.id == record.user.id && user.id == record.story.user_id
   end
 end

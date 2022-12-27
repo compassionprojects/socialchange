@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
     flash[:alert] = I18n.t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
     redirect_back(fallback_location: root_path)
   end
+
+  def creator
+    { user: current_user, updater: current_user }
+  end
 end
