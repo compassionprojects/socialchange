@@ -7,6 +7,7 @@
 # @todo have someone native take a look at it
 
 nl:
+  application_name: "Social Change Stories"
   users:
     signup: "Aanmelden"
     login: "Inloggen"

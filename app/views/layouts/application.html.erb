@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>">
+<html lang="<%= I18n.locale %>" class="h-100">
   <head>
-    <title><%= yield(:title) %> | <%= APPLICATION_NAME %></title>
+    <title><%= yield(:title) %> | <%= t('application_name') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <!-- The page supports both dark and light color schemes,
@@ -15,11 +15,14 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= render "includes/header" %>
-    <div class="container mt-3">
-      <%= render "includes/flash" %>
-      <%= yield %>
-    </div>
+  <body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+      <%= render "includes/header" %>
+      <div class="container mt-3">
+        <%= render "includes/flash" %>
+        <%= yield %>
+      </div>
+    </main>
+    <%= render "includes/footer" %>
   </body>
 </html>

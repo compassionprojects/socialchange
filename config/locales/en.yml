@@ -30,6 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  application_name: "Social Change Stories"
   users:
     # @todo move these to particular views hierarchy where they are called
     signup: "Sign up"
