@@ -21,19 +21,19 @@ describe StoryUpdatePolicy do
     let(:user) { create(:user_with_permissions, permissions: ["story_updates.update"]) }
 
     it { is_expected.to permit_actions(%i[update edit show]) }
-    it { is_expected.to forbid_actions(%i[destroy]) }
+    it { is_expected.to forbid_actions(%i[new destroy]) }
   end
 
   context "with story_updates.delete permission" do
     let(:user) { create(:user_with_permissions, permissions: ["story_updates.delete"]) }
 
     it { is_expected.to permit_actions(%i[destroy show]) }
-    it { is_expected.to forbid_actions(%i[update edit]) }
+    it { is_expected.to forbid_actions(%i[new update edit]) }
   end
 
   context "with story_updates.manage permission" do
     let(:user) { create(:user_with_permissions, permissions: ["story_updates.manage"]) }
 
-    it { is_expected.to permit_actions(%i[destroy update edit show]) }
+    it { is_expected.to permit_actions(%i[new destroy update edit show]) }
   end
 end
