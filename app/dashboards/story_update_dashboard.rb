@@ -54,6 +54,11 @@ class StoryUpdateDashboard < Administrate::BaseDashboard
     updater
   ].freeze
 
+  FORM_ATTRIBUTES_EDIT = %i[
+    title
+    description
+  ].freeze
+
   # COLLECTION_FILTERS
   # a hash that defines filters that can be used while searching via the search
   # field of the dashboard.
