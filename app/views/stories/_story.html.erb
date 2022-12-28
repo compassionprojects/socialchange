@@ -32,7 +32,10 @@
 
   <% if story.story_updates.length > 0 %>
     <section class="my-5">
-      <h2><%= t("stories.show.story_updates") %></h2>
+      <h2>
+        <%= t("stories.show.story_updates") %>
+        <%= link_to t(".new_story_update"), new_story_update_path(story), :class => "btn btn-sm btn-outline-primary" %>
+      </h2>
       <% story.story_updates.each_with_index do |story_update, idx| %>
         <div class="px-5 py-4 <%= 'border-bottom' unless idx == story.story_updates.length - 1 %>">
           <%= render "story_updates/list_item", story_update: %>
