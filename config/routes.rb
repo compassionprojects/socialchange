@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     collection do
       match "search" => "stories#search", via: %i[get post], as: :search
     end
-    resources :story_updates, as: :updates
+    resources :story_updates, as: :updates, shallow: true, shallow_prefix: "story"
   end
 
   namespace :admin do

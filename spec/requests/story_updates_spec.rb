@@ -43,7 +43,7 @@ describe "/story_updates", type: :request do
       let(:story_update) { create(:story_update, user:, story:) }
 
       it "renders a successful response" do
-        get edit_story_update_url(story_id: story_update.story_id, id: story_update.id)
+        get edit_story_update_url(story_update)
         expect(response).to be_successful
       end
 
@@ -51,7 +51,7 @@ describe "/story_updates", type: :request do
         let(:story_update) { create(:story_update) }
 
         it "redirects to home page" do
-          get edit_story_update_url(story_id: story_update.story_id, id: story_update.id)
+          get edit_story_update_url(story_update)
           expect(response).to redirect_to(root_url)
         end
       end
@@ -95,9 +95,8 @@ describe "/story_updates", type: :request do
         let(:new_attributes) { attributes_for(:story_update) }
 
         it "updates the requested story_update" do
-          story = create(:story, user:)
-          story_update = create(:story_update, story:, user:)
-          patch story_update_url(story_id: story.id, id: story_update.id), params: { story_update: new_attributes }
+          story_update = create(:story_update, story: create(:story, user:), user:)
+          patch story_update_url(story_update), params: { story_update: new_attributes }
           story_update.reload
           expect(story_update.title).to eql(new_attributes[:title])
         end
@@ -112,9 +111,9 @@ describe "/story_updates", type: :request do
 
       context "when user does not own the story" do
         it "redirects the user to home page" do
-          story = create(:story) # user who is creating this story is not the logged in user
-          story_update = create(:story_update, story:, user:)
-          patch story_update_url(story_id: story.id, id: story_update.id), params: { story_update: { title: "New title..." } }
+          # user who is creating this story is not the logged in user
+          story_update = create(:story_update, story: create(:story), user:)
+          patch story_update_url(story_update), params: { story_update: { title: "New title..." } }
           expect(response).to redirect_to(root_url)
         end
       end
@@ -122,10 +121,9 @@ describe "/story_updates", type: :request do
 
     describe "DELETE /destroy" do
       it "destroys the requested story" do
-        story = create(:story, user:)
-        story_update = create(:story_update, story:, user:)
+        story_update = create(:story_update, story: create(:story, user:), user:)
         expect do
-          delete story_update_url(story_id: story.id, id: story_update.id)
+          delete story_update_url(story_update)
         end.to change(StoryUpdate.kept, :count).by(-1)
       end
 
@@ -136,9 +134,8 @@ describe "/story_updates", type: :request do
       end
 
       it "adds discarded_at timestamp" do
-        story = create(:story, user:)
-        story_update = create(:story_update, story:, user:)
-        delete story_update_url(story_id: story.id, id: story_update.id)
+        story_update = create(:story_update, story: create(:story, user:), user:)
+        delete story_update_url(story_update)
         story_update.reload
         expect(story_update.discarded_at).not_to be_nil
       end
