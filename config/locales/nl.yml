@@ -86,6 +86,8 @@ nl:
         about_x_hours:
           one: 'an hour ago'
           other: '%{count} hours ago'
+        less_than_x_minutes:
+          one: 'just now'
         x_minutes:
           one: 'a min ago'
           other: '%{count} mins ago'
