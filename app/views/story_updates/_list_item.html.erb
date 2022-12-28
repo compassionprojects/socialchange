@@ -12,7 +12,7 @@
     <% end %>
     &nbsp;
     <% if can_destroy?(story_update) %>
-      <%= button_to t(".destroy_story_update"), story_update, method: :delete, :class => "btn btn-sm btn-outline-danger" %>
+      <%= button_to t(".destroy_story_update"), story_update, method: :delete, :class => "btn btn-sm btn-outline-danger", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } }  %>
     <% end %>
   </div>
 </div>
