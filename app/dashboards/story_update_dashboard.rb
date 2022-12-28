@@ -11,9 +11,9 @@ class StoryUpdateDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Fields::Mobility::String.with_options(searchable: true),
     description: Fields::Mobility::Text.with_options(searchable: true),
-    story: Field::BelongsTo,
-    user: Field::BelongsTo,
-    updater: Field::BelongsTo,
+    story: Field::BelongsTo.with_options(scope: -> { Story.kept }),
+    user: Field::BelongsTo.with_options(scope: -> { User.kept }),
+    updater: Field::BelongsTo.with_options(scope: -> { User.kept }),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     discarded_at: Field::DateTime
@@ -49,6 +49,9 @@ class StoryUpdateDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     title
     description
+    story
+    user
+    updater
   ].freeze
 
   # COLLECTION_FILTERS

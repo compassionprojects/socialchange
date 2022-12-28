@@ -24,8 +24,8 @@ class StoryDashboard < Administrate::BaseDashboard
                                                                         field.resource.class.send(field.attribute.to_s.pluralize).keys
                                                                       }, include_blank: true),
     title: Fields::Mobility::String.with_options(searchable: true),
-    updater: Field::BelongsTo,
-    user: Field::BelongsTo,
+    updater: Field::BelongsTo.with_options(scope: -> { User.kept }),
+    user: Field::BelongsTo.with_options(scope: -> { User.kept }),
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
