@@ -6,7 +6,7 @@ class Story < ApplicationRecord
 
   belongs_to :user
   belongs_to :updater, class_name: "User"
-  has_many :story_updates, -> { kept.order(created_at: :asc) }, dependent: :destroy
+  has_many :story_updates, -> { kept.order(created_at: :asc) }, dependent: :destroy, inverse_of: :story
 
   enum :status, %i[draft published]
 
