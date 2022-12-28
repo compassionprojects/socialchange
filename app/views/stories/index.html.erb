@@ -1,8 +1,11 @@
 <% content_for :title, t(".title") %>
 
-<h1><%= yield(:title) %></h1>
+<div class="d-sm-flex justify-content-between">
+  <h1><%= yield(:title) %></h1>
+  <%= render "search" %>
+</div>
 
-<%= render "search" %>
+
 <br>
 
 <div id="stories">
