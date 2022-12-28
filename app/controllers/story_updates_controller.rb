@@ -21,7 +21,7 @@ class StoryUpdatesController < ApplicationController
     respond_to do |format|
       if @story_update.save
         # @todo change this to render show with created content
-        format.html { head :created }
+        format.html { redirect_to story_url(@story_update.story) }
         format.json { render :show, status: :created, location: @story_update }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class StoryUpdatesController < ApplicationController
     respond_to do |format|
       if @story_update.update(**permitted_attributes(@story_update), updater: current_user)
         # @todo change this to render show with updated content
-        format.html { head :no_content }
+        format.html { redirect_to story_url(@story_update.story) }
         format.json { render :show, status: :ok, location: @story_update }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,6 +57,7 @@ class StoryUpdatesController < ApplicationController
   def destroy
     authorize @story_update
     @story_update.discard
+    redirect_to story_url(@story_update.story)
   end
 
   private

@@ -64,13 +64,13 @@ describe "/story_updates", type: :request do
 
         it "creates a new story update" do
           expect do
-            post story_updates_url(story_id: story.id), params:
+            post story_updates_url(story), params:
           end.to change(StoryUpdate, :count).by(1)
         end
 
-        xit "responds with 204" do
-          post story_updates_url(story_id: story.id), params: params
-          expect(response).to have_http_status(:created)
+        it "redirects to the story" do
+          post story_updates_url(story), params: params
+          expect(response).to redirect_to(story_url(story))
         end
       end
 
@@ -79,12 +79,12 @@ describe "/story_updates", type: :request do
 
         it "does not create a new story update" do
           expect do
-            post story_updates_url(story_id: story.id), params: { story_update: { title: "Test title" } } # without description
+            post story_updates_url(story), params: { story_update: { title: "Test title" } } # without description
           end.to change(StoryUpdate, :count).by(0)
         end
 
         it "renders a response with 422 status (i.e. to display the 'new' template)" do
-          post story_updates_url(story_id: story.id), params: { story_update: { description: "Test desc..." } } # without title
+          post story_updates_url(story), params: { story_update: { description: "Test desc..." } } # without title
           expect(response).to have_http_status(:unprocessable_entity)
         end
       end
@@ -101,11 +101,10 @@ describe "/story_updates", type: :request do
           expect(story_update.title).to eql(new_attributes[:title])
         end
 
-        xit "responds with " do
-          story = create(:story, user:)
-          patch story_url(story), params: { story: new_attributes }
-          story.reload
-          expect(response).to redirect_to(story_url(story))
+        it "redirects to the story" do
+          story_update = create(:story_update, story: create(:story, user:), user:)
+          patch story_update_url(story_update), params: { story_update: new_attributes }
+          expect(response).to redirect_to(story_url(story_update.story))
         end
       end
 
@@ -127,10 +126,10 @@ describe "/story_updates", type: :request do
         end.to change(StoryUpdate.kept, :count).by(-1)
       end
 
-      xit "redirects to the stories list" do
-        story = create(:story, user:)
-        delete story_url(story)
-        expect(response).to redirect_to(stories_url)
+      it "redirects to the story" do
+        story_update = create(:story_update, story: create(:story, user:), user:)
+        delete story_update_url(story_update)
+        expect(response).to redirect_to(story_url(story_update.story))
       end
 
       it "adds discarded_at timestamp" do
