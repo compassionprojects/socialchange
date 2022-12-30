@@ -2,7 +2,7 @@
   class: "row row-cols-sm-auto g-3 align-items-center",
   html: { autocomplete: 'off', autocapitalize: 'none' } do |f| %>
   <div class="col-12">
-    <%= f.search_field :title_or_description_or_outcomes_or_source_or_story_updates_title_i_cont_any, :class => "form-control" %>
+    <%= f.search_field @search_fields, :class => "form-control" %>
   </div>
   <div class="col-12">
     <%= f.submit t("form_actions.search"), :class => "btn btn-primary" %>

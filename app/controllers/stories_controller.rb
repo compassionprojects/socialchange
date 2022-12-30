@@ -5,6 +5,22 @@ class StoriesController < ApplicationController
   before_action :set_story, only: %i[show edit update destroy]
 
   def index
+    # Fields to search for
+    @search_fields = :title_or_description_or_outcomes_or_source_or_story_updates_title_i_cont_any
+
+    # Inspired from https://github.com/activerecord-hackery/ransack/issues/218#issuecomment-16504630
+    # Make sure multiple words are split and searched
+    if params[:q]
+      params[:q][:combinator] = 'or'
+      params[:q][:groupings] = []
+      custom_words = params[:q][@search_fields]
+      params[:q].delete(@search_fields) # delete the default one
+      # create new search criteria with the split words
+      custom_words.split(' ').each_with_index do |word, index|
+        params[:q][:groupings][index] = {"#{@search_fields}": word}
+      end
+    end
+
     @q = policy_scope(Story).includes(:user).ransack(params[:q])
     @stories = @q.result(distinct: true).page(params[:page])
   end
