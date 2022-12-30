@@ -75,6 +75,7 @@ en:
       story_updates: "Story Updates"
     story:
       new_story_update: "New Story Update"
+      no_story_updates: "There are no updates for this story yet"
   story_updates:
     new:
       title: "New Story Update"
