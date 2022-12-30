@@ -10,6 +10,8 @@
 # Configuration parameters: AllowedMethods, AllowedPatterns, IgnoredMethods, CountRepeatedAttributes.
 Metrics/AbcSize:
   Max: 24
+  Exclude:
+    - 'app/controllers/stories_controller.rb'
 
 # Offense count: 2
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, AllowedMethods, AllowedPatterns, IgnoredMethods, inherit_mode.

@@ -11,13 +11,13 @@ class StoriesController < ApplicationController
     # Inspired from https://github.com/activerecord-hackery/ransack/issues/218#issuecomment-16504630
     # Make sure multiple words are split and searched
     if params[:q]
-      params[:q][:combinator] = 'or'
+      params[:q][:combinator] = "or"
       params[:q][:groupings] = []
       custom_words = params[:q][@search_fields]
       params[:q].delete(@search_fields) # delete the default one
       # create new search criteria with the split words
-      custom_words.split(' ').each_with_index do |word, index|
-        params[:q][:groupings][index] = {"#{@search_fields}": word}
+      custom_words.split(" ").each_with_index do |word, index|
+        params[:q][:groupings][index] = { "#{@search_fields}": word }
       end
     end
 
