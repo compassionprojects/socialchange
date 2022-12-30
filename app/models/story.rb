@@ -25,4 +25,15 @@ class Story < ApplicationRecord
   after_undiscard do
     story_updates.undiscard_all
   end
+
+  # https://github.com/countries/country_select#getting-the-country-name-from-the-countries-gem
+  # Assuming country_select is used with User attribute `country`
+  # This will attempt to translate the country name and use the default
+  # (usually English) name if no translation is available
+  #
+  def country_name
+    return unless country
+    c = ISO3166::Country[country]
+    c.translations[I18n.locale.to_s] || c.common_name || c.iso_short_name
+  end
 end
