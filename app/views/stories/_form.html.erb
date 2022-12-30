@@ -20,6 +20,11 @@
   </div>
 
   <div class="mb-3">
+    <%= form.label :country, :class => "form-label" %>
+    <%= form.country_select :country, { include_blank: true }, { :class => "form-control" } %>
+  </div>
+
+  <div class="mb-3">
     <%= form.label :outcomes, :class => "form-label" %>
     <%= form.text_area :outcomes, :class => "form-control" %>
   </div>

@@ -100,3 +100,5 @@ end
 gem "kaminari", "~> 1.2"
 
 gem "pundit-matchers", "~> 1.8"
+
+gem "country_select", "~> 8.0"

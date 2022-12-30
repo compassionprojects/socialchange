@@ -6,29 +6,36 @@
     <%= time_ago(story.created_at) %> <%= t("posted_by", name: story.user.name) %>
   </div>
 
-  <section class="my-4">
-    <p>
-      <%= story.description %>
-    </p>
-  </section>
+  <div class="row">
+    <div class="col-lg-9">
+      <section class="my-4">
+        <p>
+          <%= story.description %>
+        </p>
+      </section>
 
-  <% if story.outcomes %>
-    <section class="my-4">
-      <h2><%= t("stories.show.outcomes") %></h2>
-      <p>
-        <%= story.outcomes %>
-      </p>
-    </section>
-  <% end %>
+      <% if story.outcomes %>
+        <section class="my-4">
+          <h2><%= t("stories.show.outcomes") %></h2>
+          <p>
+            <%= story.outcomes %>
+          </p>
+        </section>
+      <% end %>
 
-  <% if story.source %>
-    <section class="my-4">
-      <h2><%= t("stories.show.source") %></h2>
-      <p>
-        <%= story.source %>
-      </p>
-    </section>
-  <% end %>
+      <% if story.source %>
+        <section class="my-4">
+          <h2><%= t("stories.show.source") %></h2>
+          <p>
+            <%= story.source %>
+          </p>
+        </section>
+      <% end %>
+    </div>
+    <div class="col-lg-3">
+      <strong>Country</strong>: <%= story.country %>
+    </div>
+  </div>
 
   <section class="my-5">
     <h2>
