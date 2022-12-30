@@ -4,6 +4,7 @@ FactoryBot.define do
     description { Faker::Lorem.paragraph(random_sentences_to_add: 30) }
     outcomes { Faker::Lorem.paragraph(random_sentences_to_add: 30) }
     source { Faker::Lorem.paragraph(random_sentences_to_add: 4) }
+    country { Faker::Address.country_code }
 
     user
     updater factory: :user
