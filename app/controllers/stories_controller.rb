@@ -5,7 +5,7 @@ class StoriesController < ApplicationController
   before_action :set_story, only: %i[show edit update destroy]
 
   def index
-    @q = policy_scope(Story).ransack(params[:q])
+    @q = policy_scope(Story).includes(:user).ransack(params[:q])
     @stories = @q.result(distinct: true).page(params[:page])
   end
 
@@ -68,6 +68,6 @@ class StoriesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_story
-    @story = policy_scope(Story).includes(:story_updates).find(params[:id])
+    @story = policy_scope(Story).includes(:user, story_updates: [:user]).find(params[:id])
   end
 end
