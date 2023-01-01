@@ -1,2 +1,10 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+trix-editor {
+  min-height: 100px;
+}
+
+trix-toolbar {
+  display: none;
+}

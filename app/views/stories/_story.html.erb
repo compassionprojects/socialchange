@@ -10,7 +10,7 @@
     <div class="col-lg-9">
       <section class="my-4">
         <p>
-          <%= story.description %>
+          <%= story.description.html_safe %>
         </p>
       </section>
 
@@ -18,7 +18,7 @@
         <section class="my-4">
           <h2><%= t("stories.show.outcomes") %></h2>
           <p>
-            <%= story.outcomes %>
+            <%= story.outcomes.html_safe %>
           </p>
         </section>
       <% end %>
@@ -27,7 +27,7 @@
         <section class="my-4">
           <h2><%= t("stories.show.source") %></h2>
           <p>
-            <%= story.source %>
+            <%= story.source.html_safe %>
           </p>
         </section>
       <% end %>

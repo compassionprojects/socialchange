@@ -2,7 +2,7 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
-
+import "trix"
 
 // Set auto color mode
 // https://getbootstrap.com/docs/5.3/customize/color-modes/#javascript

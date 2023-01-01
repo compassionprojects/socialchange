@@ -11,12 +11,12 @@
 
   <div class="mb-3">
     <%= form.label :title, :class => "form-label" %>
-    <%= form.text_field :title, :class => "form-control" %>
+    <%= form.text_field :title, required: true, :class => "form-control" %>
   </div>
 
   <div class="mb-3">
     <%= form.label :description, :class => "form-label" %>
-    <%= form.text_area :description, :class => "form-control" %>
+    <%= form.trix_editor :description, required: true, class: "form-control" %>
   </div>
 
   <div class="mb-3">
@@ -26,12 +26,12 @@
 
   <div class="mb-3">
     <%= form.label :outcomes, :class => "form-label" %>
-    <%= form.text_area :outcomes, :class => "form-control" %>
+    <%= form.trix_editor :outcomes, class: "form-control" %>
   </div>
 
   <div class="mb-3">
     <%= form.label :source, :class => "form-label" %>
-    <%= form.text_area :source, :class => "form-control" %>
+    <%= form.trix_editor :source, class: "form-control" %>
   </div>
 
   <div>

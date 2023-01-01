@@ -44,6 +44,12 @@ gem "mobility-ransack", "~> 1.2"
 # Soft deletions
 gem "discard", "~> 1.2"
 
+# Pagination
+gem "kaminari", "~> 1.2"
+
+gem "country_select", "~> 8.0"
+gem 'trix-rails', require: 'trix'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
@@ -78,6 +84,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "pundit-matchers", "~> 1.8"
 end
 
 # @todo review the below gems that are added but commented out during rails init
@@ -96,9 +103,3 @@ end
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-
-gem "kaminari", "~> 1.2"
-
-gem "pundit-matchers", "~> 1.8"
-
-gem "country_select", "~> 8.0"
