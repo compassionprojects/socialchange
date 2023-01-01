@@ -25,6 +25,23 @@
   </div>
 
   <div class="mb-3">
+    <%= form.label :documents, :class => "form-label" %>
+    <%= form.file_field :documents, multiple: true, direct_upload: true, :class => "form-control" %>
+  </div>
+
+  <ul>
+    <% story.documents.each do |file| %>
+      <li>
+        <% if file.representable? %>
+          <%= image_tag file.representation(resize_to_limit: [100, 100]) %>
+        <% else %>
+          <%= link_to "Download", url_for(file) %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="mb-3">
     <%= form.label :outcomes, :class => "form-label" %>
     <%= form.trix_editor :outcomes, class: "form-control" %>
   </div>

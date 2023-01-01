@@ -14,6 +14,20 @@
         </p>
       </section>
 
+      <ul>
+        <% story.documents.each do |file| %>
+          <li>
+            <% if file.representable? %>
+              <%= link_to url_for(file) do %>
+                <%= image_tag file.representation(resize_to_limit: [300, 200]) %>
+              <% end %>
+            <% else %>
+              <%= link_to file.filename, url_for(file) %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
       <% if story.outcomes %>
         <section class="my-4">
           <h2><%= t("stories.show.outcomes") %></h2>
