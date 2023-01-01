@@ -84,6 +84,7 @@ nl:
         description: "Description"
         outcomes: "Outcomes"
         source: "Source"
+        documents: "Documents"
       story_update:
         title: "Title"
         description: "Description"
