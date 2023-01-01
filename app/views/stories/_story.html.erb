@@ -14,19 +14,11 @@
         </p>
       </section>
 
-      <ul>
+      <div class="d-flex">
         <% story.documents.each do |file| %>
-          <li>
-            <% if file.representable? %>
-              <%= link_to url_for(file) do %>
-                <%= image_tag file.representation(resize_to_limit: [300, 200]) %>
-              <% end %>
-            <% else %>
-              <%= link_to file.filename, url_for(file) %>
-            <% end %>
-          </li>
+          <%= render "document", file: file %>
         <% end %>
-      </ul>
+      </div>
 
       <% if story.outcomes %>
         <section class="my-4">

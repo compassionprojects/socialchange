@@ -29,17 +29,11 @@
     <%= form.file_field :documents, multiple: true, direct_upload: true, :class => "form-control" %>
   </div>
 
-  <ul>
+  <div class="d-flex mb-5">
     <% story.documents.each do |file| %>
-      <li>
-        <% if file.representable? %>
-          <%= image_tag file.representation(resize_to_limit: [100, 100]) %>
-        <% else %>
-          <%= link_to "Download", url_for(file) %>
-        <% end %>
-      </li>
+      <%= render "document", file: file %>
     <% end %>
-  </ul>
+  </div>
 
   <div class="mb-3">
     <%= form.label :outcomes, :class => "form-label" %>

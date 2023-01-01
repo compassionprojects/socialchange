@@ -84,6 +84,6 @@ class StoriesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_story
-    @story = policy_scope(Story).includes(:user, story_updates: [:user]).find(params[:id])
+    @story = policy_scope(Story).with_attached_documents.includes(:user, story_updates: [:user]).find(params[:id])
   end
 end
