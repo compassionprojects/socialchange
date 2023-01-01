@@ -48,7 +48,7 @@ gem "discard", "~> 1.2"
 gem "kaminari", "~> 1.2"
 
 gem "country_select", "~> 8.0"
-gem 'trix-rails', require: 'trix'
+gem "trix-rails", require: "trix"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -82,9 +82,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   # @todo check if these are required and remove if not
   gem "capybara"
+  gem "pundit-matchers", "~> 1.8"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem "pundit-matchers", "~> 1.8"
 end
 
 # @todo review the below gems that are added but commented out during rails init
