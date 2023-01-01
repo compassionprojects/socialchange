@@ -40,7 +40,7 @@
   <section class="my-5">
     <h2>
       <%= t("stories.show.story_updates") %>
-      <%= link_to t(".new_story_update"), new_story_update_path(story), :class => "btn btn-sm btn-outline-primary" %>
+      <%= link_to t(".new_story_update"), new_story_update_path(story), :class => "btn btn-sm btn-outline-primary" if can_edit?(story) %>
     </h2>
     <% if story.story_updates.length > 0 %>
       <% story.story_updates.each_with_index do |story_update, idx| %>
