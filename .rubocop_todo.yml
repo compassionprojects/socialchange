@@ -12,6 +12,7 @@ Metrics/AbcSize:
   Max: 24
   Exclude:
     - 'app/controllers/stories_controller.rb'
+    - 'db/migrate/*'
 
 # Offense count: 2
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, AllowedMethods, AllowedPatterns, IgnoredMethods, inherit_mode.
@@ -23,6 +24,8 @@ Metrics/BlockLength:
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, AllowedMethods, AllowedPatterns, IgnoredMethods.
 Metrics/MethodLength:
   Max: 24
+  Exclude:
+    - 'db/migrate/*'
 
 # Offense count: 1
 # Configuration parameters: MinNameLength, AllowNamesEndingInNumbers, AllowedNames, ForbiddenNames.
@@ -93,6 +96,7 @@ Layout/LineLength:
 Rails/CreateTableWithTimestamps:
   Exclude:
     - 'db/migrate/20221210102448_create_roles_and_permissions.rb'
+    - 'db/migrate/20230101134631_create_active_storage_tables.active_storage.rb'
 
 Rails/HasAndBelongsToMany:
   Exclude:
