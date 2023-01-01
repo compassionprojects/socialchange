@@ -4,7 +4,7 @@
     <%= time_ago(story_update.created_at) %> <%= t("posted_by", name: story_update.user.name) %>
   </div>
   <p class="mt-2">
-    <%= story_update.description.html_safe %>
+    <%= sanitize(story_update.description) %>
   </p>
   <div class="d-flex">
     <% if can_edit?(story_update) %>
