@@ -49,6 +49,8 @@ Ideally we'd like to use to_tsvector FTS but there needs to be some work done on
 
 We are using digitalocean with rails active_storage to store attachments in the cloud. Credentials can be obtained from Madhu
 
+We use [heroku-buildpack-vips](https://github.com/brandoncc/heroku-buildpack-vips) to support libvips.
+
 ## RBAC
 
 We use a simple role based authorization system with permissions. Inspired by [this article](https://ngaunhien.net/blog/simple-rbac-implementation-with-rails). This gives us fine grained control on which user can do what.
