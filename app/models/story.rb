@@ -33,7 +33,7 @@ class Story < ApplicationRecord
   # (usually English) name if no translation is available
   #
   def country_name
-    return unless country
+    return unless country.presence
 
     c = ISO3166::Country[country]
     c.translations[I18n.locale.to_s] || c.common_name || c.iso_short_name

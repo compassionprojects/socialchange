@@ -8,10 +8,12 @@
 
 <br>
 
-<div id="stories">
-  <% @stories.each do |story| %>
-    <%= render "list_item", story: story %>
-  <% end %>
+<div id="stories" class="row">
+  <div class="col-lg-9">
+    <% @stories.each do |story| %>
+      <%= render "list_item", story: story %>
+    <% end %>
+  </div>
 </div>
 
 <div class="my-5">
