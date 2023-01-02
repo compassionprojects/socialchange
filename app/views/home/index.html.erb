@@ -1,3 +1,20 @@
-<% content_for :title, t('common.home') %>
+<% content_for :title, t('application_name') %>
 
-<h2><%= t('common.home') %></h2>
+<div class="row">
+  <div class="col-lg-7 mx-auto">
+    <section class="my-5 py-5 text-center">
+      <h1><%= yield(:title) %></h1>
+      <p><%= t('.intro_content') %></p>
+      <%= link_to t('.explore'), stories_path, class: "btn btn-primary" %>
+    </section>
+  </div>
+
+  <div class="col-lg-9 mx-auto">
+    <section class="my-5">
+      <h2 class="text-center">
+        <%= t('.about') %>
+      </h2>
+      <p><%= t('.about_content_html') %></p>
+    </section>
+  </div>
+</div>
