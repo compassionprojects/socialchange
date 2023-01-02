@@ -39,7 +39,13 @@
       <% end %>
     </div>
     <div class="col-lg-3">
-      <strong>Country</strong>: <%= story.country_name %>
+      <div class="my-2"><strong>Country</strong>: <%= story.country_name %></div>
+      <% if story.documents.attached? %>
+        <div class="my-2"><%= t('.num_attached_documents', count: story.documents.length) %></div>
+      <% end %>
+      <% if story.story_updates.length > 0 %>
+        <div class="my-2"><%= t('.num_story_updates', count: story.story_updates.length) %></div>
+      <% end %>
     </div>
   </div>
 
