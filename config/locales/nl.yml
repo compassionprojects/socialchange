@@ -67,6 +67,7 @@ nl:
   common:
     are_you_sure: "Weet je het zeker?"
     home: "Home"
+    remove: "Remove"
   pundit:
     default: "U kunt deze actie niet uitvoeren."
     user_policy:
