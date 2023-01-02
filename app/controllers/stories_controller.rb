@@ -60,13 +60,28 @@ class StoriesController < ApplicationController
   def update
     authorize @story
     respond_to do |format|
-      if @story.update(**permitted_attributes(@story), updater: current_user)
+      attrs = permitted_attributes(@story).reject { |x| x["documents"] }
+      if @story.update(**attrs, updater: current_user)
+        # Append documents using .attach
+        if params[:story][:documents].present?
+          params[:story][:documents].each do |doc|
+            @story.documents.attach(doc)
+          end
+        end
         format.html { redirect_to story_url(@story), notice: I18n.t("stories.updated") }
         format.json { render :show, status: :ok, location: @story }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def remove_documents
+    @attachment = ActiveStorage::Attachment.find(params[:id])
+    @attachment.purge_later
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@attachment)}_container") }
     end
   end
 

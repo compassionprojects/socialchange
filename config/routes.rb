@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :stories do
     collection do
       match "search" => "stories#search", via: %i[get post], as: :search
+      match "remove_documents/:id" => "stories#remove_documents", via: [:delete], as: :remove_documents
     end
     resources :story_updates, as: :updates, shallow: true, shallow_prefix: "story"
   end

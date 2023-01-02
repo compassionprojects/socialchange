@@ -14,7 +14,7 @@
         </p>
       </section>
 
-      <div class="d-flex">
+      <div class="d-flex flex-wrap">
         <% story.documents.each do |file| %>
           <%= render "document", file: file %>
         <% end %>
