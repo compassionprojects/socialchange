@@ -1,0 +1,33 @@
+ul.mobility-tabs {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+ul.mobility-tabs > li {
+  padding: 5px 10px 0 10px;
+}
+
+ul.mobility-tabs > li > a {
+  text-decoration: none;
+  outline: none;
+}
+
+ul.mobility-tabs > li:not(.active) > a {
+  color: #aaa;
+}
+
+ul.mobility-tabs > li.active {
+  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.mobility-fields {
+  min-height: 40px;
+}
+
+.mobility-fields > .mobility-field-item:not(.active) {
+  display: none;
+}

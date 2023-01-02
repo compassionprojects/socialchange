@@ -1,0 +1,12 @@
+<% content_for :title, @story.title %>
+
+<%= render @story %>
+
+<div class="d-flex">
+  <% if can_edit?(@story) %>
+    <%= link_to t(".edit_story"), edit_story_path(@story), :class => "btn btn-primary" %>&nbsp;
+  <% end %>
+  <% if can_destroy?(@story) %>
+    <%= button_to t(".destroy_story"), @story, method: :delete, :class => "btn btn-danger", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } } %>
+  <% end %>
+</div>

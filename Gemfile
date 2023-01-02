@@ -31,12 +31,37 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# Authorisation
+gem "pundit", "~> 2.2"
+
+# Admin
+gem "administrate", "~> 0.18.0"
+
+# Translatable content
+gem "mobility", "~> 1.2"
+gem "mobility-ransack", "~> 1.2"
+
+# Soft deletions
+gem "discard", "~> 1.2"
+
+# Pagination
+gem "kaminari", "~> 1.2"
+
+gem "country_select", "~> 8.0"
+gem "trix-rails", require: "trix"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "dotenv-rails", "~> 2.8"
   gem "factory_bot_rails", "~> 6.2"
   gem "rspec-rails", "~> 6.0.0"
+
+  gem "rubocop", "~> 1.39", require: false
+  gem "rubocop-rails", "~> 2.17", require: false
+  gem "rubocop-rspec", "~> 2.15", require: false
+
+  gem "faker", "~> 3.0"
 end
 
 group :development do
@@ -57,6 +82,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   # @todo check if these are required and remove if not
   gem "capybara"
+  gem "pundit-matchers", "~> 1.8"
   gem "selenium-webdriver"
   gem "webdrivers"
 end
@@ -76,17 +102,5 @@ end
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
-
-gem "pundit", "~> 2.2"
-
-gem "administrate", "~> 0.18.0"
-
-gem "rubocop", "~> 1.39", require: false
-gem "rubocop-rails", "~> 2.17", require: false
-
-gem "rubocop-rspec", "~> 2.15"
-
-gem "faker", "~> 3.0"
-
-gem "discard", "~> 1.2"
+gem "aws-sdk-s3", require: false
+gem "image_processing", ">= 1.2"

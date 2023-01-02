@@ -15,3 +15,6 @@ RSpec/MultipleExpectations:
 
 Layout/FirstArrayElementIndentation:
   Enabled: false
+
+RSpec/NestedGroups:
+  Max: 4

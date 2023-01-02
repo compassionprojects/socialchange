@@ -1,0 +1,5 @@
+<% content_for :title, t('.title') %>
+
+<h1><%= yield(:title) %></h1>
+
+<%= render "form", story_update: @story_update %>

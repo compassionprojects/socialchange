@@ -1,37 +1,40 @@
 require "rails_helper"
 
 describe UserPolicy do
-  subject { described_class }
+  subject { described_class.new(user, record) }
 
   let(:user) { create(:user) }
-  let(:moderator) do
-    create(:user, roles: [
-      create(:role, name: "moderator", permissions: [create(:permission, name: "users.update")])
-    ])
-  end
-  let(:admin) do
-    create(:user, roles: [
-      create(:role, name: "admin", permissions: [
-        create(:permission, name: "users.manage")
-      ])
-    ])
+  let(:record) { create(:user) }
+
+  context "without any permissions" do
+    let(:record) { create(:user) }
+
+    it { is_expected.to forbid_actions(%i[update edit destroy show]) }
   end
 
-  permissions :update? do
-    it "denies access if user does not have permission to update another user" do
-      expect(subject).not_to permit(user, moderator)
-    end
+  context "when user is modifying himself" do
+    let(:record) { user }
 
-    it "grants access if user is updating himself" do
-      expect(subject).to permit(user, user)
-    end
+    it { is_expected.to permit_actions(%i[update edit destroy show]) }
+  end
 
-    it "grants access if user with permission is updating another user" do
-      expect(subject).to permit(moderator, user)
-    end
+  context "with users.update permission" do
+    let(:user) { create(:user_with_permissions, permissions: ["users.update"]) }
 
-    it "grants access if user with .manage permissions is updating another user" do
-      expect(subject).to permit(admin, user)
-    end
+    it { is_expected.to permit_actions(%i[update edit]) }
+    it { is_expected.to forbid_actions(%i[destroy show]) }
+  end
+
+  context "with users.delete permission" do
+    let(:user) { create(:user_with_permissions, permissions: ["users.delete"]) }
+
+    it { is_expected.to permit_actions(%i[destroy]) }
+    it { is_expected.to forbid_actions(%i[update edit show]) }
+  end
+
+  context "with users.manage permission" do
+    let(:user) { create(:user_with_permissions, permissions: ["users.manage"]) }
+
+    it { is_expected.to permit_actions(%i[destroy update edit show]) }
   end
 end

@@ -1,2 +1,14 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+@import './direct_uploads';
+@import 'trix/dist/trix';
+
+trix-editor {
+  min-height: 100px;
+}
+
+.trix-button-group--block-tools,
+.trix-button-group--file-tools,
+.trix-button-group--history-tools {
+  display: none !important;
+}

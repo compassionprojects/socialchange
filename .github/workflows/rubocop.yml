@@ -13,6 +13,16 @@ jobs:
         uses: actions/checkout@v1
       - name: Setup Ruby based on .ruby-version
         uses: ruby/setup-ruby@v1
+      - name: Restore bundle cache
+        uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{runner.os}}-gems-${{hashFiles('**/Gemfile.lock')}}
+          restore-keys: ${{runner.os}}-gems-
+
+      - name: Bundle install
+        run: |
+          bundle install
       - name: rubocop
         uses: reviewdog/action-rubocop@v2
         with:

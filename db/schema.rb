@@ -10,9 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_11_124642) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_01_134631) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
 
   create_table "permissions", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +70,44 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_124642) do
     t.bigint "role_id", null: false
     t.index ["role_id"], name: "index_roles_users_on_role_id"
     t.index ["user_id"], name: "index_roles_users_on_user_id"
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.jsonb "title", default: {}, null: false
+    t.jsonb "description", default: {}, null: false
+    t.jsonb "outcomes", default: {}
+    t.jsonb "source", default: {}
+    t.integer "status"
+    t.string "country"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "user_id", null: false
+    t.bigint "updater_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "discarded_at"
+    t.index "((title ->> 'en'::text)) gin_trgm_ops, ((description ->> 'en'::text)) gin_trgm_ops, ((outcomes ->> 'en'::text)) gin_trgm_ops, ((source ->> 'en'::text)) gin_trgm_ops", name: "index_stories_on_title_desc_out_src_en", using: :gin
+    t.index "((title ->> 'nl'::text)) gin_trgm_ops, ((description ->> 'nl'::text)) gin_trgm_ops, ((outcomes ->> 'nl'::text)) gin_trgm_ops, ((source ->> 'nl'::text)) gin_trgm_ops", name: "index_stories_on_title_desc_out_src_nl", using: :gin
+    t.index ["discarded_at"], name: "index_stories_on_discarded_at"
+    t.index ["updater_id"], name: "index_stories_on_updater_id"
+    t.index ["user_id"], name: "index_stories_on_user_id"
+  end
+
+  create_table "story_updates", force: :cascade do |t|
+    t.jsonb "title", default: {}, null: false
+    t.jsonb "description", default: {}, null: false
+    t.bigint "story_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "updater_id", null: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index "((title ->> 'en'::text)) gin_trgm_ops, ((description ->> 'en'::text)) gin_trgm_ops", name: "index_story_updates_on_title_desc_en", using: :gin
+    t.index "((title ->> 'nl'::text)) gin_trgm_ops, ((description ->> 'nl'::text)) gin_trgm_ops", name: "index_story_updates_on_title_desc_nl", using: :gin
+    t.index ["discarded_at"], name: "index_story_updates_on_discarded_at"
+    t.index ["story_id"], name: "index_story_updates_on_story_id"
+    t.index ["updater_id"], name: "index_story_updates_on_updater_id"
+    t.index ["user_id"], name: "index_story_updates_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,4 +150,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_124642) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "stories", "users"
+  add_foreign_key "stories", "users", column: "updater_id"
+  add_foreign_key "story_updates", "stories"
+  add_foreign_key "story_updates", "users"
+  add_foreign_key "story_updates", "users", column: "updater_id"
 end

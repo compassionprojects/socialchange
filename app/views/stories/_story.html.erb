@@ -1,0 +1,67 @@
+<div id="<%= dom_id story %>">
+  <h1>
+    <%= story.title %>
+  </h1>
+  <div class="small text-muted">
+    <%= time_ago(story.created_at) %> <%= t("posted_by", name: story.user.name) %>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-9">
+      <section class="my-4">
+        <p>
+          <%= display_rich_text(story.description) %>
+        </p>
+      </section>
+
+      <div class="d-flex flex-wrap">
+        <% story.documents.each do |file| %>
+          <%= render "document", file: file %>
+        <% end %>
+      </div>
+
+      <% if story.outcomes %>
+        <section class="my-4">
+          <h2><%= t("stories.show.outcomes") %></h2>
+          <p>
+            <%= display_rich_text(story.outcomes) %>
+          </p>
+        </section>
+      <% end %>
+
+      <% if story.source %>
+        <section class="my-4">
+          <h2><%= t("stories.show.source") %></h2>
+          <p>
+            <%= display_rich_text(story.source) %>
+          </p>
+        </section>
+      <% end %>
+    </div>
+    <div class="col-lg-3">
+      <div class="my-2"><strong>Country</strong>: <%= story.country_name %></div>
+      <% if story.documents.attached? %>
+        <div class="my-2"><%= t('.num_attached_documents', count: story.documents.length) %></div>
+      <% end %>
+      <% if story.story_updates.length > 0 %>
+        <div class="my-2"><%= t('.num_story_updates', count: story.story_updates.length) %></div>
+      <% end %>
+    </div>
+  </div>
+
+  <section class="my-5">
+    <h2>
+      <%= t("stories.show.story_updates") %>
+      <%= link_to t(".new_story_update"), new_story_update_path(story), :class => "btn btn-sm btn-outline-primary" if can_edit?(story) %>
+    </h2>
+    <% if story.story_updates.length > 0 %>
+      <% story.story_updates.each_with_index do |story_update, idx| %>
+        <div class="px-5 py-4 <%= 'border-bottom' unless idx == story.story_updates.length - 1 %>">
+          <%= render "story_updates/list_item", story_update: %>
+        </div>
+      <% end %>
+    <% else %>
+      <i class="text-muted"><%= t(".no_story_updates") %></i>
+    <% end %>
+  </section>
+</div>

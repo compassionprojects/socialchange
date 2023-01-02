@@ -1,0 +1,21 @@
+<% content_for :title, t(".title") %>
+
+<div class="d-sm-flex justify-content-between">
+  <h1><%= yield(:title) %></h1>
+  <%= render "search" %>
+</div>
+
+
+<br>
+
+<div id="stories" class="row">
+  <div class="col-lg-9">
+    <% @stories.each_with_index do |story, index| %>
+      <%= render "list_item", story:, index: %>
+    <% end %>
+  </div>
+</div>
+
+<div class="my-5">
+  <%= paginate @stories, except: [:first_page, :last_page] %>
+</div>

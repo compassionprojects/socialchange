@@ -9,7 +9,7 @@ class ApplicationPolicy
   end
 
   def index?
-    can_manage_resource? || user.has_permission?(:list, resource) || owns_resource?
+    can_manage_resource? || user.has_permission?(:list, resource)
   end
 
   def show?

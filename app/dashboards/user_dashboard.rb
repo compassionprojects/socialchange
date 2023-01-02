@@ -14,7 +14,7 @@ class UserDashboard < Administrate::BaseDashboard
     confirmed_at: Field::DateTime,
     current_sign_in_at: Field::DateTime,
     current_sign_in_ip: Field::String,
-    email: Field::String,
+    email: Field::Email,
     encrypted_password: Field::String,
     failed_attempts: Field::Number,
     invitation_accepted_at: Field::DateTime,
@@ -49,7 +49,6 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     name
-    email
     language
     last_sign_in_at
   ].freeze
@@ -86,10 +85,16 @@ class UserDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = %i[
+  FORM_ATTRIBUTES_NEW = %i[
     name
     email
     password
+    language
+  ].freeze
+
+  FORM_ATTRIBUTES = %i[
+    name
+    email
     language
   ].freeze
 

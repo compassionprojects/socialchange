@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :roles
 
+  has_many :stories, dependent: :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
@@ -13,6 +15,16 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :language, inclusion: { in: I18n.available_locales.map(&:to_s) }, allow_nil: true
+
+  # After a user is discarded, discard his stories
+  #
+  after_discard do
+    stories.discard_all
+  end
+
+  after_undiscard do
+    stories.undiscard_all
+  end
 
   def language=(u)
     self["language"] = u.presence

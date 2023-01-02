@@ -5,10 +5,11 @@ class Permission < ApplicationRecord
 
   # @todo move this somewhere else!
   ACTIONS = %i[read list create update delete manage].freeze
+  RESOURCES = %i[users roles permissions stories story_updates].freeze
   AVAILABLE_PERMISSIONS = [] # rubocop:disable Style/MutableConstant
-  ApplicationRecord.descendants.collect(&:name).map(&:pluralize).each do |resource|
+  RESOURCES.each do |resource|
     ACTIONS.each do |action|
-      AVAILABLE_PERMISSIONS << "#{resource.downcase}.#{action}"
+      AVAILABLE_PERMISSIONS << "#{resource}.#{action}"
     end
   end
 

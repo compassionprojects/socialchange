@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require "factory_bot_rails"
+
+5.times do |i|
+  FactoryBot.create(:user_with_stories, stories_count: 3, name: "User #{i}")
+end

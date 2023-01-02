@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg border-bottom mb-4">
   <div class="container py-2">
     <a class="navbar-brand" href="/"><%= t('application_name') %></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,7 +6,13 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="menu">
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to t('stories.nav'), stories_path, :class => "nav-link" %>
+        </li>
         <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to t('stories.add'), new_story_path, :class => "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= link_to t('users.invite'), new_user_invitation_path, :class => "nav-link" %>
           </li>
