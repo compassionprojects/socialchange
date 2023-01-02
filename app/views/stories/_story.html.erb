@@ -37,6 +37,22 @@
           </p>
         </section>
       <% end %>
+
+      <section class="my-5">
+        <h2>
+          <%= t("stories.show.story_updates") %>
+          <%= link_to t(".new_story_update"), new_story_update_path(story), :class => "btn btn-sm btn-outline-primary" if can_edit?(story) %>
+        </h2>
+        <% if story.story_updates.length > 0 %>
+          <% story.story_updates.each_with_index do |story_update, idx| %>
+            <div class="px-5 py-4 <%= 'border-bottom' unless idx == story.story_updates.length - 1 %>">
+              <%= render "story_updates/list_item", story_update: %>
+            </div>
+          <% end %>
+        <% else %>
+          <i class="text-muted"><%= t(".no_story_updates") %></i>
+        <% end %>
+      </section>
     </div>
     <div class="col-lg-3">
       <div class="my-2"><strong>Country</strong>: <%= story.country_name %></div>
@@ -48,20 +64,4 @@
       <% end %>
     </div>
   </div>
-
-  <section class="my-5">
-    <h2>
-      <%= t("stories.show.story_updates") %>
-      <%= link_to t(".new_story_update"), new_story_update_path(story), :class => "btn btn-sm btn-outline-primary" if can_edit?(story) %>
-    </h2>
-    <% if story.story_updates.length > 0 %>
-      <% story.story_updates.each_with_index do |story_update, idx| %>
-        <div class="px-5 py-4 <%= 'border-bottom' unless idx == story.story_updates.length - 1 %>">
-          <%= render "story_updates/list_item", story_update: %>
-        </div>
-      <% end %>
-    <% else %>
-      <i class="text-muted"><%= t(".no_story_updates") %></i>
-    <% end %>
-  </section>
 </div>
