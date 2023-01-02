@@ -10,8 +10,8 @@
 
 <div id="stories" class="row">
   <div class="col-lg-9">
-    <% @stories.each do |story| %>
-      <%= render "list_item", story: story %>
+    <% @stories.each_with_index do |story, index| %>
+      <%= render "list_item", story:, index: %>
     <% end %>
   </div>
 </div>
