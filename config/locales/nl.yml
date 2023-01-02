@@ -68,6 +68,8 @@ nl:
     are_you_sure: "Weet je het zeker?"
     home: "Home"
     remove: "Remove"
+    edit: "Edit"
+    delete: "Delete"
   pundit:
     default: "U kunt deze actie niet uitvoeren."
     user_policy:
