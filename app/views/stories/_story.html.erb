@@ -10,7 +10,7 @@
     <div class="col-lg-9">
       <section class="my-4">
         <p>
-          <%= sanitize(story.description) %>
+          <%= display_rich_text(story.description) %>
         </p>
       </section>
 
@@ -24,7 +24,7 @@
         <section class="my-4">
           <h2><%= t("stories.show.outcomes") %></h2>
           <p>
-            <%= sanitize(story.outcomes) %>
+            <%= display_rich_text(story.outcomes) %>
           </p>
         </section>
       <% end %>
@@ -33,7 +33,7 @@
         <section class="my-4">
           <h2><%= t("stories.show.source") %></h2>
           <p>
-            <%= sanitize(story.source) %>
+            <%= display_rich_text(story.source) %>
           </p>
         </section>
       <% end %>
