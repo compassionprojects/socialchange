@@ -15,8 +15,6 @@ class Story < ApplicationRecord
 
   validates :title, :description, :country, presence: true
 
-  scope :published, -> { where("stories.title ? '#{I18n.locale}'").and(where("stories.description ? '#{I18n.locale}'")) }
-
   # After a story is discarded, discard it's updates
   #
   after_discard do
