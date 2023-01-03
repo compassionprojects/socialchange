@@ -48,6 +48,13 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
+  # Set default url options for request tests
+  # https://github.com/rspec/rspec-rails/issues/1275#issuecomment-1083301637
+  #
+  config.before(type: :request) do
+    self.default_url_options = ApplicationController.default_url_options
+  end
+
   # The settings below are suggested to provide a good initial experience
   # with RSpec, but feel free to customize to your heart's content.
   #   # This allows you to limit a spec run to individual examples or groups
