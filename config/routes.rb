@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users, controllers: { registrations: "users/registrations" }
 
-  scope '(:lang)', lang: /#{I18n.available_locales.join('|')}/ do
+  scope "(:lang)", lang: /#{I18n.available_locales.join('|')}/ do
     resources :stories do
       collection do
         match "search" => "stories#search", via: %i[get post], as: :search
