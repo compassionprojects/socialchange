@@ -26,7 +26,7 @@
         </div>
         <ul class="my-4 list-unstyled">
           <% story.documents.filter { |x| !x.representable? }.each do |file| %>
-            <li>&#128206; <%= link_to file.filename, url_for(file), target: "_blank" %></li>
+            <li><i class="bi bi-paperclip"></i> <%= link_to file.filename, url_for(file), target: "_blank" %></li>
           <% end %>
         </ul>
       </section>
@@ -65,13 +65,22 @@
         <% end %>
       </section>
     </div>
-    <div class="col-lg-3">
-      <div class="my-2"><strong>Country</strong>: <%= story.country_name %></div>
+    <div class="col-lg-3 mt-lg-0 mt-3">
+      <div class="my-2 d-flex align-items-center">
+        <i class="bi bi-geo-alt"></i>
+        <span class="mx-2"><strong>Country</strong>: <%= story.country_name %></span>
+      </div>
       <% if story.documents.attached? %>
-        <div class="my-2"><%= t('.num_attached_documents', count: story.documents.length) %></div>
+        <div class="my-2 d-flex align-items-center">
+          <i class="bi bi-paperclip"></i>
+          <span class="mx-2"><%= t('.num_attached_documents', count: story.documents.length) %></span>
+        </div>
       <% end %>
       <% if story.story_updates.length > 0 %>
-        <div class="my-2"><%= t('.num_story_updates', count: story.story_updates.length) %></div>
+        <div class="my-2 d-flex align-items-center">
+          <i class="bi bi-megaphone"></i>
+          <span class="mx-2"><%= t('.num_story_updates', count: story.story_updates.length) %></span>
+        </div>
       <% end %>
     </div>
   </div>

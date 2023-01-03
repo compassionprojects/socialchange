@@ -48,7 +48,7 @@
       <% story.documents.filter { |x| !x.representable? }.each do |file| %>
         <li id="<%= dom_id(file) %>_container">
           <%= turbo_frame_tag dom_id(file) do %>
-            &#128206; <%= link_to file.filename, url_for(file), target: "_blank" %> &nbsp;
+            <i class="bi bi-paperclip"></i> <%= link_to file.filename, url_for(file), target: "_blank" %> &nbsp;
             <%= link_to t("common.remove"), remove_documents_stories_path(file), data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') }, class: "text-danger mx-2" %>
           <% end %>
         </li>

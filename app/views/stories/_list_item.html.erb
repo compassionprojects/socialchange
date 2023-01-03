@@ -6,7 +6,14 @@
   <p class="mb-1">
     <%= sanitize(story.description.truncate(400), tags: []) %>
   </p>
-  <% if story.country %>
-    <div class="text-muted"><%= story.country_name %></div>
-  <% end %>
+  <div class="text-muted">
+    <% if story.country %>
+      <i class="bi bi-geo-alt"></i> <%= story.country_name %>
+    <% end %>
+    <% if story.story_updates.length > 0 %>
+      <span class="mx-2">
+        <i class="bi bi-megaphone"></i> <%= story.story_updates.length %>
+      </span>
+    <% end %>
+  </div>
 </div>
