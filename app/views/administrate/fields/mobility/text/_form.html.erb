@@ -13,7 +13,7 @@
   <div class="mobility-fields">
     <% I18n.available_locales.each do |locale| %>
       <div class="mobility-field-item mobility-field-item-<%= locale %> <%= 'active' if I18n.locale == locale  %>">
-        <%= f.text_area "#{field.attribute}_#{locale}".downcase.underscore, rows: 8 %>
+        <%= f.trix_editor "#{field.attribute}_#{locale}".downcase.underscore, rows: 8 %>
       </div>
     <% end %>
   </div>

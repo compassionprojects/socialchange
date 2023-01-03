@@ -1,3 +1,5 @@
+/*= require trix */
+
 ul.mobility-tabs {
   display: flex;
   margin-bottom: 10px;
@@ -30,4 +32,10 @@ ul.mobility-tabs > li.active {
 
 .mobility-fields > .mobility-field-item:not(.active) {
   display: none;
+}
+
+.trix-button-group--block-tools,
+.trix-button-group--file-tools,
+.trix-button-group--history-tools {
+  display: none !important;
 }

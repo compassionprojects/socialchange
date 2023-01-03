@@ -1,5 +1,7 @@
 // Field customisations for administrate mobility (translation) fields
 
+//= require trix
+
 $(document).ready(function() {
   // Styling
   // Make the field label appear on the same line as field value
