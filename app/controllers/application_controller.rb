@@ -31,4 +31,8 @@ class ApplicationController < ActionController::Base
   def creator
     { user: current_user, updater: current_user }
   end
+
+  def default_url_options
+    { lang: I18n.locale }
+  end
 end

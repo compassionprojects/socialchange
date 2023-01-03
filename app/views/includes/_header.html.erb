@@ -6,12 +6,22 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="menu">
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+            <%= t("locales.#{I18n.locale}") %>
+          </a>
+          <ul class="dropdown-menu">
+            <% I18n.available_locales.each do |locale| %>
+              <li><%= link_to t("locales.#{locale}"), root_path(locale), class: "dropdown-item" %></li>
+            <% end %>
+          </ul>
+        </li>
         <li class="nav-item">
-          <%= link_to t('stories.nav'), stories_path, :class => "nav-link" %>
+          <%= link_to t('nav.list_stories'), stories_path, :class => "nav-link" %>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to t('stories.add'), new_story_path, :class => "nav-link" %>
+            <%= link_to t('nav.add_stories'), new_story_path, :class => "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to t('users.invite'), new_user_invitation_path, :class => "nav-link" %>
