@@ -39,13 +39,13 @@ nl:
       title: "New story"
     edit:
       title: "Edit %{title}"
+      update_story: "Update story"
     show:
       edit_story: "Edit story"
       destroy_story: "Delete story"
       outcomes: "Outcomes"
       source: "Source"
       story_updates: "Story Updates"
-      no_story_updates: "There are no updates for this story yet"
     story:
       new_story_update: "New Story Update"
       no_story_updates: "There are no updates for this story yet"
