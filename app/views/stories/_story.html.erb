@@ -1,6 +1,6 @@
 <div id="<%= dom_id story %>">
   <h1>
-    <%= story.title %>
+    <%= story.title(fallback: I18n.available_locales) %>
   </h1>
   <div class="small text-muted">
     <%= time_ago(story.created_at) %> <%= t("posted_by", name: story.user.name) %>
