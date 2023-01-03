@@ -97,6 +97,10 @@ nl:
     contact: "Contact"
     stories: "Stories"
     community: "Community"
+    forum: "Forum"
+    donate: "Donate"
+    github: "GitHub"
+    opencollective: "Open Collective"
   activerecord:
     attributes:
       user:

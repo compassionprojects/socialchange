@@ -1,9 +1,0 @@
-<div class="mx-2">
-  <% if file.representable? %>
-    <%= link_to url_for(file), target: "_blank" do %>
-      <%= image_tag file.representation(resize_to_limit: [300, 200]), class: "rounded" %>
-    <% end %>
-  <% else %>
-    <%= link_to file.filename, url_for(file) %>
-  <% end %>
-</div>

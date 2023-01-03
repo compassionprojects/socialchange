@@ -29,15 +29,31 @@
     <%= form.file_field :documents, multiple: true, direct_upload: true, :class => "form-control" %>
   </div>
 
-  <div class="d-flex flex-wrap mb-5">
-    <% story.documents.each do |file| %>
-      <div id="<%= dom_id(file) %>_container">
-        <%= turbo_frame_tag dom_id(file) do %>
-          <%= render "document", file: file %>
-          <%= link_to t("common.remove"), remove_documents_stories_path(file), data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') }, class: "text-danger mx-2" %>
-        <% end %>
-      </div>
-    <% end %>
+  <div class="my-5">
+    <div class="d-flex flex-wrap">
+      <% story.documents.filter { |x| x.representable? }.each do |file| %>
+        <div id="<%= dom_id(file) %>_container">
+          <%= turbo_frame_tag dom_id(file) do %>
+            <div class="m-2">
+              <%= link_to url_for(file), target: "_blank" do %>
+                <%= image_tag file.representation(resize_to_limit: [300, 200]), class: "rounded border" %>
+              <% end %>
+            </div>
+            <%= link_to t("common.remove"), remove_documents_stories_path(file), data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') }, class: "text-danger mx-2" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <ul class="mt-5 list-unstyled">
+      <% story.documents.filter { |x| !x.representable? }.each do |file| %>
+        <li id="<%= dom_id(file) %>_container">
+          <%= turbo_frame_tag dom_id(file) do %>
+            &#128206; <%= link_to file.filename, url_for(file), target: "_blank" %> &nbsp;
+            <%= link_to t("common.remove"), remove_documents_stories_path(file), data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') }, class: "text-danger mx-2" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
   <div class="mb-3">

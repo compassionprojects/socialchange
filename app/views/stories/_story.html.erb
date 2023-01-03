@@ -6,7 +6,7 @@
     <%= time_ago(story.created_at) %> <%= t("posted_by", name: story.user.name) %>
   </div>
 
-  <div class="row">
+  <div class="row flex-lg-row flex-column-reverse">
     <div class="col-lg-9">
       <section class="my-4">
         <p>
@@ -14,11 +14,22 @@
         </p>
       </section>
 
-      <div class="d-flex flex-wrap">
-        <% story.documents.each do |file| %>
-          <%= render "document", file: file %>
-        <% end %>
-      </div>
+      <section class="my-4">
+        <div class="d-flex flex-wrap">
+          <% story.documents.filter { |x| x.representable? }.each do |file| %>
+            <div class="m-2">
+              <%= link_to url_for(file), target: "_blank" do %>
+                <%= image_tag file.representation(resize_to_limit: [300, 200]), class: "rounded border" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <ul class="my-4 list-unstyled">
+          <% story.documents.filter { |x| !x.representable? }.each do |file| %>
+            <li>&#128206; <%= link_to file.filename, url_for(file), target: "_blank" %></li>
+          <% end %>
+        </ul>
+      </section>
 
       <% if story.outcomes %>
         <section class="my-4">
