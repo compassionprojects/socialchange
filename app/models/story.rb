@@ -37,16 +37,16 @@ class Story < ApplicationRecord
     c.translations[I18n.locale.to_s] || c.common_name || c.iso_short_name
   end
 
-  def has_translations?(locale)
+  def translation?(locale)
     Mobility.locale = locale
-    title(fallback: false) && description(fallback: false)
+    (title(fallback: false) && description(fallback: false)).presence
   end
 
   def missing_translations
-    I18n.available_locales.filter { |l| !has_translations?(l) }
+    I18n.available_locales.filter { |l| !translation?(l) }
   end
 
   def translated_in
-    I18n.available_locales.filter { |l| has_translations?(l) }
+    I18n.available_locales.filter { |l| translation?(l) }
   end
 end

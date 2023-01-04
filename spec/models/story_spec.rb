@@ -33,33 +33,18 @@ describe Story do
     end
   end
 
-  describe "#has_translations?" do
-    subject { build(:story) }
-
-    it { is_expected.to respond_to(:has_translations?) }
-
-    it "returns boolean depending on whether translation exists or not" do
-      expect(subject.has_translations?(:en)).to be_truthy
-      expect(subject.has_translations?(:nl)).not_to be_truthy
-    end
-  end
-
-  describe "#has_translations?" do
+  describe "#translation?" do
     subject do
       Mobility.locale = :en
       build(:story)
     end
 
-    it { is_expected.to respond_to(:has_translations?) }
-
-    it "returns boolean depending on whether translation exists or not" do
-      expect(subject.has_translations?(:en)).to be_truthy
-      expect(subject.has_translations?(:nl)).not_to be_truthy
-    end
+    it { is_expected.to have_translation(:en) }
+    it { is_expected.not_to have_translation(:nl) }
   end
 
   describe "#missing_translations" do
-    subject do
+    subject(:story) do
       Mobility.locale = :en
       build(:story)
     end
@@ -67,12 +52,12 @@ describe Story do
     it { is_expected.to respond_to(:missing_translations) }
 
     it "returns locales for which translations are missing" do
-      expect(subject.missing_translations).to eql [:nl]
+      expect(story.missing_translations).to eql [:nl]
     end
   end
 
   describe "#translated_in" do
-    subject do
+    subject(:story) do
       Mobility.locale = :en
       build(:story)
     end
@@ -80,7 +65,7 @@ describe Story do
     it { is_expected.to respond_to(:translated_in) }
 
     it "returns locales in which translations exist" do
-      expect(subject.translated_in).to eql [:en]
+      expect(story.translated_in).to eql [:en]
     end
   end
 end
