@@ -89,7 +89,7 @@
         </span>
       </div>
       <% if story.missing_translations.length > 0 %>
-        <div class="border border-warning my-5 rounded p-3">
+        <div class="border border-warning my-lg-5 mt-4 rounded p-3">
           <%= t('.translations_missing_for_html', languages: story.missing_translations.map { |x| link_to t("locales.#{x}"), story_path(story, lang: x), class: "text-danger" }.join(", ").html_safe) %>
         </div>
       <% end %>
