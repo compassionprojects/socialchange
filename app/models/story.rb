@@ -38,8 +38,9 @@ class Story < ApplicationRecord
   end
 
   def translation?(locale)
-    Mobility.locale = locale
-    (title(fallback: false) && description(fallback: false)).presence
+    Mobility.with_locale(locale) do
+      (title(fallback: false) && description(fallback: false)).presence
+    end
   end
 
   def missing_translations
