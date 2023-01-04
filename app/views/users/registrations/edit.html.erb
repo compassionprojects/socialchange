@@ -17,7 +17,7 @@
 
   <div class="mb-3">
     <%= f.label :language, :class => "form-label" %>
-    <%= select(:user, :language, I18n.available_locales, { include_blank: true }, :class => "form-control") %>
+    <%= f.select :language, I18n.available_locales.map{ |l| [t("locales.#{l}"), l] }, { include_blank: true }, :class => "form-control" %>
   </div>
 
   <% if resource.pending_reconfirmation? %>
