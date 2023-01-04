@@ -52,7 +52,7 @@ en:
       num_attached_documents: "%{count} attached documents"
       num_story_updates: "%{count} story updates"
       translations_available_in_html: "Translations available in %{languages}"
-      translations_missing_for_html: "Translations missing for %{languages}"
+      translations_missing_for_html: "This story hasn't been translated in %{languages}"
   story_updates:
     new:
       title: "New Story Update"
