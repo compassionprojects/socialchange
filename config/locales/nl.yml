@@ -51,6 +51,8 @@ nl:
       no_story_updates: "There are no updates for this story yet"
       num_attached_documents: "%{count} attached documents"
       num_story_updates: "%{count} story updates"
+      translations_available_in_html: "Beschikbare vertalingen in %{languages}"
+      translations_missing_for_html: "Vertalingen missen voor %{languages}"
   story_updates:
     new:
       title: "New Story Update"

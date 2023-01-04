@@ -36,4 +36,17 @@ class Story < ApplicationRecord
     c = ISO3166::Country[country]
     c.translations[I18n.locale.to_s] || c.common_name || c.iso_short_name
   end
+
+  def has_translations?(locale)
+    Mobility.locale = locale
+    title(fallback: false) && description(fallback: false)
+  end
+
+  def missing_translations
+    I18n.available_locales.filter { |l| !has_translations?(l) }
+  end
+
+  def translated_in
+    I18n.available_locales.filter { |l| has_translations?(l) }
+  end
 end
