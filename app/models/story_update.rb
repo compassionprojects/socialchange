@@ -1,6 +1,7 @@
 class StoryUpdate < ApplicationRecord
   extend Mobility
   include Discard::Model
+  include Translatable
 
   belongs_to :story
   belongs_to :user

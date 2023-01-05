@@ -3,6 +3,7 @@
 class Story < ApplicationRecord
   extend Mobility
   include Discard::Model
+  include Translatable
 
   belongs_to :user
   belongs_to :updater, class_name: "User"
@@ -35,19 +36,5 @@ class Story < ApplicationRecord
 
     c = ISO3166::Country[country]
     c.translations[I18n.locale.to_s] || c.common_name || c.iso_short_name
-  end
-
-  def translation?(locale)
-    Mobility.with_locale(locale) do
-      (title(fallback: false) && description(fallback: false)).presence
-    end
-  end
-
-  def missing_translations
-    I18n.available_locales.filter { |l| !translation?(l) }
-  end
-
-  def translated_in
-    I18n.available_locales.filter { |l| translation?(l) }
   end
 end
