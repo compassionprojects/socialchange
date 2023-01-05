@@ -2,12 +2,12 @@
 
 <h1><%= yield(:title) %></h1>
 
-<div class="row">
+<div class="row flex-lg-row flex-column-reverse">
   <div class="col-lg-9">
     <%= render "form", story_update: @story_update %>
   </div>
   <div class="col-lg-3">
-    <div class="px-3">
+    <div class="px-lg-3 my-lg-0 my-3">
       <div class="mb-4"><%= t('.edit_story_in') %></div>
 
       <% I18n.available_locales.map do |locale| %>
