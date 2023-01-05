@@ -36,10 +36,14 @@ nl:
     index:
       title: "Stories"
     new:
-      title: "New story"
+      title: "Nieuw story"
     edit:
       title: "Edit %{title}"
       update_story: "Update story"
+      edit_story_in: "Dit verhaal kan vertaald worden naar de volgende talen"
+      currently_editing: "aan het bewerken"
+      show_story: "Bekijk dit verhaal"
+      back_to_stories_listing: "Terug naar verhalen"
     show:
       edit_story: "Edit story"
       destroy_story: "Delete story"

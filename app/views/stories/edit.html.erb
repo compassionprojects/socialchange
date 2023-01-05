@@ -2,11 +2,31 @@
 
 <h1><%= yield(:title) %></h1>
 
-<%= render "form", story: @story %>
+<div class="row">
+  <div class="col-lg-9">
+    <%= render "form", story: @story %>
+  </div>
+  <div class="col-lg-3">
+    <div class="px-3">
+      <div class="mb-4"><%= t('.edit_story_in') %></div>
+
+      <% I18n.available_locales.map do |locale| %>
+        <div class="my-2 <%= @story.missing_translations.include?(locale) ? 'text-danger' : 'text-success' %>">
+          <span><%= t("locales.#{locale}") %></span>
+          <% if I18n.locale != locale %>
+            <%= link_to "Edit", edit_story_path(@story, lang: locale) %>
+          <% else %>
+            <i class="text-muted">(<%= t('.currently_editing') %>)</i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <br>
 
 <div>
-  <%= link_to "Show this story", @story %> |
-  <%= link_to "Back to stories", stories_path %>
+  <%= link_to t('.show_story'), @story %> |
+  <%= link_to t('.back_to_stories_listing'), stories_path %>
 </div>

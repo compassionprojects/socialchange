@@ -40,6 +40,10 @@ en:
     edit:
       title: "Edit %{title}"
       update_story: "Update story"
+      edit_story_in: "This story can be translated to the following languages"
+      currently_editing: "currently editing"
+      show_story: "Show this story"
+      back_to_stories_listing: "Back to stories"
     show:
       edit_story: "Edit story"
       destroy_story: "Delete story"
