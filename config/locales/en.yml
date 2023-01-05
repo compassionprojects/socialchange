@@ -60,6 +60,9 @@ en:
   story_updates:
     new:
       title: "New Story Update"
+    edit:
+      edit_story_in: "This story update can be translated to the following languages"
+      currently_editing: "currently editing"
   home:
     index:
       home: "Social Change Stories"
