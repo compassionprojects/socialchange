@@ -11,10 +11,10 @@
       <div class="mb-4"><%= t('.edit_story_in') %></div>
 
       <% I18n.available_locales.map do |locale| %>
-        <div class="my-2 <%= @story_update.missing_translations.include?(locale) ? 'text-danger' : 'text-success' %>">
+        <div class="my-2 <%= @story_update.missing_translations.include?(locale) ? 'text-warning' : 'text-success' %>">
           <span><%= t("locales.#{locale}") %></span>
           <% if I18n.locale != locale %>
-            <%= link_to "Edit", edit_story_update_path(@story_update, lang: locale) %>
+            <%= link_to t('common.edit').downcase, edit_story_update_path(@story_update, lang: locale) %>
           <% else %>
             <i class="text-muted">(<%= t('.currently_editing') %>)</i>
           <% end %>
