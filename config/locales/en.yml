@@ -141,6 +141,8 @@ en:
         x_months:
           one: 'a month ago'
           other: '%{count} months ago'
+        about_x_months:
+          other: '%{count} months ago'
         x_years:
           one: 'a year'
           other: '%{count} years ago'
