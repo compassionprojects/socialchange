@@ -26,7 +26,7 @@
 
   <div class="mb-3">
     <%= form.label :documents, :class => "form-label" %>
-    <%= form.file_field :documents, multiple: true, direct_upload: true, :class => "form-control" %>
+    <%= form.file_field :documents, multiple: true, direct_upload: true, :class => "form-control", :accept => ".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf" %>
   </div>
 
   <div class="my-5">
