@@ -11,8 +11,11 @@ Rails.application.routes.draw do
       resources :story_updates, as: :updates, shallow: true, shallow_prefix: "story"
     end
 
+
     root "home#index"
   end
+
+  get "/feedback(/*any)" => "feedback#index", as: :feedback
 
   namespace :admin do
     resources :users
