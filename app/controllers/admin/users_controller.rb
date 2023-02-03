@@ -42,5 +42,10 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def enter
+      resource = current_user.permissions.filter { |str| str.include?(".list") || str.include?(".manage") }.first
+      redirect_to "/admin/" + resource.split(".").first if resource
+    end
   end
 end

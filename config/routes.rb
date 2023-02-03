@@ -21,6 +21,6 @@ Rails.application.routes.draw do
     resources :stories
     resources :story_updates
 
-    root to: "users#index"
+    root to: "users#enter"
   end
 end

@@ -1,0 +1,8 @@
+ul.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+ul.pagination li {
+  margin: 0 15px;
+}

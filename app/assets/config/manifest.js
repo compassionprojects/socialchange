@@ -5,4 +5,5 @@
 //= link administrate/application.css
 //= link administrate/application.js
 //= link administrate/mobility_field.css
+//= link administrate/pagination.css
 //= link administrate/mobility_field.js
