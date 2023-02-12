@@ -8,6 +8,7 @@ class Story < ApplicationRecord
   belongs_to :user
   belongs_to :updater, class_name: "User"
   has_many :story_updates, -> { kept.order(created_at: :asc) }, dependent: :destroy, inverse_of: :story
+  has_many :discussion_topics
   has_many_attached :documents
 
   enum :status, %i[draft published]
@@ -16,14 +17,16 @@ class Story < ApplicationRecord
 
   validates :title, :description, :country, presence: true
 
-  # After a story is discarded, discard it's updates
+  # After a story is discarded, discard it's updates and discussions
   #
   after_discard do
     story_updates.discard_all
+    discussion_topics.discard_all
   end
 
   after_undiscard do
     story_updates.undiscard_all
+    discussion_topics.undiscard_all
   end
 
   # https://github.com/countries/country_select#getting-the-country-name-from-the-countries-gem
