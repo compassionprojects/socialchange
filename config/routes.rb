@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :permissions
     resources :stories
     resources :story_updates
+    resources :discussion_topics
+    resources :discussion_posts
+    resources :story_updates
 
     root to: "users#enter"
   end
