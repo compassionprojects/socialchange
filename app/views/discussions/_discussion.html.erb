@@ -1,0 +1,42 @@
+<div id="<%= dom_id @discussion %>">
+  <h1>
+    <%= @discussion.title %>
+  </h1>
+  <div class="small text-muted">
+    <%= time_ago(@discussion.created_at) %> <%= t("posted_by", name: @discussion.user.name) %>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-9">
+      <section class="my-4">
+        <p>
+          <%= display_rich_text(@discussion.description) %>
+        </p>
+      </section>
+
+      <div class="d-flex mb-4">
+        <% if can_edit?(@discussion) %>
+          <%= link_to t(".edit_discussion"), edit_discussion_path(@discussion), :class => "btn btn-primary" %>&nbsp;
+        <% end %>
+        <% if can_destroy?(@discussion) %>
+          <%= button_to t(".destroy_discussion"), discussion_path(@discussion), method: :delete, :class => "btn btn-danger", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } } %>
+        <% end %>
+      </div>
+
+      <div id="posts">
+        <% @posts.each_with_index do |post, index| %>
+          <%= render "posts/list_item", post:, index: %>
+        <% end %>
+      </div>
+
+      <div class="my-5">
+        <%= paginate @posts, except: [:first_page, :last_page] %>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <% if user_signed_in? %>
+        <%= link_to t(".new_post"), new_discussion_post_path(@discussion), :class => "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
