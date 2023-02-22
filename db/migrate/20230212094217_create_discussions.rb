@@ -1,6 +1,6 @@
-class CreateDiscussionTopics < ActiveRecord::Migration[7.0]
+class CreateDiscussions < ActiveRecord::Migration[7.0]
   def change
-    create_table :discussion_topics do |t|
+    create_table :discussions do |t|
       t.string :title, null: false
       t.text :description, null: false
       t.references :story, null: false, foreign_key: true, index: true

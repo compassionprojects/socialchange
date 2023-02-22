@@ -1,22 +1,22 @@
-# DiscussionTopic model
+# Discussion model
 #
-class DiscussionTopic < ApplicationRecord
+class Discussion < ApplicationRecord
   include Discard::Model
 
   belongs_to :user
   belongs_to :story
   belongs_to :updater, class_name: "User"
-  has_many :discussion_posts
+  has_many :posts
 
   validates :title, :description, presence: true
 
   # After a topic is discarded, discard it's posts
   #
   after_discard do
-    discussion_posts.discard_all
+    posts.discard_all
   end
 
   after_undiscard do
-    discussion_posts.undiscard_all
+    posts.undiscard_all
   end
 end

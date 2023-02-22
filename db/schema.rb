@@ -43,21 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_101322) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "discussion_posts", force: :cascade do |t|
-    t.text "body", null: false
-    t.bigint "user_id", null: false
-    t.bigint "updater_id", null: false
-    t.bigint "discussion_topic_id", null: false
-    t.datetime "discarded_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["discarded_at"], name: "index_discussion_posts_on_discarded_at"
-    t.index ["discussion_topic_id"], name: "index_discussion_posts_on_discussion_topic_id"
-    t.index ["updater_id"], name: "index_discussion_posts_on_updater_id"
-    t.index ["user_id"], name: "index_discussion_posts_on_user_id"
-  end
-
-  create_table "discussion_topics", force: :cascade do |t|
+  create_table "discussions", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
     t.bigint "story_id", null: false
@@ -66,10 +52,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_101322) do
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["discarded_at"], name: "index_discussion_topics_on_discarded_at"
-    t.index ["story_id"], name: "index_discussion_topics_on_story_id"
-    t.index ["updater_id"], name: "index_discussion_topics_on_updater_id"
-    t.index ["user_id"], name: "index_discussion_topics_on_user_id"
+    t.index ["discarded_at"], name: "index_discussions_on_discarded_at"
+    t.index ["story_id"], name: "index_discussions_on_story_id"
+    t.index ["updater_id"], name: "index_discussions_on_updater_id"
+    t.index ["user_id"], name: "index_discussions_on_user_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -85,6 +71,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_101322) do
     t.index ["permission_id"], name: "index_permissions_roles_on_permission_id"
     t.index ["role_id", "permission_id"], name: "index_permissions_roles_on_role_id_and_permission_id", unique: true
     t.index ["role_id"], name: "index_permissions_roles_on_role_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "user_id", null: false
+    t.bigint "updater_id", null: false
+    t.bigint "discussion_id", null: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_posts_on_discarded_at"
+    t.index ["discussion_id"], name: "index_posts_on_discussion_id"
+    t.index ["updater_id"], name: "index_posts_on_updater_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -181,12 +181,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_101322) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "discussion_posts", "discussion_topics"
-  add_foreign_key "discussion_posts", "users"
-  add_foreign_key "discussion_posts", "users", column: "updater_id"
-  add_foreign_key "discussion_topics", "stories"
-  add_foreign_key "discussion_topics", "users"
-  add_foreign_key "discussion_topics", "users", column: "updater_id"
+  add_foreign_key "discussions", "stories"
+  add_foreign_key "discussions", "users"
+  add_foreign_key "discussions", "users", column: "updater_id"
+  add_foreign_key "posts", "discussions"
+  add_foreign_key "posts", "users"
+  add_foreign_key "posts", "users", column: "updater_id"
   add_foreign_key "stories", "users"
   add_foreign_key "stories", "users", column: "updater_id"
   add_foreign_key "story_updates", "stories"

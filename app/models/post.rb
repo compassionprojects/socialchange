@@ -1,9 +1,9 @@
-# DiscussionPost model
+# Post model
 #
-class DiscussionPost < ApplicationRecord
+class Post < ApplicationRecord
   include Discard::Model
 
-  belongs_to :discussion_topic
+  belongs_to :discussion
   belongs_to :user
   belongs_to :updater, class_name: "User"
 
