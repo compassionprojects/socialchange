@@ -1,7 +1,7 @@
 <div id="<%= dom_id @discussion %>">
-  <h1>
+  <h2>
     <%= @discussion.title %>
-  </h1>
+  </h2>
   <div class="small text-muted">
     <%= time_ago(@discussion.created_at) %> <%= t("posted_by", name: @discussion.user.name) %>
   </div>

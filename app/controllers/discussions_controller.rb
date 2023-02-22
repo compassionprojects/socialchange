@@ -55,7 +55,7 @@ class DiscussionsController < ApplicationController
     @discussion.discard
 
     respond_to do |format|
-      format.html { redirect_to story_discussions_url(@discussion.story) }
+      format.html { redirect_to story_discussions_url(@discussion.story), notice: I18n.t("discussion.deleted") }
       format.json { render status: :no_content }
     end
   end

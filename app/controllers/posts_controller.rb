@@ -47,7 +47,7 @@ class PostsController < ApplicationController
     @post.discard
 
     respond_to do |format|
-      format.html { redirect_to story_discussion_url(@post.discussion.story, @post.discussion) }
+      format.html { redirect_to story_discussion_url(@post.discussion.story, @post.discussion), notice: I18n.t("post.deleted") }
       format.json { render status: :no_content }
     end
   end
