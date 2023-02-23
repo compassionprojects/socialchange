@@ -121,6 +121,8 @@ en:
     story_nav:
       story: "Story"
       discussions: "Discussions"
+    header:
+      account: "Account"
     footer:
       about: "About"
       home: "Home"
