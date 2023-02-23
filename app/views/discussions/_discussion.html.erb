@@ -16,10 +16,10 @@
 
       <div class="d-flex mb-4">
         <% if can_edit?(@discussion) %>
-          <%= link_to t(".edit_discussion"), edit_discussion_path(@discussion), :class => "btn btn-primary" %>&nbsp;
+          <%= link_to t("common.edit"), edit_discussion_path(@discussion), :class => "btn btn-primary" %>&nbsp;
         <% end %>
         <% if can_destroy?(@discussion) %>
-          <%= button_to t(".destroy_discussion"), discussion_path(@discussion), method: :delete, :class => "btn btn-danger", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } } %>
+          <%= button_to t("common.delete"), discussion_path(@discussion), method: :delete, :class => "btn btn-danger", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } } %>
         <% end %>
       </div>
 
