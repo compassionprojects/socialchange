@@ -72,6 +72,8 @@ describe Story do
   describe "discard" do
     let(:story) { create(:story) }
 
+    # rubocop:disable RSpec/ExampleLength
+    # rubocop:disable RSpec/MultipleExpectations
     it "discards all associated records" do
       create_list(:discussion, 3, story:, posts: create_list(:post, 3))
       create_list(:story_update, 3, story:)
@@ -92,5 +94,7 @@ describe Story do
       expect(StoryUpdate.kept.where(story:)).to be_empty
       expect(Post.kept).to be_empty
     end
+    # rubocop:enable RSpec/ExampleLength
+    # rubocop:enable RSpec/MultipleExpectations
   end
 end

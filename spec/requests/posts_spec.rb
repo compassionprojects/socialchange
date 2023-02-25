@@ -74,5 +74,4 @@ describe "posts", type: :request do
       expect(post.discarded_at).not_to be_nil
     end
   end
-
 end

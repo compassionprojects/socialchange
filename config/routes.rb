@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         resources :posts
       end
     end
-    get 'stories/:story_id/discussions/:id', to: 'discussions#show', as: :story_discussion
+    get "stories/:story_id/discussions/:id", to: "discussions#show", as: :story_discussion
 
     root "home#index"
   end

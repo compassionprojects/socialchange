@@ -47,7 +47,7 @@ module Admin
           requested_resource.destroy
         end
         flash[:notice] = translate_with_resource("destroy.success")
-      rescue => e
+      rescue StandardError
         flash[:error] = requested_resource.errors.full_messages.join("<br/>")
       end
       redirect_to after_resource_destroyed_path(requested_resource)

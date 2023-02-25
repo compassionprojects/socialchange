@@ -1,3 +1,5 @@
+# PostsController
+#
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_discussion, only: %i[new create]
@@ -16,7 +18,9 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html { redirect_to story_discussion_url(@discussion.story, @discussion) }
-        format.turbo_stream { render turbo_stream: turbo_stream.append(:posts, partial: "posts/list_item", locals: { post: @post, border_top: true }) }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append(:posts, partial: "posts/list_item", locals: { post: @post, border_top: true })
+        end
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }

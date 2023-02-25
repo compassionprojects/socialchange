@@ -7,7 +7,7 @@ describe DiscussionPolicy do
   let(:story) { create(:story) }
   let(:discussion) { create(:discussion, story:) }
 
-  context "any user wants to post to a discussion" do
+  context "when any user wants to post to a discussion" do
     it { is_expected.to permit_actions(%i[new create]) }
   end
 

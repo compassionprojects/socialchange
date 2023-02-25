@@ -6,7 +6,7 @@ describe PostPolicy do
   let(:user) { create(:user) }
   let(:post) { create(:post) }
 
-  context "any user wants to post to a discussion" do
+  context "when any user wants to post to a discussion" do
     it { is_expected.to permit_actions(%i[new create]) }
   end
 

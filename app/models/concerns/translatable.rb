@@ -1,3 +1,5 @@
+# Translatable
+#
 module Translatable
   extend ActiveSupport::Concern
 

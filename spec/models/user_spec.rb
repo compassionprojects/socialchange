@@ -55,6 +55,8 @@ describe User do
   describe "discard" do
     let(:user) { create(:user) }
 
+    # rubocop:disable RSpec/ExampleLength
+    # rubocop:disable RSpec/MultipleExpectations
     it "discards all associated records" do
       create_list(:story, 3, user:)
       create_list(:discussion, 3, user:)
@@ -73,5 +75,7 @@ describe User do
       expect(Discussion.kept.where(user:)).to be_empty
       expect(Post.kept.where(user:)).to be_empty
     end
+    # rubocop:enable RSpec/ExampleLength
+    # rubocop:enable RSpec/MultipleExpectations
   end
 end

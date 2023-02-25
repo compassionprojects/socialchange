@@ -52,7 +52,7 @@ class ApplicationPolicy
     user.has_permission?(:manage, resource)
   end
 
-  def is_signed_in?
+  def signed_in?
     !!user
   end
 end

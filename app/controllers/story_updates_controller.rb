@@ -22,7 +22,10 @@ class StoryUpdatesController < ApplicationController
       if @story_update.save
         # @todo change this to render show with created content
         format.html { redirect_to story_url(@story_update.story) }
-        format.turbo_stream { render turbo_stream: turbo_stream.append(:story_updates, partial: "story_updates/list_item", locals: { story_update: @story_update, border_top: true }) }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append(:story_updates, partial: "story_updates/list_item",
+                                                                   locals: { story_update: @story_update, border_top: true })
+        end
         format.json { render :show, status: :created, location: @story_update }
       else
         format.html { render :new, status: :unprocessable_entity }

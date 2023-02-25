@@ -49,7 +49,7 @@ describe "/discussions", type: :request do
     end
 
     describe "GET /new" do
-      it "should render the new discussion form" do
+      it "renders the new discussion form" do
         get new_story_discussion_url(story)
         expect(response).to have_http_status(:ok)
       end

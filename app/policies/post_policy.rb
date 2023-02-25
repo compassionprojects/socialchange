@@ -23,7 +23,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    is_signed_in?
+    signed_in?
   end
 
   # Allowed attributes to be updated

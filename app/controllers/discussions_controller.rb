@@ -1,3 +1,5 @@
+# DiscussionsController
+#
 class DiscussionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_story, only: %i[new create index]

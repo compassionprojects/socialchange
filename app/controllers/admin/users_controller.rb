@@ -45,7 +45,7 @@ module Admin
 
     def enter
       resource = current_user.permissions.filter { |str| str.include?(".list") || str.include?(".manage") }.first
-      redirect_to "/admin/" + resource.split(".").first if resource
+      redirect_to "/admin/#{resource.split('.').first}" if resource
     end
   end
 end

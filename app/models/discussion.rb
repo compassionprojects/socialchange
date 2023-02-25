@@ -6,7 +6,7 @@ class Discussion < ApplicationRecord
   belongs_to :user
   belongs_to :story
   belongs_to :updater, class_name: "User"
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   validates :title, :description, presence: true
 
