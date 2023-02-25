@@ -25,7 +25,7 @@ class DiscussionsController < ApplicationController
   end
 
   def index
-    @discussions = policy_scope(Discussion).includes(:user).where(story: @story).page(params[:page])
+    @discussions = policy_scope(Discussion).includes(:user).where(story: @story).order(created_at: :desc).page(params[:page])
   end
 
   def show
