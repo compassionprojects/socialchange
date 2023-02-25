@@ -22,10 +22,14 @@ class User < ApplicationRecord
   #
   after_discard do
     stories.discard_all
+    discussions.discard_all
+    posts.discard_all
   end
 
   after_undiscard do
     stories.undiscard_all
+    discussions.undiscard_all
+    posts.undiscard_all
   end
 
   def language=(u)

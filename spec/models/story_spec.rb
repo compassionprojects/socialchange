@@ -68,4 +68,29 @@ describe Story do
       expect(story.translated_in).to eql [:en]
     end
   end
+
+  describe "discard" do
+    let(:story) { create(:story) }
+
+    it "discards all associated records" do
+      create_list(:discussion, 3, story:, posts: create_list(:post, 3))
+      create_list(:story_update, 3, story:)
+
+      # Check if the records first exist
+      expect(Discussion.kept.where(story:)).not_to be_empty
+      expect(StoryUpdate.kept.where(story:)).not_to be_empty
+      expect(Post.kept).not_to be_empty
+
+      story.discard
+
+      # Here posts should also be discarded as this callback is run
+      # after a discussion is discarded
+
+      # Check if the records are discarded after .discard
+      expect(story.discarded_at).not_to be_nil
+      expect(Discussion.kept.where(story:)).to be_empty
+      expect(StoryUpdate.kept.where(story:)).to be_empty
+      expect(Post.kept).to be_empty
+    end
+  end
 end
