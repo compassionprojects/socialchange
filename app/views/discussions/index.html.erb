@@ -1,0 +1,20 @@
+<% content_for :title, t(".discussions") %>
+
+<%= render "includes/story_nav", story: @story %>
+
+<div id="discussions" class="row">
+  <div class="col-lg-9">
+    <% @discussions.each_with_index do |discussion, index| %>
+      <%= render "list_item", discussion:, index: %>
+    <% end %>
+
+    <div class="my-5">
+      <%= paginate @discussions, except: [:first_page, :last_page] %>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <% if user_signed_in? %>
+      <%= link_to t(".new_discussion"), new_story_discussion_path, :class => "btn btn-primary", data: { turbo_frame: "modal" } %>
+    <% end %>
+  </div>
+</div>

@@ -12,6 +12,7 @@ Metrics/AbcSize:
   Max: 24
   Exclude:
     - 'app/controllers/stories_controller.rb'
+    - 'app/controllers/story_updates_controller.rb'
     - 'db/migrate/*'
 
 # Offense count: 2
@@ -74,6 +75,8 @@ Style/Documentation:
     - 'app/controllers/application_controller.rb'
     - 'app/controllers/home_controller.rb'
     - 'app/controllers/users/registrations_controller.rb'
+    - 'app/controllers/admin/*'
+    - 'app/dashboards/*'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/home_helper.rb'
     - 'app/models/user.rb'

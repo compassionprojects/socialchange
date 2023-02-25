@@ -9,7 +9,11 @@ Rails.application.routes.draw do
         match "remove_documents/:id" => "stories#remove_documents", via: [:delete], as: :remove_documents
       end
       resources :story_updates, as: :updates, shallow: true, shallow_prefix: "story"
+      resources :discussions, shallow: true do
+        resources :posts
+      end
     end
+    get "stories/:story_id/discussions/:id", to: "discussions#show", as: :story_discussion
 
     root "home#index"
   end
@@ -19,6 +23,9 @@ Rails.application.routes.draw do
     resources :roles
     resources :permissions
     resources :stories
+    resources :story_updates
+    resources :discussions
+    resources :posts
     resources :story_updates
 
     root to: "users#enter"

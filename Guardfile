@@ -54,7 +54,7 @@ guard :rspec, cmd: "bin/rspec" do
 
   # Rails config changes
   watch(rails.spec_helper)     { rspec.spec_dir }
-  watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
+  watch(rails.routes)          { ["#{rspec.spec_dir}/routing", "#{rspec.spec_dir}/requests"] }
   watch(rails.app_controller)  { "#{rspec.spec_dir}/requests" }
 
   # Capybara features specs

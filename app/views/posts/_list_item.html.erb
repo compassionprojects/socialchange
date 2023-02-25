@@ -1,0 +1,16 @@
+<div id="<%= dom_id post %>" class="py-4 <%= 'border-top' if border_top %>">
+  <p class="mt-2">
+    <%= display_rich_text(post.body) %>
+  </p>
+  <div class="small text-muted">
+    <%= time_ago(post.created_at) %> <%= t("posted_by", name: post.user.name) %>
+  </div>
+  <div class="d-flex">
+    <% if can_edit?(post) %>
+      <%= link_to t("common.edit"), edit_post_path(post), :class => "btn btn-sm btn-link px-0" %>&nbsp;
+    <% end %>
+    <% if can_destroy?(post) %>
+      <%= button_to t("common.delete"), post, method: :delete, :class => "btn btn-sm btn-link text-danger", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } }  %>
+    <% end %>
+  </div>
+</div>

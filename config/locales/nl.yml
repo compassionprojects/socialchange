@@ -60,6 +60,34 @@ nl:
   story_updates:
     new:
       title: "New Story Update"
+    edit:
+      edit_story_in: "This story update can be translated to the following languages"
+      currently_editing: "currently editing"
+  discussions:
+    created: "Discussion was successfully created"
+    updated: "Discussion was successfully updated"
+    deleted: "Discussion was successfully deleted"
+    show:
+      back_to_all_discussions: "Back to all discussions"
+    discussion:
+      edit_discussion: "Edit"
+      destroy_discussion: "Delete"
+      new_post: "New post"
+    form:
+      create_discussion: "Create"
+    index:
+      discussions: "Discussions"
+      new_discussion: "New discussion"
+    new:
+      new_discussion: "New discussion"
+    destory:
+      deleted: "Discussion deleted successfully"
+  posts:
+    deleted: "Post deleted"
+    new:
+      new_post: "New post"
+    edit:
+      edit_post: "Edit post"
   home:
     index:
       home: "Social Change Stories"
@@ -75,6 +103,36 @@ nl:
       <p>Als je geïnteresseerd bent om mee te helpen, deel dan deze pagina met de relevante mensen.</p>
 
       <p>Wij zijn gewoon een stel mensen die geïnspireerd zijn door NVC en de kracht ervan, dus zijn we dit project begonnen. We doen dit alles open en transparant. Als je dit project nuttig vindt en er waarde aan hecht, voel je dan vrij om te doneren - we gebruiken opencollective dat volledige transparantie biedt over hoe je donaties zullen worden gebruikt.</p>"
+  helpers:
+    submit:
+      story:
+        create: "Create story"
+        update: "Update story"
+      story_update:
+        create: "Create"
+        update: "Update"
+      discussion:
+        create: "Create discussion"
+        update: "Update discussion"
+      post:
+        create: "Create post"
+        update: "Update post"
+  includes:
+    story_nav:
+      story: "Story"
+      discussions: "Discussions"
+    header:
+      account: "Account"
+    footer:
+      about: "Over"
+      home: "Home"
+      contact: "Contact"
+      stories: "Stories"
+      community: "Community"
+      forum: "Forum"
+      donate: "Doneer"
+      github: "GitHub"
+      opencollective: "Open Collective"
   pagination:
     first: "&laquo; Eerste"
     last: "Laatste &raquo;"
@@ -94,16 +152,6 @@ nl:
     default: "U kunt deze actie niet uitvoeren."
     user_policy:
       update?: "U bent niet bevoegd om deze actie uit te voeren."
-  footer:
-    about: "Over"
-    home: "Home"
-    contact: "Contact"
-    stories: "Stories"
-    community: "Community"
-    forum: "Forum"
-    donate: "Donate"
-    github: "GitHub"
-    opencollective: "Open Collective"
   activerecord:
     attributes:
       user:
@@ -121,6 +169,11 @@ nl:
       story_update:
         title: "Title"
         description: "Description"
+      discussion:
+        title: "Title"
+        description: "Description"
+      post:
+        body: "Body"
   datetime:
     distance_in_words:
       short:

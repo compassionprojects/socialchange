@@ -1,0 +1,11 @@
+<% content_for :title, t('.new_discussion') %>
+
+<%= turbo_frame_tag "modal" do %>
+
+  <h1 class="h3 modal-header"><%= yield(:title) %></h1>
+
+  <div class="modal-body">
+    <%= render "form", discussion: @discussion %>
+  </div>
+
+<% end %>

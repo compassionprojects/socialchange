@@ -51,4 +51,8 @@ class ApplicationPolicy
   def can_manage_resource?
     user.has_permission?(:manage, resource)
   end
+
+  def signed_in?
+    !!user
+  end
 end

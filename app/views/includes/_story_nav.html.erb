@@ -1,0 +1,16 @@
+<h1>
+  <%= story.title(fallback: I18n.available_locales) %>
+</h1>
+<div class="small text-muted">
+  <%= time_ago(story.created_at) %> <%= t("posted_by", name: story.user.name) %>
+</div>
+
+<ul class="nav nav-tabs my-4">
+  <li class="nav-item">
+    <%= link_to t(".story"), story, class: class_names('nav-link', { active: current_page?(story_path(story)) }) %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t(".discussions"), story_discussions_path(story), class: class_names('nav-link', { active: current_page?(story_discussions_path(story)) || (@discussion && current_page?(story_discussion_path(story, @discussion))) }) %>
+  </li>
+</ul>
+

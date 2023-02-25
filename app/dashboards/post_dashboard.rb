@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class PermissionDashboard < Administrate::BaseDashboard
+class PostDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,8 +9,11 @@ class PermissionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::Select.with_options(collection: ->(_field) { Permission::AVAILABLE_PERMISSIONS }, include_blank: true),
-    roles: Field::HasMany,
+    body: Field::Text,
+    discarded_at: Field::DateTime,
+    discussion: Field::BelongsTo,
+    updater: Field::BelongsTo,
+    user: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -22,17 +25,19 @@ class PermissionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    name
-    roles
-    created_at
+    body
+    discussion
+    user
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    name
-    roles
+    body
+    discussion
+    user
+    updater
     created_at
     updated_at
   ].freeze
@@ -41,7 +46,10 @@ class PermissionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    name
+    body
+    discussion
+    updater
+    user
   ].freeze
 
   # COLLECTION_FILTERS
@@ -56,10 +64,10 @@ class PermissionDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how permissions are displayed
+  # Overwrite this method to customize how discussion posts are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(permission)
-    permission.name
-  end
+  # def display_resource(post)
+  #   "Post ##{post.id}"
+  # end
 end

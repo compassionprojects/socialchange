@@ -1,0 +1,20 @@
+<%= form_with(model: [@discussion, post]) do |form| %>
+  <% if post.errors.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% post.errors.each do |error| %>
+          <li class="pl-2"><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :body, :class => "form-label" %>
+    <%= form.trix_editor :body, required: true, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>

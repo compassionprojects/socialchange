@@ -1,0 +1,11 @@
+<% content_for :title, @discussion.title %>
+
+<%= render "includes/story_nav", story: @discussion.story %>
+
+<div class="my-3">
+  &lsaquo; <%= link_to t(".back_to_all_discussions"), story_discussions_path(@discussion.story) %>
+</div>
+
+<%= turbo_frame_tag dom_id(@discussion) do %>
+  <%= render "discussion" %>
+<% end %>
