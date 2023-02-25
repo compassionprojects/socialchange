@@ -1,5 +1,11 @@
 <% content_for :title, t('.new_post') %>
 
-<h1><%= yield(:title) %></h1>
+<%= turbo_frame_tag "modal" do %>
 
-<%= render "form", post: @post %>
+  <h1 class="h3 modal-header"><%= yield(:title) %></h1>
+
+  <div class="modal-body">
+    <%= render "form", post: @post %>
+  </div>
+
+<% end %>

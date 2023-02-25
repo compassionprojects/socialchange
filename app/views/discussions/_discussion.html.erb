@@ -24,8 +24,12 @@
       </div>
 
       <div id="posts">
-        <% @posts.each_with_index do |post, index| %>
-          <%= render "posts/list_item", post:, index: %>
+        <%= turbo_frame_tag :posts do %>
+          <% @posts.each_with_index do |post, index| %>
+            <%= turbo_frame_tag dom_id(post) do %>
+              <%= render "posts/list_item", post:, index:, border_top: index != 0 %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
 
@@ -35,7 +39,7 @@
     </div>
     <div class="col-lg-3">
       <% if user_signed_in? %>
-        <%= link_to t(".new_post"), new_discussion_post_path(@discussion), :class => "btn btn-primary" %>
+        <%= link_to t(".new_post"), new_discussion_post_path(@discussion), :class => "btn btn-primary", data: { turbo_frame: "modal" } %>
       <% end %>
     </div>
   </div>

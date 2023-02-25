@@ -16,6 +16,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html { redirect_to story_discussion_url(@discussion.story, @discussion) }
+        format.turbo_stream { render turbo_stream: turbo_stream.append(:posts, partial: "posts/list_item", locals: { post: @post, border_top: true }) }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,6 +49,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to story_discussion_url(@post.discussion.story, @post.discussion), notice: I18n.t("posts.deleted") }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(helpers.dom_id(@post)) }
       format.json { render status: :no_content }
     end
   end

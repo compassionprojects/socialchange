@@ -1,4 +1,4 @@
-<div id="<%= dom_id post %>" class="py-4 border-top">
+<div id="<%= dom_id post %>" class="py-4 <%= 'border-top' if border_top %>">
   <p class="mt-2">
     <%= display_rich_text(post.body) %>
   </p>

@@ -1,5 +1,7 @@
 <% content_for :title, @discussion.title %>
 
-<h2><%= yield(:title) %></h2>
 
-<%= render "form", discussion: @discussion %>
+<%= turbo_frame_tag dom_id(@discussion) do %>
+  <h2><%= yield(:title) %></h2>
+  <%= render "form", discussion: @discussion %>
+<% end %>

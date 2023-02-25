@@ -8,9 +8,10 @@ class Story < ApplicationRecord
   belongs_to :user
   belongs_to :updater, class_name: "User"
   has_many :story_updates, -> { kept.order(created_at: :asc) }, dependent: :destroy, inverse_of: :story
-  has_many :discussions
+  has_many :discussions # @todo: add dependent, inverse_of and default order
   has_many_attached :documents
 
+  # @todo: remove this
   enum :status, %i[draft published]
 
   translates :title, :description, :outcomes, :source

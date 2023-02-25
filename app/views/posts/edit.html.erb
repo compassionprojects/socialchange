@@ -2,4 +2,8 @@
 
 <h1><%= yield(:title) %></h1>
 
-<%= render "form", post: @post %>
+<%= turbo_frame_tag dom_id(@post) do %>
+  <div class="py-4 border-top">
+    <%= render "form", post: @post %>
+  </div>
+<% end %>

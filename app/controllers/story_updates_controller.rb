@@ -35,7 +35,6 @@ class StoryUpdatesController < ApplicationController
   #
   def edit
     authorize @story_update
-    @with_classes = true
   end
 
   # update story_update

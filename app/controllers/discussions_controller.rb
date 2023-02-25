@@ -29,7 +29,7 @@ class DiscussionsController < ApplicationController
   end
 
   def show
-    @posts = policy_scope(Post).includes(:user).where(discussion: @discussion).page(params[:page])
+    @posts = policy_scope(Post).includes(:user).where(discussion: @discussion).order(created_at: :asc).page(params[:page])
   end
 
   def edit

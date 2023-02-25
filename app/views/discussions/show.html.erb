@@ -6,4 +6,6 @@
   &lsaquo; <%= link_to t(".back_to_all_discussions"), story_discussions_path(@discussion.story) %>
 </div>
 
-<%= render "discussion" %>
+<%= turbo_frame_tag dom_id(@discussion) do %>
+  <%= render "discussion" %>
+<% end %>
