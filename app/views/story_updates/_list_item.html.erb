@@ -1,4 +1,4 @@
-<div id="<%= dom_id story_update %>">
+<div class="py-4 <%= 'border-top' if border_top %>" id="<%= dom_id story_update %>">
   <strong><%= story_update.title %></strong>
   <div class="small text-muted">
     <%= time_ago(story_update.created_at) %> <%= t("posted_by", name: story_update.user.name) %>

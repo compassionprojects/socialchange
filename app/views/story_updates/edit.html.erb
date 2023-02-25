@@ -4,7 +4,11 @@
 
 <div class="row flex-lg-row flex-column-reverse">
   <div class="col-lg-9">
-    <%= render "form", story_update: @story_update %>
+    <%= turbo_frame_tag dom_id(@story_update) do %>
+      <div class="py-4 border-top">
+        <%= render "form", story_update: @story_update %>
+      </div>
+    <% end %>
   </div>
   <div class="col-lg-3">
     <div class="px-lg-3 my-lg-0 my-3">

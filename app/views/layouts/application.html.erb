@@ -23,6 +23,18 @@
         <%= yield %>
       </div>
     </main>
+
+    <%# Modal window %>
+    <div class="modal" tabindex="-1"
+      data-controller="modal"
+      data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <%= turbo_frame_tag "modal" %>
+        </div>
+      </div>
+    </div>
+
     <%= render "includes/footer" %>
   </body>
 </html>

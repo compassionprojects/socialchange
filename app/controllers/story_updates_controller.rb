@@ -22,6 +22,7 @@ class StoryUpdatesController < ApplicationController
       if @story_update.save
         # @todo change this to render show with created content
         format.html { redirect_to story_url(@story_update.story) }
+        format.turbo_stream { render turbo_stream: turbo_stream.append(:story_updates, partial: "story_updates/list_item", locals: { story_update: @story_update, border_top: true }) }
         format.json { render :show, status: :created, location: @story_update }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -57,7 +58,10 @@ class StoryUpdatesController < ApplicationController
   def destroy
     authorize @story_update
     @story_update.discard
-    redirect_to story_url(@story_update.story)
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(helpers.dom_id(@story_update)) }
+      format.html { redirect_to story_url(@story_update.story), notice: I18n.t("story_update.deleted") }
+    end
   end
 
   private
