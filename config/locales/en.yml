@@ -96,13 +96,11 @@ en:
       about: "About"
       about_content_html: "<p>The goal of this project is to show the impact of NVC in social change to influence policy and lessen the harms of punitive systems.</p>
 
-      <p>Current situation is that there is no one place on the internet where you can find all social change stories where NVC is involved. They are all spread across which makes it difficult to find, to be inspired, to learn and to take action.</p>
+      <p>Current situation is that there is no one place on the internet where you can find all social change stories where NVC is involved. They are all spread over, which makes it difficult to find.</p>
 
-      <p>With our centralising of all stories, we hope to 1) show the impact of NVC 2) let people around the world inspire each other by telling their stories, inspiring each other 3) let people around the world engage with each other and build a community around and take action.</p>
+      <p>With our centralising of all stories, we hope to 1) show the impact of NVC 2) let people around the world inspire each other by telling their stories 3) let people around the world engage with each other, build a community around and take action.</p>
 
-      <p>If you are interested in helping out, please share this page with the relevant people.</p>
-
-      <p>We are just a bunch of people inspired by NVC and it's power, so we've started this project. We are doing all of this openly and transparently. If you find this project useful and see any value feel free to donate - we use opencollective which offers complete transparency on how your donations will be utilised.</p>"
+      <p>If you are interested in helping out, please share this page with relevant people. We are just a bunch of people inspired by NVC and what it can bring to our lives. We are doing all of this openly and transparently. If you find this project meaningful and see any value feel free to donate - we use opencollective which offers complete transparency on how your donations will be utilised.</p>"
   helpers:
     submit:
       story:
