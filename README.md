@@ -15,9 +15,8 @@ Clone the repo
 bundle install
 rake db:create
 rake db:migrate
-cp .env .env.development.local # replace necessary values
-cp .env .env.test.local
-cp .env .env.production.local
+cp .env.development.local.template .env.development.local # replace necessary values
+# also create a copy for .env.test.local
 bin/dev
 ```
 
