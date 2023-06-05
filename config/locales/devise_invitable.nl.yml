@@ -23,7 +23,7 @@ nl:
       invitation_instructions:
         subject: "Instructies voor uitnodigingen"
         hello: "Beste %{email}"
-        someone_invited_you: "Iemand heeft U uitgenodigd voor %{url}, U kunt de uitnodiging accepteren via onderstaande link."
+        someone_invited_you: "%{inviter} heeft U uitgenodigd voor %{url}, U kunt de uitnodiging accepteren via onderstaande link."
         accept: "Accepteer uitnodiging"
         accept_until: "Deze uitnodoging vervalt per %{due_date}."
         ignore: "Indien U de uitnodiging niet wenst te accepteren, negeer dan alstublieft deze email.<br />\nUw account wordt niet aangemaakt indien U niet via bovenstaande link uw wachtwoord aanmaakt."
