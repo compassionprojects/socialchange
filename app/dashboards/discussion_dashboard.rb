@@ -9,11 +9,11 @@ class DiscussionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    description: Field::Text,
+    description: Fields::RichText.with_options(searchable: true),
     discarded_at: Field::DateTime,
     posts: Field::HasMany,
     story: Field::BelongsTo,
-    title: Field::String,
+    title: Field::String.with_options(searchable: true),
     updater: Field::BelongsTo,
     user: Field::BelongsTo,
     created_at: Field::DateTime,

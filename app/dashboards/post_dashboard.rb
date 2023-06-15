@@ -9,7 +9,7 @@ class PostDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    body: Field::Text,
+    body: Fields::RichText.with_options(searchable: true),
     discarded_at: Field::DateTime,
     discussion: Field::BelongsTo,
     updater: Field::BelongsTo,
