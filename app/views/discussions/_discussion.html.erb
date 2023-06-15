@@ -6,7 +6,7 @@
     <%= time_ago(@discussion.created_at) %> <%= t("posted_by", name: @discussion.user.name) %>
   </div>
 
-  <div class="row">
+  <div class="row flex-lg-row flex-column-reverse">
     <div class="col-lg-9">
       <section class="my-4">
         <p>
@@ -16,10 +16,10 @@
 
       <div class="d-flex mb-4">
         <% if can_edit?(@discussion) %>
-          <%= link_to t("common.edit"), edit_discussion_path(@discussion), :class => "btn btn-primary" %>&nbsp;
+          <%= link_to t("common.edit"), edit_discussion_path(@discussion), :class => "btn btn-link p-0" %>&nbsp;
         <% end %>
         <% if can_destroy?(@discussion) %>
-          <%= button_to t("common.delete"), discussion_path(@discussion), method: :delete, :class => "btn btn-danger", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } } %>
+          <%= button_to t("common.delete"), discussion_path(@discussion), method: :delete, :class => "btn btn-link text-danger py-0", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } } %>
         <% end %>
       </div>
 
@@ -27,7 +27,7 @@
         <%= turbo_frame_tag :posts do %>
           <% @posts.each_with_index do |post, index| %>
             <%= turbo_frame_tag dom_id(post) do %>
-              <%= render "posts/list_item", post:, index:, border_top: index != 0 %>
+              <%= render "posts/list_item", post:, index:, border_top: true %>
             <% end %>
           <% end %>
         <% end %>
@@ -37,7 +37,7 @@
         <%= paginate @posts, except: [:first_page, :last_page] %>
       </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 mt-3 mt-lg-0">
       <% if user_signed_in? %>
         <%= link_to t(".new_post"), new_discussion_post_path(@discussion), :class => "btn btn-primary", data: { turbo_frame: "modal" } %>
       <% end %>
