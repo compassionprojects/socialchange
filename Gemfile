@@ -57,11 +57,10 @@ group :development, :test do
   gem "factory_bot_rails", "~> 6.2"
   gem "rspec-rails", "~> 6.0.0"
 
-  gem "rubocop", "~> 1.39", require: false
-  gem "rubocop-rails", "~> 2.17", require: false
-  gem "rubocop-rspec", "~> 2.15", require: false
-
   gem "faker", "~> 3.0"
+
+  gem "standard-rails", require: false
+  gem "standard", "~> 1.24.3"
 end
 
 group :development do

@@ -1,3 +1,8 @@
+[![Run tests](https://github.com/compassionprojects/socialchange/actions/workflows/test.yml/badge.svg)](https://github.com/compassionprojects/socialchange/actions/workflows/test.yml)
+
+[![Ruby Code Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/standardrb/standard)
+
+
 # Social Change Stories
 
 An effort to collect all social change stories where NVC is a part of. Along side, it offers a community to run and support many of these projects.
@@ -24,6 +29,12 @@ To seed the database
 
 ```sh
 rake db:seed
+```
+
+We use [standardrb](https://github.com/standardrb/standard) for code linting and formatting.
+
+```sh
+rake standard
 ```
 
 ## Tests
