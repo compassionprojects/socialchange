@@ -1,4 +1,4 @@
-name: reviewdog
+name: standardrb
 on: [pull_request]
 
 permissions:
