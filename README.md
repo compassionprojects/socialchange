@@ -1,7 +1,4 @@
-[![Run tests](https://github.com/compassionprojects/socialchange/actions/workflows/test.yml/badge.svg)](https://github.com/compassionprojects/socialchange/actions/workflows/test.yml)
-
-[![Ruby Code Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/standardrb/standard)
-
+[![Run tests](https://github.com/compassionprojects/socialchange/actions/workflows/test.yml/badge.svg)](https://github.com/compassionprojects/socialchange/actions/workflows/test.yml) [![Ruby Code Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/standardrb/standard)
 
 # Social Change Stories
 
