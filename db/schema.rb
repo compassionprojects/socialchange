@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_12_101322) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_17_123104) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -85,6 +85,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_101322) do
     t.index ["discussion_id"], name: "index_posts_on_discussion_id"
     t.index ["updater_id"], name: "index_posts_on_updater_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "preferences", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.boolean "notify_new_discussion_on_story", default: true, null: false
+    t.boolean "notify_new_post_on_discussion", default: true, null: false
+    t.boolean "notify_any_post_in_discussion", default: true, null: false
+    t.boolean "notify_new_story", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -187,6 +198,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_101322) do
   add_foreign_key "posts", "discussions"
   add_foreign_key "posts", "users"
   add_foreign_key "posts", "users", column: "updater_id"
+  add_foreign_key "preferences", "users"
   add_foreign_key "stories", "users"
   add_foreign_key "stories", "users", column: "updater_id"
   add_foreign_key "story_updates", "stories"
