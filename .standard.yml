@@ -1,5 +1,5 @@
 plugins:
-  - standard-rails:
-      target_rails_version: 7.0
+  - standard-rails
+
 ignore:
   - 'app/views/**/*'

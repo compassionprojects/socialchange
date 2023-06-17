@@ -59,8 +59,8 @@ group :development, :test do
 
   gem "faker", "~> 3.0"
 
-  gem "standard-rails", require: false
-  gem "standard", "~> 1.24.3"
+  gem "standard-rails", "~> 0.1.0"
+  gem "standard", "~> 1.29.0"
 end
 
 group :development do
