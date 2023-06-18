@@ -52,11 +52,26 @@ describe User do
     end
   end
 
+  describe "preference" do
+    let(:user) { create(:user, confirmed_at: nil) }
+
+    context "when not confirmed" do
+      it "does not have a preference" do
+        expect(user.preference).to be_nil
+      end
+    end
+
+    context "when confirmed" do
+      it "has a preference" do
+        user.confirm # confirm user's email manually which should run after_confirmation hook to create his preference
+        expect(user.preference).not_to be_nil
+      end
+    end
+  end
+
   describe "discard" do
     let(:user) { create(:user) }
 
-    # rubocop:disable RSpec/ExampleLength
-    # rubocop:disable RSpec/MultipleExpectations
     it "discards all associated records" do
       create_list(:story, 3, user:)
       create_list(:discussion, 3, user:)
@@ -75,7 +90,5 @@ describe User do
       expect(Discussion.kept.where(user:)).to be_empty
       expect(Post.kept.where(user:)).to be_empty
     end
-    # rubocop:enable RSpec/ExampleLength
-    # rubocop:enable RSpec/MultipleExpectations
   end
 end
