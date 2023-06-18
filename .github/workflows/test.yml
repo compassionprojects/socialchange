@@ -23,6 +23,7 @@ jobs:
       RAILS_ENV: test
       DATABASE_URL: postgres://test:test@localhost:5432/test
       CI: "true"
+      DOMAIN_NAME: localhost
 
     steps:
     - name: Checkout code
