@@ -18,12 +18,12 @@ describe "posts", type: :request do
   describe "POST /create" do
     it "creates a discussion post" do
       expect do
-        post discussion_posts_url(discussion), params: { post: attributes_for(:post) }
+        post discussion_posts_url(discussion), params: {post: attributes_for(:post)}
       end.to change(Post, :count).by(1)
     end
 
     it "redirects to discussion" do
-      post discussion_posts_url(discussion), params: { post: attributes_for(:post) }
+      post discussion_posts_url(discussion), params: {post: attributes_for(:post)}
       expect(response).to redirect_to(story_discussion_url(discussion.story, discussion))
     end
   end
@@ -42,13 +42,13 @@ describe "posts", type: :request do
     let(:new_attrs) { attributes_for(:post) }
 
     it "updates an existing discussion post" do
-      patch post_url(post), params: { post: new_attrs }
+      patch post_url(post), params: {post: new_attrs}
       post.reload
       expect(post.body).to eql(new_attrs[:body])
     end
 
     it "redirects to discussion" do
-      patch post_url(post), params: { post: new_attrs }
+      patch post_url(post), params: {post: new_attrs}
       expect(response).to redirect_to(story_discussion_url(post.discussion.story, post.discussion))
     end
   end

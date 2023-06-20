@@ -24,7 +24,7 @@ class StoryUpdatesController < ApplicationController
         format.html { redirect_to story_url(@story_update.story) }
         format.turbo_stream do
           render turbo_stream: turbo_stream.append(:story_updates, partial: "story_updates/list_item",
-                                                                   locals: { story_update: @story_update, border_top: true })
+            locals: {story_update: @story_update, border_top: true})
         end
         format.json { render :show, status: :created, location: @story_update }
       else

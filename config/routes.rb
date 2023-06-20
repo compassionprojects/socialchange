@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_for :users, controllers: {registrations: "users/registrations"}
 
   scope "(:lang)", lang: /#{I18n.available_locales.join('|')}/ do
     resources :stories do
       collection do
-        match "search" => "stories#search", via: %i[get post], as: :search
-        match "remove_documents/:id" => "stories#remove_documents", via: [:delete], as: :remove_documents
+        match "search" => "stories#search", :via => %i[get post], :as => :search
+        match "remove_documents/:id" => "stories#remove_documents", :via => [:delete], :as => :remove_documents
       end
       resources :story_updates, as: :updates, shallow: true, shallow_prefix: "story"
       resources :discussions, shallow: true do

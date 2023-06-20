@@ -17,7 +17,7 @@ class StoriesController < ApplicationController
       params[:q].delete(@search_fields) # delete the default one
       # create new search criteria with the split words
       custom_words.split(" ").each_with_index do |word, index|
-        params[:q][:groupings][index] = { "#{@search_fields}": word }
+        params[:q][:groupings][index] = {"#{@search_fields}": word}
       end
     end
 
@@ -30,7 +30,8 @@ class StoriesController < ApplicationController
     render :index
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @story = Story.new(**creator)

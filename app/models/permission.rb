@@ -13,5 +13,5 @@ class Permission < ApplicationRecord
     end
   end
 
-  validates :name, inclusion: { in: AVAILABLE_PERMISSIONS }, uniqueness: true
+  validates :name, inclusion: {in: AVAILABLE_PERMISSIONS}, uniqueness: true
 end

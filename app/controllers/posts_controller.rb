@@ -19,7 +19,7 @@ class PostsController < ApplicationController
       if @post.save
         format.html { redirect_to story_discussion_url(@discussion.story, @discussion) }
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append(:posts, partial: "posts/list_item", locals: { post: @post, border_top: true })
+          render turbo_stream: turbo_stream.append(:posts, partial: "posts/list_item", locals: {post: @post, border_top: true})
         end
         format.json { render :show, status: :created, location: @post }
       else

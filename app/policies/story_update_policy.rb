@@ -5,7 +5,7 @@ class StoryUpdatePolicy < ApplicationPolicy
   #
   class Scope
     def initialize(user, scope)
-      @user  = user
+      @user = user
       @scope = scope
     end
 

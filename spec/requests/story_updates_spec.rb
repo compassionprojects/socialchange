@@ -60,7 +60,7 @@ describe "/story_updates", type: :request do
     describe "POST /create" do
       context "with valid parameters" do
         let(:story) { create(:story, user:) }
-        let(:params) { { story_update: attributes_for(:story_update) } }
+        let(:params) { {story_update: attributes_for(:story_update)} }
 
         it "creates a new story update" do
           expect do
@@ -79,12 +79,12 @@ describe "/story_updates", type: :request do
 
         it "does not create a new story update" do
           expect do
-            post story_updates_url(story), params: { story_update: { title: "Test title" } } # without description
+            post story_updates_url(story), params: {story_update: {title: "Test title"}} # without description
           end.to change(StoryUpdate, :count).by(0)
         end
 
         it "renders a response with 422 status (i.e. to display the 'new' template)" do
-          post story_updates_url(story), params: { story_update: { description: "Test desc..." } } # without title
+          post story_updates_url(story), params: {story_update: {description: "Test desc..."}} # without title
           expect(response).to have_http_status(:unprocessable_entity)
         end
       end
@@ -96,14 +96,14 @@ describe "/story_updates", type: :request do
 
         it "updates the requested story_update" do
           story_update = create(:story_update, story: create(:story, user:), user:)
-          patch story_update_url(story_update), params: { story_update: new_attributes }
+          patch story_update_url(story_update), params: {story_update: new_attributes}
           story_update.reload
           expect(story_update.title).to eql(new_attributes[:title])
         end
 
         it "redirects to the story" do
           story_update = create(:story_update, story: create(:story, user:), user:)
-          patch story_update_url(story_update), params: { story_update: new_attributes }
+          patch story_update_url(story_update), params: {story_update: new_attributes}
           expect(response).to redirect_to(story_url(story_update.story))
         end
       end
@@ -112,7 +112,7 @@ describe "/story_updates", type: :request do
         it "redirects the user to home page" do
           # user who is creating this story is not the logged in user
           story_update = create(:story_update, story: create(:story), user:)
-          patch story_update_url(story_update), params: { story_update: { title: "New title..." } }
+          patch story_update_url(story_update), params: {story_update: {title: "New title..."}}
           expect(response).to redirect_to(root_url)
         end
       end

@@ -58,12 +58,12 @@ describe "/discussions", type: :request do
     describe "POST /create" do
       it "creates a new discussion" do
         expect do
-          post story_discussions_url(story), params: { discussion: attributes_for(:discussion) }
+          post story_discussions_url(story), params: {discussion: attributes_for(:discussion)}
         end.to change(Discussion, :count).by(1)
       end
 
       it "redirects to the created discussion" do
-        post story_discussions_url(story), params: { discussion: attributes_for(:discussion) }
+        post story_discussions_url(story), params: {discussion: attributes_for(:discussion)}
         expect(response).to redirect_to(story_discussion_url(story, Discussion.last))
       end
     end
@@ -82,13 +82,13 @@ describe "/discussions", type: :request do
       let(:attrs) { attributes_for(:discussion) }
 
       it "updates discussion" do
-        patch discussion_url(discussion), params: { discussion: attrs }
+        patch discussion_url(discussion), params: {discussion: attrs}
         discussion.reload
         expect(discussion.title).to eql(attrs[:title])
       end
 
       it "redirects to discussion show page" do
-        patch discussion_url(discussion), params: { discussion: attrs }
+        patch discussion_url(discussion), params: {discussion: attrs}
         expect(response).to redirect_to(story_discussion_url(discussion.story, discussion))
       end
     end

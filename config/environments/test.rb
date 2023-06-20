@@ -23,7 +23,7 @@ Rails.application.configure do
   }
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
   config.cache_store = :null_store
 
@@ -34,7 +34,7 @@ Rails.application.configure do
   config.action_controller.allow_forgery_protection = false
 
   # Default url options for locale based routing
-  config.action_controller.default_url_options = { lang: I18n.locale }
+  config.action_controller.default_url_options = {lang: I18n.locale}
 
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test
@@ -47,7 +47,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
 
   # Default app url
-  config.action_mailer.default_url_options = { host: ENV["DOMAIN_NAME"], port: 3000 }
+  config.action_mailer.default_url_options = {host: ENV["DOMAIN_NAME"], port: 3000}
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

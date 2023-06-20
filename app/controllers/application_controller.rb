@@ -29,10 +29,10 @@ class ApplicationController < ActionController::Base
   end
 
   def creator
-    { user: current_user, updater: current_user }
+    {user: current_user, updater: current_user}
   end
 
   def default_url_options
-    { lang: I18n.locale }
+    {lang: I18n.locale}
   end
 end
