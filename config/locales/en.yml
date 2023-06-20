@@ -29,6 +29,15 @@ en:
     cancel_account_notice: "This is an irreversible action, there is no going back!"
     profile: "Profile"
     invite: "Invite"
+  preferences:
+    updated: "Preferences updated"
+    index:
+      preferences: "Preferences"
+      save: "Save"
+      notify_new_discussion_on_story: "Notify me of any new discussions on a story I created"
+      notify_new_post_on_discussion: "Notify me of any new posts on a discussion I created"
+      notify_any_post_in_discussion: "Notify me of any new posts in a discussion I participate in"
+      notify_new_story: "Notify me of any new stories that are added"
   stories:
     created: "Story was successfully created"
     updated: "Story was successfully updated"

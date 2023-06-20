@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
     get "stories/:story_id/discussions/:id", to: "discussions#show", as: :story_discussion
 
+    resources :preferences, only: %i[index update]
+
     root "home#index"
   end
 
