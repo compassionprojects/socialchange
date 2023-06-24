@@ -32,6 +32,8 @@ class DiscussionPolicy < ApplicationPolicy
     %i[title description]
   end
 
+  # We let everyone see discussions if they are logged in.
+  # Even for an admin this is true.
   def index?
     !!user
   end
