@@ -30,9 +30,7 @@ rake db:seed
 
 We use [standardrb](https://github.com/standardrb/standard) for code linting and formatting.
 
-```sh
-rake standard
-```
+Install the editor extension so that code is formatted as you type
 
 ## Tests
 
@@ -64,7 +62,13 @@ We use a simple role based authorization system with permissions. Inspired by [t
 
 ## Deployment
 
-The app is deployed to heroku. Check with madhu@nomaddev.co in order to be invited to heroku.
+The app is deployed to fly.io.
+
+To deploy:
+
+```sh
+fly deploy --build-secret SECRET_KEY_BASE=secret_value
+```
 
 ## References
 
