@@ -107,7 +107,3 @@ gem "image_processing", ">= 1.2"
 gem "devise-i18n", "~> 1.10"
 
 gem "dockerfile-rails", ">= 1.5", group: :development
-
-gem "sentry-ruby", "~> 5.10"
-
-gem "sentry-rails", "~> 5.10"
