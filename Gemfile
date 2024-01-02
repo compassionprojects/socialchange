@@ -39,7 +39,7 @@ gem "administrate", "~> 0.18.0"
 
 # Translatable content
 gem "mobility", "~> 1.2"
-gem "mobility-ransack", "~> 1.2"
+gem "mobility-ransack", "~> 1.2.2"
 
 # Soft deletions
 gem "discard", "~> 1.2"
