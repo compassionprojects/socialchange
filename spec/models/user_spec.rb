@@ -62,8 +62,8 @@ describe User do
     end
 
     context "when confirmed" do
+      before { user.confirm } # confirm user's email manually which should run after_confirmation hook to create his preference
       it "has a preference" do
-        user.confirm # confirm user's email manually which should run after_confirmation hook to create his preference
         expect(user.preference).not_to be_nil
       end
     end
