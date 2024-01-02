@@ -6,8 +6,8 @@ ruby File.read(".ruby-version").strip
 
 # Rails specific
 gem "pg", "~> 1.1"                # Use postgresql as the database for Active Record
-gem "puma", "~> 5.6"              # Use the Puma web server [https://github.com/puma/puma]
-gem "rails", "~> 7.0.4"
+gem "puma", "~> 6.4"              # Use the Puma web server [https://github.com/puma/puma]
+gem "rails", "~> 7.1.2"
 gem "sprockets-rails"             # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 
 # Frontend asset bundling
@@ -47,7 +47,7 @@ gem "discard", "~> 1.2"
 # Pagination
 gem "kaminari", "~> 1.2"
 
-gem "country_select", "~> 8.0"
+gem "country_select", "~> 8.0.3"
 gem "trix-rails", require: "trix"
 
 group :development, :test do
