@@ -6,7 +6,7 @@ An effort to collect all social change stories where NVC is a part of. Along sid
 
 ## Requirements
 
-- ruby 3.1.4 (use [rbenv](https://github.com/rbenv/rbenv) to manage ruby versions)
+- ruby 3.2.2 (use [rbenv](https://github.com/rbenv/rbenv) to manage ruby versions)
 - postgres 14.5
 
 ## Development
