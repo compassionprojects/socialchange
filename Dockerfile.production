@@ -61,8 +61,7 @@ ENV DO_ENDPOINT="https://ams3.digitaloceanspaces.com" \
     DO_BUCKET="bucket"
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN --mount=type=secret,id=SECRET_KEY_BASE \
-    SECRET_KEY_BASE="$(cat /run/secrets/SECRET_KEY_BASE)" ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
