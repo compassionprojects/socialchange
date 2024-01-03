@@ -30,6 +30,14 @@ class Story < ApplicationRecord
     discussions.undiscard_all
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[title description outcomes source country]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[story_updates]
+  end
+
   # https://github.com/countries/country_select#getting-the-country-name-from-the-countries-gem
   # Assuming country_select is used with User attribute `country`
   # This will attempt to translate the country name and use the default

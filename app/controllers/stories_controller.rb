@@ -6,7 +6,7 @@ class StoriesController < ApplicationController
 
   def index
     # Fields to search for
-    @search_fields = :title_or_description_or_outcomes_or_source_or_story_updates_title_i_cont_any
+    @search_fields = :title_or_description_or_outcomes_or_source_or_story_updates_title_or_story_updates_description_i_cont_any
 
     # Inspired from https://github.com/activerecord-hackery/ransack/issues/218#issuecomment-16504630
     # Make sure multiple words are split and searched
