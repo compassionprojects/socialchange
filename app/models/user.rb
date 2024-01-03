@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :discussions, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_one :preference, dependent: :destroy
+  has_many :notifications, as: :recipient, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
