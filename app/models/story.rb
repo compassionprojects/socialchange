@@ -31,7 +31,7 @@ class Story < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[title, description, outcomes, source, country]
+    %w[title description outcomes source country]
   end
 
   def self.ransackable_associations(auth_object = nil)
