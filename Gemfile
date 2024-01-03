@@ -109,3 +109,4 @@ gem "devise-i18n", "~> 1.10"
 gem "dockerfile-rails", ">= 1.5", group: :development
 
 gem "bugsnag", "~> 6.26"
+gem "noticed", "~> 1.6"
