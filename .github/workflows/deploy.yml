@@ -12,6 +12,7 @@ jobs:
       github.event.workflow_run.head_branch == 'production'
     concurrency: deploy
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: dentarg/fly@v1
         with:
