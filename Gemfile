@@ -14,7 +14,7 @@ gem "sprockets-rails"             # The original asset pipeline for Rails [https
 gem "cssbundling-rails", "~> 1.1"
 gem "importmap-rails"             # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "jbuilder"                    # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jsbundling-rails", "~> 1.0"
+gem "jsbundling-rails", "~> 1.2"
 gem "stimulus-rails"              # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "turbo-rails"                 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 
