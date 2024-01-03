@@ -81,7 +81,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   # @todo check if these are required and remove if not
   gem "capybara"
-  gem "pundit-matchers", "~> 1.8"
+  gem "pundit-matchers", "~> 3.1"
   gem "selenium-webdriver"
   gem "webdrivers"
 end
