@@ -23,5 +23,8 @@ module Socialchange
     config.i18n.available_locales = %i[en nl]
     config.i18n.default_locale = :en
     config.i18n.fallbacks = true
+
+    # set default email sender
+    config.mailer_default_from = ENV["DOMAIN_EMAIL_ADDRESS"]
   end
 end
