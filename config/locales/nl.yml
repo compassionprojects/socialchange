@@ -197,3 +197,6 @@ nl:
         x_years:
           one: 'a year'
           other: '%{count} years ago'
+        about_x_years:
+          one: 'a year ago'
+          other: '%{count} years ago'
