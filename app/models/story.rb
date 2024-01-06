@@ -11,6 +11,8 @@ class Story < ApplicationRecord
   has_many :discussions, dependent: :destroy # @todo: add inverse_of and default order
   has_many_attached :documents
 
+  after_create_commit :notify
+
   # @todo: remove status
   enum :status, %i[draft published]
 
@@ -48,5 +50,11 @@ class Story < ApplicationRecord
 
     c = ISO3166::Country[country]
     c.translations[I18n.locale.to_s] || c.common_name || c.iso_short_name
+  end
+
+  private
+
+  def notify
+    NewStoryNotification.with(story: self).deliver_later(User.with_notify_new_story_preference)
   end
 end
