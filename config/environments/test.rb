@@ -47,7 +47,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
 
   # Default app url
-  config.action_mailer.default_url_options = {host: ENV["DOMAIN_NAME"], port: 3000}
+  config.action_mailer.default_url_options = {host: ENV["DOMAIN_NAME"], port: 3000, lang: I18n.locale}
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
