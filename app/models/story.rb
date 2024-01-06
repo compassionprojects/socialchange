@@ -10,6 +10,7 @@ class Story < ApplicationRecord
   has_many :story_updates, -> { kept.order(created_at: :asc) }, dependent: :destroy, inverse_of: :story
   has_many :discussions, dependent: :destroy # @todo: add inverse_of and default order
   has_many_attached :documents
+  has_noticed_notifications
 
   after_create_commit :notify
 

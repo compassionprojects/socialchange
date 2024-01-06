@@ -43,4 +43,14 @@ describe Discussion do
       expect(Post.kept).to be_empty
     end
   end
+
+  describe "after_create_commit" do
+    let(:discussion) { build(:discussion) }
+
+    it "triggers the notify method from the hook" do
+      allow(discussion).to receive(:notify).and_call_original
+      discussion.save
+      expect(discussion).to have_received(:notify)
+    end
+  end
 end

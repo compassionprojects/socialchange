@@ -4,7 +4,7 @@
 
 class NewStoryNotification < Noticed::Base
   deliver_by :database
-  deliver_by :email, mailer: "UserMailer", method: :notify_new_story, if: :email_notifications?
+  deliver_by :email, mailer: "NotificationMailer", method: :notify_new_story, if: :email_notifications?
 
   # Add required params
   #

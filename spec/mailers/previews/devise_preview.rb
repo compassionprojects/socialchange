@@ -1,5 +1,5 @@
 # Devise emails can be previewed here
-# http://localhost:3000/rails/mailers/devise_mailer/[method_name].html
+# http://localhost:3000/rails/mailers/devise_mailer/
 
 class DeviseMailerPreview < ActionMailer::Preview
   # We do not have confirmable enabled, but if we did, this is

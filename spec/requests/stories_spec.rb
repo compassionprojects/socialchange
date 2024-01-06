@@ -54,13 +54,13 @@ describe "/stories", type: :request do
           expect(response).to redirect_to(story_url(Story.last))
         end
 
-        it "notifies users of new story" do
+        it "queues a background job to notify users" do
           ActiveJob::Base.queue_adapter = :test # enable test helpers
           # create a user who can be notified with a preference
           create(:user, preference: create(:preference, notify_new_story: true))
           expect do
             post stories_url, params: {story: attributes_for(:story)}
-          end.to have_enqueued_job
+          end.to have_enqueued_job(Noticed::DeliveryMethods::Email).with(hash_including(notification_class: NewStoryNotification.name))
         end
       end
 

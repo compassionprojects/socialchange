@@ -97,4 +97,14 @@ describe Story do
     # rubocop:enable RSpec/ExampleLength
     # rubocop:enable RSpec/MultipleExpectations
   end
+
+  describe "after_create_commit" do
+    let(:story) { build(:story) }
+
+    it "triggers the notify method from the hook" do
+      allow(story).to receive(:notify).and_call_original
+      story.save
+      expect(story).to have_received(:notify)
+    end
+  end
 end
