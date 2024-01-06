@@ -68,6 +68,26 @@ describe "/discussions", type: :request do
       end
     end
 
+    describe "creating a new discussion" do
+      it "notifies strory creator" do
+        story_one = create(:story, user: create(:user))
+        expect do
+          post story_discussions_url(story_one), params: {discussion: attributes_for(:discussion)}
+        end.to have_enqueued_job(Noticed::DeliveryMethods::Email).with(hash_including(notification_class: NewDiscussionNotification.name))
+        expect(ApplicationMailer.deliveries.count).to eql(1)
+      end
+
+      it "does not notify story creator" do
+        story_two = create(:story, user: create(:user, preference: create(:preference, notify_new_discussion_on_story: false)))
+        expect do
+          post story_discussions_url(story_two), params: {discussion: attributes_for(:discussion)}
+          # it does trigger the job but then filtered out in `if: email_notifications?` filter
+          # so there's no emails sent
+        end.to have_enqueued_job(Noticed::DeliveryMethods::Email).with(hash_including(notification_class: NewDiscussionNotification.name))
+        expect(ApplicationMailer.deliveries.count).to eql(0)
+      end
+    end
+
     describe "GET /edit" do
       let(:discussion) { create(:discussion, story:, user:) }
 
