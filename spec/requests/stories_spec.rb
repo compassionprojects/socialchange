@@ -53,6 +53,15 @@ describe "/stories", type: :request do
           post stories_url, params: {story: attributes_for(:story)}
           expect(response).to redirect_to(story_url(Story.last))
         end
+
+        it "notifies users of new story" do
+          ActiveJob::Base.queue_adapter = :test # enable test helpers
+          # create a user who can be notified with a preference
+          create(:user, preference: create(:preference, notify_new_story: true))
+          expect do
+            post stories_url, params: {story: attributes_for(:story)}
+          end.to have_enqueued_job
+        end
       end
 
       context "with invalid parameters" do
