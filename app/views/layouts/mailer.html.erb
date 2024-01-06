@@ -2,12 +2,33 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      /* Email styles need to be inline */
+      body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      a {
+        color: #0d6efd;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
-
   <body>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
