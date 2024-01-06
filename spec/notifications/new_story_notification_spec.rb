@@ -2,5 +2,5 @@ require "rails_helper"
 
 # @todo add tests
 
-describe Notification, type: :model do
+describe NewStoryNotification do
 end

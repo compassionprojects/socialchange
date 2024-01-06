@@ -34,6 +34,10 @@ class User < ApplicationRecord
     posts.undiscard_all
   end
 
+  scope :with_notify_new_story_preference, -> {
+    joins(:preference).where(preferences: {notify_new_story: true})
+  }
+
   def language=(u)
     self["language"] = u.presence
   end
