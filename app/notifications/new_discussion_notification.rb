@@ -15,7 +15,7 @@ class NewDiscussionNotification < Noticed::Base
   # Define helper methods to make rendering easier.
   #
   def message
-    t(".message", title: discussion.title)
+    t(".message", title: discussion.title, story_title: story.title)
   end
 
   def url
