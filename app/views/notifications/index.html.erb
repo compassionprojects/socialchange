@@ -1,0 +1,16 @@
+<% content_for :title, t(".notifications") %>
+
+<h2><%= yield(:title) %></h2>
+
+<div id="notifications">
+  <% @notifications.each_with_index do |notification, index| %>
+    <div class="py-2 d-flex align-items-center <%= 'border-top' if index != 0 %> <%= 'text-body-tertiary' if notification.read? %>">
+      <span>
+        <% if notification.unread? %>
+          <i class="bi bi-circle-fill px-2" style="font-size: 8px; color: cornflowerblue;"></i>
+        <% end %>
+      </span>
+      <%= link_to notification.to_notification.message, notification.to_notification.url, class: "text-reset text-decoration-none" %></span>
+    </div>
+  <% end %>
+</div>
