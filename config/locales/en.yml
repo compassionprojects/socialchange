@@ -29,6 +29,7 @@ en:
     cancel_account_notice: "This is an irreversible action, there is no going back!"
     profile: "Profile"
     invite: "Invite"
+    preferences: "Preferences"
   preferences:
     updated: "Preferences updated"
     index:
