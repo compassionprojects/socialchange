@@ -29,6 +29,7 @@ nl:
     cancel_account_notice: "Dit is een onomkeerbare actie, er is geen weg terug!"
     profile: "Profiel"
     invite: "Uitnodigen"
+    preferences: "Preferences"
   preferences:
     updated: "Voorkeuren bijgewerkt"
     index:
