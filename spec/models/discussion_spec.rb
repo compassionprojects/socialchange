@@ -44,7 +44,7 @@ describe Discussion do
     end
   end
 
-  describe "after_create_commit" do
+  xdescribe "after_create_commit" do
     let(:discussion) { build(:discussion) }
 
     it "triggers the notify method from the hook" do

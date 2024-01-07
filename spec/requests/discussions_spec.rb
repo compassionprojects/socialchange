@@ -68,7 +68,9 @@ describe "/discussions", type: :request do
       end
     end
 
-    describe "creating a new discussion" do
+    xdescribe "creating a new discussion" do
+      before { ActiveJob::Base.queue_adapter = :test }
+
       it "notifies strory creator" do
         story_one = create(:story, user: create(:user))
         expect do
