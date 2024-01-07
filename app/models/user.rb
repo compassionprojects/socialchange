@@ -58,6 +58,10 @@ class User < ApplicationRecord
     create_default_preference
   end
 
+  def unread_notifications?
+    notifications.unread.count > 0
+  end
+
   private
 
   def create_default_preference

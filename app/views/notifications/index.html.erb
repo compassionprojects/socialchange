@@ -3,14 +3,17 @@
 <h2><%= yield(:title) %></h2>
 
 <div id="notifications">
-  <% @notifications.each_with_index do |notification, index| %>
-    <div class="py-2 d-flex align-items-center <%= 'border-top' if index != 0 %> <%= 'text-body-tertiary' if notification.read? %>">
+  <% @notifications.each do |notification| %>
+    <div class="py-2 d-flex align-items-center <%= 'text-body-tertiary' if notification.read? %>">
       <span>
         <% if notification.unread? %>
           <i class="bi bi-circle-fill px-2" style="font-size: 8px; color: cornflowerblue;"></i>
         <% end %>
       </span>
-      <%= link_to notification.to_notification.message, notification.to_notification.url, class: "text-reset text-decoration-none" %></span>
+      <span>
+        <%= link_to notification.to_notification.message, notification.to_notification.url, class: "text-reset" %>
+      </span>
+      <small class="ms-auto"><%= time_ago(notification.created_at) %></small>
     </div>
   <% end %>
 </div>
