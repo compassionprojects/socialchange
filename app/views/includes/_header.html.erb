@@ -26,8 +26,8 @@
           <li class="nav-item">
             <%= link_to t('nav.add_stories'), new_story_path, :class => "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+          <li class="nav-item dropdown <%= 'nav-unread-notifications' if current_user.unread_notifications? %>">
+            <a class="nav-link dropdown-toggle nav-account-dropdown" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
               <%= t(".account") %>
             </a>
             <ul class="dropdown-menu">
@@ -38,7 +38,7 @@
                 <%= link_to t('users.preferences'), preferences_path, :class => "dropdown-item" %>
               </li>
               <li>
-                <%= link_to t('users.notifications'), notifications_path, :class => "dropdown-item" %>
+                <%= link_to t('users.notifications'), notifications_path, :class => "dropdown-item notifications" %>
               </li>
               <li>
                 <%= link_to t('users.profile'), edit_user_registration_path, :class => "dropdown-item" %>

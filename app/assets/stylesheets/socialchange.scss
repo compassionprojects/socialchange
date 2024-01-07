@@ -1,0 +1,36 @@
+trix-editor {
+  min-height: 100px;
+}
+
+.trix-button-group--block-tools,
+.trix-button-group--file-tools,
+.trix-button-group--history-tools {
+  display: none !important;
+}
+
+.unread-dot {
+  content: '';
+  width: 8px; /* Adjust the width and height to control the size of the dot */
+  height: 8px;
+  background-color: #3498db; /* Blue color, adjust as needed */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%; /* Adjust vertical positioning as needed */
+  left: -6px; /* Adjust horizontal positioning as needed */
+  transform: translateY(-50%); /* Center the dot vertically */
+}
+
+.nav-item.dropdown.nav-unread-notifications {
+  &> .nav-account-dropdown {
+    position: relative;
+    margin-left: 15px;
+    &:before {
+      @extend .unread-dot;
+    }
+  }
+
+  .dropdown-item.notifications {
+    font-weight: bold;
+  }
+}
+
