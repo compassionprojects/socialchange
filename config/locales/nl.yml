@@ -43,11 +43,14 @@ nl:
       message: "A new story '%{title}' was published"
   notification_mailer:
     notify_new_story:
-      subject: "Een nieuw NVC Social Change-verhaal '%{title}' is gepubliceerd"
-      body_html: "Hallo %{user_first_name}, we just want to let you know that a new NVC Social Change story <strong>'%{story_title}'</strong> was published. You may check it out by clicking on the below link."
+      subject: "A new NVC Social Change Story '%{title}' was published"
+      body_html: "Hi %{user_first_name}, a new NVC Social Change story <strong>%{story_title}</strong> was published. You may check it out by clicking on the below link."
     notify_new_discussion:
-      subject: "A new discussion '%{title}' was posted on your story"
-      body_html: "Hallo %{user_first_name}, a new discussion <strong>'%{discussion_title}'</strong> was posted on your Social Change Story '%{story_title}'. You may check it out by clicking on the below link."
+      subject: "A new discussion was posted on your story %{story_title}"
+      body_html: "Hi %{user_first_name}, a new discussion has been posted on your Social Change Story '<i>%{story_title}</i>'. You may check it out by clicking on the below link."
+    notify_new_post:
+      subject: "A new post has been added on the discussion '%{title}'"
+      body_html: "Hi %{user_first_name}, a new post has been added to the discussion <strong>%{discussion_title}</strong> in the Social Change Story '<i>%{story_title}</i>'. You may check it out by clicking on the below link."
   stories:
     created: "Story was successfully created"
     updated: "Story was successfully updated"

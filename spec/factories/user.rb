@@ -17,6 +17,20 @@ FactoryBot.define do
       end
     end
 
+    factory :user_with_stories_discussions_posts do
+      transient do
+        stories_count { 2 }
+        discussions_count { 2 }
+        posts_count { 6 }
+      end
+
+      stories do
+        Array.new(stories_count) do
+          association(:story, user: instance, updater: instance, discussions: build_list(:discussion_with_posts, discussions_count, posts_count: posts_count))
+        end
+      end
+    end
+
     factory :user_with_permissions, parent: :user do
       transient do
         permissions { [] }
