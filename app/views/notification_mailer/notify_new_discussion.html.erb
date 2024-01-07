@@ -1,6 +1,10 @@
 <p>
-  <%= t('.body_html', user_first_name: @user.name.split(' ').first, discussion_title: @discussion.title, story_title: @story.title) %>
+  <%= t('.body_html', user_first_name: @user.name.split(' ').first, story_title: @story.title) %>
 </p>
+<div class="post_body">
+  <p><strong><%= @discussion.title %></strong></p>
+  <%= sanitize @discussion.description %>
+</div>
 <p>
   <%= link_to @discussion.title, story_discussion_url(@story, @discussion) %>
 </p>

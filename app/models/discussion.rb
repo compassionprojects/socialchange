@@ -30,6 +30,10 @@ class Discussion < ApplicationRecord
     posts.undiscard_all
   end
 
+  def participants
+    User.joins(:posts).merge(Post.kept.where(discussion_id: id)).distinct
+  end
+
   private
 
   def notify

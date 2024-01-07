@@ -8,6 +8,6 @@
 
 require "factory_bot_rails"
 
-5.times do |i|
-  FactoryBot.create(:user_with_stories, stories_count: 3, name: "User #{i}")
+2.times do |i|
+  FactoryBot.create(:user_with_stories_discussions_posts, name: "User #{i}")
 end

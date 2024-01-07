@@ -27,7 +27,7 @@ describe Discussion do
     end
   end
 
-  describe "discard" do
+  describe "#discard" do
     let(:discussion) { create(:discussion) }
 
     it "discards all associated records" do
@@ -41,6 +41,17 @@ describe Discussion do
       # Check if the records are discarded after .discard
       expect(discussion.discarded_at).not_to be_nil
       expect(Post.kept).to be_empty
+    end
+  end
+
+  describe "#participants" do
+    let(:discussion) { create(:discussion) }
+
+    it "lists all people who have participated on the discussion" do
+      posts = create_list(:post, 3, discussion:)
+      posts.first.discard # remove a post
+      # since we removed one, that post participant should be excluded
+      expect(discussion.participants.count).to eql(2)
     end
   end
 

@@ -7,4 +7,8 @@ class NotificationPreview < ActionMailer::Preview
   def notify_new_discussion
     NotificationMailer.with(recipient: User.first, discussion: Discussion.first, story: Story.first).notify_new_discussion
   end
+
+  def notify_new_post
+    NotificationMailer.with(recipient: User.first, discussion: Discussion.first, story: Story.first, post: Post.first).notify_new_post
+  end
 end
