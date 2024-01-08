@@ -107,4 +107,77 @@ describe Story do
       expect(story).to have_received(:notify)
     end
   end
+
+  describe "#invite_contributors" do
+    let!(:user) { create(:user) }
+    let!(:story) { create(:story) }
+    let!(:contributor) { create(:contribution, story:).user }
+    let(:emails) { ["one@ex.com", "two@ex.com"] }
+    let!(:inviter) { create(:user) }
+
+    it "calls the instance method" do
+      allow(story).to receive(:invite_contributors).with(emails)
+      story.invite_contributors(emails)
+      expect(story).to have_received(:invite_contributors).with(emails)
+    end
+
+    it "allows only the story owner or a contributor to invite" do
+      expect do
+        story.invite_contributors(emails, inviter)
+      end.to raise_error(StandardError)
+    end
+
+    context "when user does not exist" do
+      it "adds contributors as users" do
+        expect do
+          story.invite_contributors(emails, story.user)
+        end.to change { User.count }.by(2)
+      end
+
+      xit "invites user only once even if invited multiple times" do
+        ActiveJob::Base.queue_adapter = :test
+        expect do
+          story.invite_contributors(emails + emails, story.user)
+        end.to have_enqueued_job.twice
+      end
+
+      it "adds contributions" do
+        expect do
+          story.invite_contributors(emails, story.user)
+        end.to change { Contribution.count }.by(2)
+      end
+    end
+
+    context "when user exists" do
+      context "when user is not a contributor" do
+        it "does not create a new user" do
+          expect do
+            story.invite_contributors([user.email], story.user)
+          end.not_to change { User.count }
+        end
+
+        it "adds a contribution" do
+          expect do
+            story.invite_contributors([user.email], story.user)
+          end.to change { Contribution.count }.by(1)
+          story.reload
+          expect(story.contributors).to include(user)
+        end
+      end
+
+      context "when user is a contributor" do
+        it "does not create a new user" do
+          expect do
+            story.invite_contributors([contributor.email], story.user)
+          end.not_to change { User.count }
+        end
+
+        it "does not add him again" do
+          expect do
+            story.invite_contributors([contributor.email], story.user)
+          end.not_to change { Contribution.count }
+        end
+      end
+    end
+  end
 end

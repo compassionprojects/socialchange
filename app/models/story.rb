@@ -10,6 +10,9 @@ class Story < ApplicationRecord
   has_many :story_updates, -> { kept.order(created_at: :asc) }, dependent: :destroy, inverse_of: :story
   has_many :discussions, dependent: :destroy # @todo: add inverse_of and default order
   has_many_attached :documents
+  has_many :contributions, dependent: :destroy
+  has_many :contributors, through: :contributions, source: :user
+
   has_noticed_notifications
 
   after_create_commit :notify
@@ -51,6 +54,41 @@ class Story < ApplicationRecord
 
     c = ISO3166::Country[country]
     c.translations[I18n.locale.to_s] || c.common_name || c.iso_short_name
+  end
+
+  # Invite contributors to the story
+  # @param [Array<String>] emails
+  # @param [User] inviter
+  # - Skip if user is already a contributor, inviter, or the story owner
+  # - If the user is not confirmed, re-invite him
+  # - If the user doesn't exist, create him with invitation and skip invitation email (let contribution hooks send the email)
+  # - Add the user as a contributor if they are not already
+  # - Make sure inviter is a contributor or the story owner
+
+  def invite_contributors(emails, inviter = nil)
+    # Make sure inviter is a contributor or the story owner
+    raise StandardError, "Inviter must be a contributor or the owner of the story" if inviter && !contributed?(inviter) && inviter != user
+    emails.uniq.each do |email|
+      user = User.find_by(email:)
+
+      # Skip if the user is already a contributor, the inviter, or the story owner
+      next if (user&.confirmed? && contributed?(user)) || user == inviter || user == self.user
+
+      # If the user is not confirmed, re-invite them
+      if user
+        user.invite! unless user.confirmed?
+      else
+        # If the user doesn't exist, invite them
+        user = User.invite!({email:}, inviter) { |u| u.skip_invitation = true }
+      end
+
+      # Add the user as a contributor if they are not already
+      contributions.create(user:) unless contributed?(user)
+    end
+  end
+
+  def contributed?(user)
+    contributors.any? { |u| u.id == user.id }
   end
 
   private

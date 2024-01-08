@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_02_141608) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_08_152053) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -41,6 +41,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_141608) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "contributions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "story_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_contributions_on_story_id"
+    t.index ["user_id", "story_id"], name: "index_contributions_on_user_id_and_story_id", unique: true
+    t.index ["user_id"], name: "index_contributions_on_user_id"
   end
 
   create_table "discussions", force: :cascade do |t|
@@ -204,6 +214,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_141608) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "contributions", "stories"
+  add_foreign_key "contributions", "users"
   add_foreign_key "discussions", "stories"
   add_foreign_key "discussions", "users"
   add_foreign_key "discussions", "users", column: "updater_id"
