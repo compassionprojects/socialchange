@@ -35,7 +35,7 @@ gem "bootsnap", require: false
 gem "pundit", "~> 2.2"
 
 # Admin
-gem "administrate", "~> 0.18.0"
+gem "administrate", "~> 0.19.0"
 
 # Translatable content
 gem "mobility", "~> 1.2"
