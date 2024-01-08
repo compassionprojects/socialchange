@@ -91,4 +91,16 @@ describe User do
       expect(Post.kept.where(user:)).to be_empty
     end
   end
+
+  describe "#with_notify_new_story_preference" do
+    it "only fetches users with preference turned on" do
+      # create a few users with a preference
+      users = create_list(:user, 3) do |user|
+        create(:preference, user:, notify_new_story: true)
+      end
+      # remove one user
+      users.first.discard
+      expect(described_class.with_notify_new_story_preference.count).to eql(2)
+    end
+  end
 end

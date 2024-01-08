@@ -35,7 +35,7 @@ class User < ApplicationRecord
   end
 
   scope :with_notify_new_story_preference, -> {
-    joins(:preference).where(preferences: {notify_new_story: true})
+    joins(:preference).kept.where(preferences: {notify_new_story: true})
   }
 
   def language=(u)
