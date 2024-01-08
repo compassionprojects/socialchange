@@ -45,4 +45,21 @@ class NotificationMailer < ApplicationMailer
       )
     end
   end
+
+  def invite_contributor
+    @user = params[:recipient]
+    @story = params[:story]
+
+    unless @user.confirmed?
+      @user.invitation_sent_at = Time.zone.now
+      @token, enc = Devise.token_generator.generate(User, :invitation_token)
+      @user.invitation_token = enc
+      @user.save(validate: false)
+    end
+
+    mail(
+      to: @user.email,
+      subject: t(".subject", title: @story.title)
+    )
+  end
 end

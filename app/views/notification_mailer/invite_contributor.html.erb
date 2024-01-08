@@ -1,0 +1,10 @@
+<p>
+  <%= t(@user.confirmed? ? '.body_confirmed_html' : '.body_invite_html', story_title: @story.title) %>
+</p>
+<p>
+  <% unless @user.confirmed? %>
+    <%= link_to t('devise.mailer.invitation_instructions.accept'), accept_user_invitation_url(invitation_token: @token) %>
+  <% else %>
+    <%= link_to @story.title, story_url(@story) %>
+  <% end %>
+</p>

@@ -49,6 +49,8 @@ nl:
       message: "A new discussion was added %{title} on your Social Change story '%{story_title}'"
     new_post_notification:
       message: "A new post was added on the discussion '%{discussion_title}'"
+    invite_contributor_notification:
+      message: "You have been added as a contributor to '%{story_title}'"
   notification_mailer:
     notify_new_story:
       subject: "A new NVC Social Change Story '%{title}' was published"
@@ -59,6 +61,10 @@ nl:
     notify_new_post:
       subject: "A new post has been added on the discussion '%{title}'"
       body_html: "Hi %{user_first_name}, a new post has been added to the discussion <strong>%{discussion_title}</strong> in the Social Change Story '<i>%{story_title}</i>'. You may check it out by clicking on the below link."
+    invite_contributor:
+      subject: "You have been added as a contributor to a Social Change Story '%{title}'"
+      body_invite_html: "Hi, you have been added as a contributor to NVC Social Change story <strong>%{story_title}</strong>. Please accept the invite by clicking on the below link and making an account."
+      body_confirmed_html: "Hi, you have been added as a contributor to NVC Social Change story <strong>%{story_title}</strong>. You can now access the story by clicking on the below link."
   stories:
     created: "Story was successfully created"
     updated: "Story was successfully updated"
