@@ -19,6 +19,8 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable,
     :confirmable, :trackable, :lockable
 
+  after_invitation_accepted :create_default_preference
+
   validates :name, presence: true
   validates :language, inclusion: {in: I18n.available_locales.map(&:to_s)}, allow_nil: true
 
