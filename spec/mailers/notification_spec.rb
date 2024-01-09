@@ -28,4 +28,18 @@ describe NotificationMailer, type: :mailer do
     let(:mail) { described_class.with(recipient: user, discussion: discussion, story: story, post: post).notify_new_post }
     include_examples "a notification email", "A new post", "notify_new_post"
   end
+
+  describe "#invite_contributor" do
+    let(:user) { create(:user) }
+    let(:story) { create(:story, title: "Test Story") }
+    let(:mail) { described_class.with(recipient: user, story: story).invite_contributor }
+
+    it "sends an email to the user with the correct subject" do
+      expect(mail.subject).to include("You have been added as a contributor")
+    end
+
+    it "sends the email to the correct recipient" do
+      expect(mail.to).to eq([user.email])
+    end
+  end
 end
