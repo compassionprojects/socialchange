@@ -93,6 +93,7 @@ nl:
       num_story_updates: "%{count} story updates"
       translations_available_in_html: "Beschikbare vertalingen in %{languages}"
       translations_missing_for_html: "Dit verhaal is niet vertaald in %{languages}"
+      contributors: "Contributors"
   story_updates:
     new:
       title: "New Story Update"

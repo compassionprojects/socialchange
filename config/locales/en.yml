@@ -93,6 +93,7 @@ en:
       num_story_updates: "%{count} story updates"
       translations_available_in_html: "Translations available in %{languages}"
       translations_missing_for_html: "This story hasn't been translated to %{languages}"
+      contributors: "Contributors"
   story_updates:
     new:
       title: "New story update"
