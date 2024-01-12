@@ -91,6 +91,10 @@ class Story < ApplicationRecord
     contributors.any? { |u| u.id == user.id }
   end
 
+  def confirmed_contributors
+    contributors.filter { |u| u.confirmed? }
+  end
+
   private
 
   def notify
