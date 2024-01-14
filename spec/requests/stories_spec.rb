@@ -107,6 +107,61 @@ describe "/stories", type: :request do
       end
     end
 
+    describe "POST /stories/:story_id/contributions" do
+      let(:story) { create(:story, user:) }
+
+      it "invites the contributors" do
+        expect do
+          post story_contributions_url(story), params: {emails: ["email1@example.com", "email2@example.com"]}
+        end.to change(Contribution, :count).by(2)
+      end
+
+      context "when user does not own the story" do
+        let(:story) { create(:story) } # user who is creating this story is not the logged in user
+
+        it "redirects the user to home page" do
+          post story_contributions_url(story), params: {emails: ["email1@example.com", "email2@example.com"]}
+          expect(response).to redirect_to(root_url)
+        end
+
+        it "does not create any contributions" do
+          expect do
+            post story_contributions_url(story), params: {emails: ["email1@example.com", "email2@example.com"]}
+          end.to change(Contribution, :count).by(0)
+        end
+      end
+    end
+
+    describe "DELETE /stories/:story_id/contributions/:id" do
+      let(:story) { create(:story, user:) }
+
+      it "removes the contributors" do
+        story.invite_contributors(["email1@example.com", "email2@example.com"], user)
+        expect do
+          delete story_contribution_url(story, Contribution.last)
+        end.to change(Contribution, :count).by(-1)
+      end
+
+      context "when user is not a creator or collaborator" do
+        let(:story) { create(:story) } # user who is creating this story is not the logged in user
+
+        before do
+          story.invite_contributors(["email1@example.com", "email2@example.com"], story.user)
+        end
+
+        it "redirects the user to home page" do
+          delete story_contribution_url(story, Contribution.last)
+          expect(response).to redirect_to(root_url)
+        end
+
+        it "does not remove any contributors" do
+          expect do
+            delete story_contribution_url(story, Contribution.last)
+          end.to change(Contribution, :count).by(0)
+        end
+      end
+    end
+
     describe "DELETE /destroy" do
       it "destroys the requested story" do
         story = create(:story, user:)
