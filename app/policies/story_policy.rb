@@ -33,7 +33,8 @@ class StoryPolicy < ApplicationPolicy
     "stories"
   end
 
+  # for now assume all contributors have the same permissions as the owner
   def owns_resource?
-    user.id == record.user.id
+    user.id == record.user.id || record.contributed?(user)
   end
 end
