@@ -50,16 +50,12 @@
           <%= link_to t(".new_story_update"), new_story_update_path(story),
             :class => "btn btn-sm btn-outline-primary", data: { turbo_frame: "modal" } if can_add_story_update?(story) %>
         </h2>
-        <% if story.story_updates.length > 0 %>
-          <%= turbo_frame_tag :story_updates do %>
-            <% story.story_updates.each_with_index do |story_update, idx| %>
-              <%= turbo_frame_tag dom_id(story_update) do %>
-                <%= render "story_updates/list_item", story_update:, border_top: idx != 0 %>
-              <% end %>
+        <%= turbo_frame_tag :story_updates do %>
+          <% story.story_updates.each_with_index do |story_update, idx| %>
+            <%= turbo_frame_tag dom_id(story_update) do %>
+              <%= render "story_updates/list_item", story_update:, border_top: idx != 0 %>
             <% end %>
           <% end %>
-        <% else %>
-          <i class="text-muted"><%= t(".no_story_updates") %></i>
         <% end %>
       </section>
     </div>
