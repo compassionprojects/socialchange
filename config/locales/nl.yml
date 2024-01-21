@@ -94,6 +94,11 @@ nl:
       translations_available_in_html: "Beschikbare vertalingen in %{languages}"
       translations_missing_for_html: "Dit verhaal is niet vertaald in %{languages}"
       contributors: "Contributors"
+  contributions:
+    create:
+      created: "Contributor was successfully added"
+    destroy:
+      removed: "Contributor was successfully removed"
   story_updates:
     new:
       title: "New Story Update"

@@ -11,7 +11,7 @@ class ContributionsController < ApplicationController
 
     @story.invite_contributors(params[:emails], current_user)
     respond_to do |format|
-      format.html { redirect_to story_url(@story), notice: I18n.t("stories.contributors_invited") }
+      format.html { redirect_to story_url(@story), notice: I18n.t(".created") }
       format.json { head :no_content }
     end
   end
@@ -22,7 +22,7 @@ class ContributionsController < ApplicationController
 
     @contribution.destroy
     respond_to do |format|
-      format.html { redirect_to story_url(@story), notice: I18n.t("stories.contributor_removed") }
+      format.html { redirect_to story_url(@story), notice: I18n.t(".removed") }
       format.json { head :no_content }
     end
   end
