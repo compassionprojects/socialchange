@@ -64,7 +64,7 @@ class Story < ApplicationRecord
   # - If the user doesn't exist, create him with invitation and skip invitation email (let contribution hooks send the email)
   # - Add the user as a contributor if they are not already
   # - Make sure inviter is a contributor or the story owner
-
+  # @todo add contributor limit
   def invite_contributors(emails, inviter = nil)
     # Make sure inviter is a contributor or the story owner
     raise StandardError, "Inviter must be a contributor or the owner of the story" if inviter && !contributed?(inviter) && inviter != user

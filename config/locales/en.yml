@@ -94,6 +94,11 @@ en:
       translations_available_in_html: "Translations available in %{languages}"
       translations_missing_for_html: "This story hasn't been translated to %{languages}"
       contributors: "Contributors"
+  contributions:
+    create:
+      created: "Contributor was successfully added"
+    destroy:
+      removed: "Contributor was successfully removed"
   story_updates:
     new:
       title: "New story update"
