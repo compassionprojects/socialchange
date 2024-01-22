@@ -5,6 +5,8 @@ class Story < ApplicationRecord
   include Discard::Model
   include Translatable
 
+  MAX_CONTRIBUTORS = 4
+
   belongs_to :user
   belongs_to :updater, class_name: "User"
   has_many :story_updates, -> { kept.order(created_at: :asc) }, dependent: :destroy, inverse_of: :story
@@ -65,10 +67,14 @@ class Story < ApplicationRecord
   # - Add the user as a contributor if they are not already
   # - Make sure inviter is a contributor or the story owner
   # @todo add contributor limit
+  #
   def invite_contributors(emails, inviter = nil)
     # Make sure inviter is a contributor or the story owner
     raise StandardError, "Inviter must be a contributor or the owner of the story" if inviter && !contributed?(inviter) && inviter != user
-    emails.uniq.each do |email|
+    # Validate emails
+    # And add limit
+    limit = MAX_CONTRIBUTORS - contributors.length
+    emails.uniq.map(&:strip).select { |e| e =~ Devise.email_regexp }.take(limit).each do |email|
       user = User.find_by(email:)
 
       # Skip if the user is already a contributor, the inviter, or the story owner

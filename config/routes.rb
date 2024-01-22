@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   scope "(:lang)", lang: /#{I18n.available_locales.join('|')}/ do
     resources :stories do
-      resources :contributions, only: %i[create destroy]
+      resources :contributions, only: %i[new create destroy]
       collection do
         match "search" => "stories#search", :via => %i[get post], :as => :search
         match "remove_documents/:id" => "stories#remove_documents", :via => [:delete], :as => :remove_documents

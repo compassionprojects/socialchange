@@ -1,0 +1,3 @@
+<% if current_user&.id == user.id %>
+  <span class="text-body-tertiary">(<%= t('users.you') %>)</span>
+<% end %>

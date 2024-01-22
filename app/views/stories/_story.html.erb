@@ -89,12 +89,17 @@
       <% end %>
       <div class="my-4">
         <h5><strong><%= t('.contributors') %></strong></h5>
-        <ul class="list-unstyled">
-          <li><%= story.user.name %></li>
-          <% story.confirmed_contributors.each do |contributor| %>
-            <li><%= contributor.name %></li>
-          <% end %>
-        </ul>
+        <div>
+          <%= story.user.name %>
+          <%= render "users/you", user: story.user %>
+        </div>
+        <%= turbo_frame_tag :story_contributors do %>
+          <%= render "contributors", story:  %>
+        <% end %>
+        <% # @todo the below link should disappear once the user reaches max contrib limit : turbo_stream %>
+        <% if can_edit?(story) && story.contributors.length < Story::MAX_CONTRIBUTORS %>
+          <%= link_to t('.invite_contributors'), new_story_contribution_path(story), data: { turbo_frame: "modal" } %>
+        <% end %>
       </div>
     </div>
   </div>

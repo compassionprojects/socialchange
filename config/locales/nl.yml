@@ -31,6 +31,7 @@ nl:
     invite: "Uitnodigen"
     preferences: "Preferences"
     notifications: "Notifications"
+    you: "you"
   preferences:
     updated: "Voorkeuren bijgewerkt"
     index:
@@ -94,7 +95,18 @@ nl:
       translations_available_in_html: "Beschikbare vertalingen in %{languages}"
       translations_missing_for_html: "Dit verhaal is niet vertaald in %{languages}"
       contributors: "Contributors"
+      invite_contributors: "Invite contributors"
+    contributors:
+      invited: "Invited"
   contributions:
+    new:
+      title: "Invite contributors"
+      emails: "Email addresses"
+      invite_contributors: "Invite contributors"
+    form:
+      invite: "Invite"
+      help_html: "Separate email addresses with a comma. For example: one@domain.com, two@domain.com. <br> You can invite a maximum of %{count} contributors"
+      placeholder: "one@domain.com, two@domain.com"
     create:
       created: "Contributor was successfully added"
     destroy:
