@@ -66,15 +66,16 @@ class Story < ApplicationRecord
   # - If the user doesn't exist, create him with invitation and skip invitation email (let contribution hooks send the email)
   # - Add the user as a contributor if they are not already
   # - Make sure inviter is a contributor or the story owner
-  # @todo add contributor limit
   #
   def invite_contributors(emails, inviter = nil)
     # Make sure inviter is a contributor or the story owner
+    # @todo use policy
     raise StandardError, "Inviter must be a contributor or the owner of the story" if inviter && !contributed?(inviter) && inviter != user
+
     # Validate emails
     # And add limit
     limit = MAX_CONTRIBUTORS - contributors.length
-    emails.uniq.map(&:strip).select { |e| e =~ Devise.email_regexp }.take(limit).each do |email|
+    emails.map(&:strip).uniq.select { |e| e =~ Devise.email_regexp }.take(limit).each do |email|
       user = User.find_by(email:)
 
       # Skip if the user is already a contributor, the inviter, or the story owner
