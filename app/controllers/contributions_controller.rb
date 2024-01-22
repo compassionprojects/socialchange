@@ -23,7 +23,7 @@ class ContributionsController < ApplicationController
         render turbo_stream: turbo_stream.replace(:story_contributors, partial: "stories/contributors",
           locals: {story: @story})
       end
-      format.html { redirect_to story_url(@story), notice: I18n.t(".invited") }
+      format.html { redirect_to story_url(@story), notice: t(".invited") }
       format.json { head :no_content }
     end
   end
@@ -34,7 +34,10 @@ class ContributionsController < ApplicationController
 
     @contribution.destroy
     respond_to do |format|
-      format.html { redirect_to story_url(@story), notice: I18n.t(".removed") }
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.remove(helpers.dom_id(@contribution))
+      end
+      format.html { redirect_to story_url(@story), notice: t(".removed") }
       format.json { head :no_content }
     end
   end

@@ -1,12 +1,20 @@
-<% story.contributors.each do |contributor| %>
-  <%= turbo_frame_tag dom_id(contributor) do %>
-    <% if contributor.confirmed? %>
+<% story.contributions.each do |c| %>
+  <%= turbo_frame_tag dom_id(c) do %>
+    <div class="d-flex align-items-center gap-2">
       <div>
-        <%= contributor.name %>
-        <%= render "users/you", user: contributor %>
+        <% if c.user.confirmed? %>
+          <%= c.user.name %>
+          <%= render "users/you", user: c.user %>
+        <% elsif can_edit?(story) %>
+          <span class="text-body-tertiary"><%= c.user.email %> (<%= t('.invited') %>)</span>
+        <% end %>
       </div>
-    <% elsif can_edit?(story) %>
-      <div class="text-body-tertiary"><%= contributor.email %> (<%= t('.invited') %>)</div>
-    <% end %>
+
+      <% if can_edit?(story) %>
+        <%= link_to story_contribution_path(story, c), method: :delete, data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } do %>
+          <i class="bi bi-x-circle text-danger"></i>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
