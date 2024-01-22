@@ -112,21 +112,27 @@ describe "/stories", type: :request do
 
       it "invites the contributors" do
         expect do
-          post story_contributions_url(story), params: {emails: ["email1@example.com", "email2@example.com"]}
+          post story_contributions_url(story), params: {contribution: {emails: "email1@example.com, email2@example.com"}}
         end.to change(Contribution, :count).by(2)
+      end
+
+      it "only invites valid email addresses" do
+        expect do
+          post story_contributions_url(story), params: {contribution: {emails: "one@example.com, 12345"}}
+        end.to change(Contribution, :count).by(1)
       end
 
       context "when user does not own the story" do
         let(:story) { create(:story) } # user who is creating this story is not the logged in user
 
         it "redirects the user to home page" do
-          post story_contributions_url(story), params: {emails: ["email1@example.com", "email2@example.com"]}
+          post story_contributions_url(story), params: {contribution: {emails: "email1@example.com, email2@example.com"}}
           expect(response).to redirect_to(root_url)
         end
 
         it "does not create any contributions" do
           expect do
-            post story_contributions_url(story), params: {emails: ["email1@example.com", "email2@example.com"]}
+            post story_contributions_url(story), params: {contribution: {emails: "email1@example.com, email2@example.com"}}
           end.to change(Contribution, :count).by(0)
         end
       end

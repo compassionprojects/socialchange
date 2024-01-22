@@ -127,6 +127,19 @@ describe Story do
       end.to raise_error(StandardError)
     end
 
+    it "skips invalid emails" do
+      expect do
+        story.invite_contributors(emails + ["abcde", "12345"], story.user)
+      end.to change { User.count }.by(2)
+    end
+
+    it "limits contributors to a maximum of " + Story::MAX_CONTRIBUTORS.to_s do
+      story = create(:story)
+      expect do
+        story.invite_contributors(Array.new(10) { Faker::Internet.email }, story.user)
+      end.to change { User.count }.by(Story::MAX_CONTRIBUTORS)
+    end
+
     context "when user does not exist" do
       it "adds contributors as users" do
         expect do

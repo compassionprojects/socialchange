@@ -1,0 +1,12 @@
+<% story.contributors.each do |contributor| %>
+  <%= turbo_frame_tag dom_id(contributor) do %>
+    <% if contributor.confirmed? %>
+      <div>
+        <%= contributor.name %>
+        <%= render "users/you", user: contributor %>
+      </div>
+    <% elsif can_edit?(story) %>
+      <div class="text-body-tertiary"><%= contributor.email %> (<%= t('.invited') %>)</div>
+    <% end %>
+  <% end %>
+<% end %>
