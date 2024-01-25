@@ -35,6 +35,10 @@ class StoryPolicy < ApplicationPolicy
 
   # for now assume all contributors have the same permissions as the owner
   def owns_resource?
-    user.id == record.user.id || record.contributed?(user)
+    user.id == record.user.id
+  end
+
+  def update?
+    can_manage_resource? || user.has_permission?(:update, resource) || owns_resource? || record.contributed?(user)
   end
 end
