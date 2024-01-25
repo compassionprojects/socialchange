@@ -27,7 +27,8 @@ describe StoryPolicy do
       story.reload
     end
 
-    it { is_expected.to permit_actions(%i[update edit destroy show]) }
+    it { is_expected.to permit_actions(%i[update edit]) }
+    it { is_expected.to forbid_actions(%i[destroy]) }
   end
 
   context "with stories.update permission" do
