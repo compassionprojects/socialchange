@@ -87,7 +87,7 @@
           <%= t('.translations_missing_for_html', languages: story.missing_translations.map { |x| content_tag :span, t("locales.#{x}"), class: "text-warning" }.join(", ").html_safe) %>
         </div>
       <% end %>
-      <div class="my-4">
+      <div class="my-4" data-controller="tooltip">
         <h5><strong><%= t('.contributors') %></strong></h5>
         <div>
           <%= story.user.name %>

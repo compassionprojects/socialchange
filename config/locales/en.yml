@@ -98,6 +98,7 @@ en:
       invite_contributors: "Invite contributors"
     contributors:
       invited: "Invited"
+      leave_story: "Leave story"
   contributions:
     new:
       title: "Invite contributors"
