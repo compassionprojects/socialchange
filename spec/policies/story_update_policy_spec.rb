@@ -17,6 +17,20 @@ describe StoryUpdatePolicy do
     it { is_expected.to permit_actions(%i[update edit destroy show]) }
   end
 
+  context "with contributors" do
+    let(:story) { create(:story, user:) }
+    let(:story_update) { create(:story_update, user:, story:) }
+    let(:contributor) { create(:user) }
+    subject { described_class.new(contributor, story_update) }
+
+    before do
+      story.invite_contributors([contributor.email], user)
+      story.reload
+    end
+
+    it { is_expected.to permit_actions(%i[new create update edit destroy]) }
+  end
+
   context "with story_updates.update permission" do
     let(:user) { create(:user_with_permissions, permissions: ["story_updates.update"]) }
 
