@@ -49,6 +49,6 @@ class ContributionsController < ApplicationController
   end
 
   def set_contribution
-    @contribution = Contribution.find_by(id: params[:id])
+    @contribution = @story.contributions.find(params[:id])
   end
 end
