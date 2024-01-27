@@ -90,7 +90,8 @@ nl:
     story:
       new_story_update: "New Story Update"
       no_story_updates: "There are no updates for this story yet"
-      num_attached_documents: "%{count} attached documents"
+    sidebar:
+      num_attached_documents: "%{count} attached document(s)"
       num_story_updates: "%{count} story updates"
       translations_available_in_html: "Beschikbare vertalingen in %{languages}"
       translations_missing_for_html: "Dit verhaal is niet vertaald in %{languages}"

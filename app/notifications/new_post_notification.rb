@@ -4,7 +4,7 @@
 # NewPostNotification.with(post: @post).deliver(current_user)
 
 class NewPostNotification < Noticed::Base
-  deliver_by :database
+  deliver_by :database, if: :email_notifications?
   deliver_by :email, mailer: "NotificationMailer", method: :notify_new_post, if: :email_notifications?
 
   # Add required params
