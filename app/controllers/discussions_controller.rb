@@ -43,7 +43,7 @@ class DiscussionsController < ApplicationController
 
     respond_to do |format|
       if @discussion.update(**permitted_attributes(@discussion), updater: current_user)
-        format.html { redirect_to story_discussion_url(@discussion.story, @discussion), notice: I18n.t("discussions.updated") }
+        format.html { redirect_to story_discussion_url(@discussion.story, @discussion) }
         format.json { render :show, status: :ok, location: @discussion }
       else
         format.html { render :edit, status: :unprocessable_entity }
