@@ -60,47 +60,7 @@
       </section>
     </div>
     <div class="col-lg-3 mt-lg-0 mt-3">
-      <div class="my-2 d-flex align-items-center">
-        <i class="bi bi-geo-alt"></i>
-        <span class="mx-2"><%= story.country_name %></span>
-      </div>
-      <% if story.documents.attached? %>
-        <div class="my-2 d-flex align-items-center">
-          <i class="bi bi-paperclip"></i>
-          <span class="mx-2"><%= t('.num_attached_documents', count: story.documents.length) %></span>
-        </div>
-      <% end %>
-      <% if story.story_updates.length > 0 %>
-        <div class="my-2 d-flex align-items-center">
-          <i class="bi bi-megaphone"></i>
-          <span class="mx-2"><%= t('.num_story_updates', count: story.story_updates.length) %></span>
-        </div>
-      <% end %>
-      <div class="my-2 d-flex align-items-start">
-        <i class="bi bi-translate"></i>
-        <span class="mx-2">
-          <%= t(".translations_available_in_html", languages: story.translated_in.map { |x| link_to t("locales.#{x}"), story_path(story, lang: x), class: "text-success" }.join(", ").html_safe) %>
-        </span>
-      </div>
-      <% if story.missing_translations.length > 0 && can_edit?(story) %>
-        <div class="border border-warning my-lg-5 mt-4 rounded p-3">
-          <%= t('.translations_missing_for_html', languages: story.missing_translations.map { |x| content_tag :span, t("locales.#{x}"), class: "text-warning" }.join(", ").html_safe) %>
-        </div>
-      <% end %>
-      <div class="my-4" data-controller="tooltip">
-        <h5><strong><%= t('.contributors') %></strong></h5>
-        <div>
-          <%= story.user.name %>
-          <%= render "users/you", user: story.user %>
-        </div>
-        <%= turbo_frame_tag :story_contributors do %>
-          <%= render "contributors", story:  %>
-        <% end %>
-        <% # @todo the below link should disappear once the user reaches max contrib limit : turbo_stream %>
-        <% if can_edit?(story) && story.contributors.length < Story::MAX_CONTRIBUTORS %>
-          <%= link_to t('.invite_contributors'), new_story_contribution_path(story), data: { turbo_frame: "modal" } %>
-        <% end %>
-      </div>
+      <%= render "sidebar", story:  %>
     </div>
   </div>
 </div>
