@@ -52,9 +52,7 @@
         </h2>
         <%= turbo_frame_tag :story_updates do %>
           <% story.story_updates.each_with_index do |story_update, idx| %>
-            <%= turbo_frame_tag dom_id(story_update) do %>
-              <%= render "story_updates/list_item", story_update:, border_top: idx != 0 %>
-            <% end %>
+            <%= render "story_updates/list_item", story_update:, border_top: idx != 0 %>
           <% end %>
         <% end %>
       </section>

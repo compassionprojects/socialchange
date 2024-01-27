@@ -26,9 +26,7 @@
       <div id="posts">
         <%= turbo_frame_tag :posts do %>
           <% @posts.each_with_index do |post, index| %>
-            <%= turbo_frame_tag dom_id(post) do %>
-              <%= render "posts/list_item", post:, index:, border_top: true %>
-            <% end %>
+            <%= render "posts/list_item", post:, index:, border_top: true %>
           <% end %>
         <% end %>
       </div>
