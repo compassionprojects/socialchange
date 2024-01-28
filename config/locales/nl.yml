@@ -188,6 +188,7 @@ nl:
       forum: "Forum"
       donate: "Doneer"
       github: "GitHub"
+      site_usage: "Site usage"
       opencollective: "Open Collective"
   pagination:
     first: "&laquo; Eerste"

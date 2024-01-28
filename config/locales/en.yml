@@ -186,6 +186,7 @@ en:
       forum: "Forum"
       donate: "Donate"
       github: "GitHub"
+      site_usage: "Site usage"
       opencollective: "Open Collective"
   pagination:
     first: "&laquo; First"
