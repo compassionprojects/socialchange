@@ -65,5 +65,11 @@ The app is deployed to [fly.io](https://fly.io).
 To deploy:
 
 ```sh
-fly deploy --build-secret SECRET_KEY_BASE=secret_value
+fly deploy
 ```
+
+and the production branch is automatically deployed to fly.
+
+## Analytics
+
+We are using umami.is service for measuring traffic and usage of the website.
