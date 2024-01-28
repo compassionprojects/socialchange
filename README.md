@@ -72,4 +72,4 @@ and the production branch is automatically deployed to fly.
 
 ## Analytics
 
-We are using umami.is service for measuring traffic and usage of the website.
+We are using umami.is service for measuring traffic and usage of the website. You can view the usage [here](https://analytics.eu.umami.is/share/mySj64rsFfYO3Y0p/socialchange)
