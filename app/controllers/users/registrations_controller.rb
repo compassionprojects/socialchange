@@ -1,5 +1,7 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    invisible_captcha only: [:create], scope: :user, honeypot: :dummie_hpot_field
+
     def update
       authorize resource
       super

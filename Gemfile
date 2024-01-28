@@ -110,3 +110,5 @@ gem "dockerfile-rails", ">= 1.5", group: :development
 
 gem "bugsnag", "~> 6.26"
 gem "noticed", "~> 1.6"
+
+gem "invisible_captcha", "~> 2.1"

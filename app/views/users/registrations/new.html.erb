@@ -28,6 +28,8 @@
     <%= f.password_field :password_confirmation, :class => "form-control" %>
   </div>
 
+  <%= f.invisible_captcha :dummie_hpot_field %>
+
   <div class="actions">
     <%= f.submit t('users.signup'), :class => "btn btn-primary", data: { turbo: "false" } %>
   </div>
