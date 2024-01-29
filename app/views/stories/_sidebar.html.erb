@@ -30,7 +30,7 @@
   </div>
 <% end %>
 
-<div class="my-4" data-controller="tooltip">
+<div class="my-4" data-controller="contributors">
   <h5><strong><%= t('.contributors') %></strong></h5>
   <div>
     <%= story.user.name %>
@@ -39,8 +39,7 @@
   <%= turbo_frame_tag :story_contributors do %>
     <%= render "contributors", story:  %>
   <% end %>
-  <% # @todo the below link should disappear once the user reaches max contrib limit : turbo_stream %>
-  <% if can_edit?(story) && story.contributors.length < Story::MAX_CONTRIBUTORS %>
-    <%= link_to t('.invite_contributors'), new_story_contribution_path(story), data: { turbo_frame: "modal" } %>
+  <%= turbo_frame_tag :invite_contributors do %>
+    <%= render "invite_contributors", story:  %>
   <% end %>
 </div>

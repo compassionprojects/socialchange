@@ -70,7 +70,7 @@ class Story < ApplicationRecord
   def invite_contributors(emails, inviter = nil)
     # Make sure inviter is a contributor or the story owner
     # @todo use policy
-    raise StandardError, "Inviter must be a contributor or the owner of the story" if inviter && !contributed?(inviter) && inviter != user
+    raise StandardError, "Inviter must be a contributor or the owner of the story" if !invitable?(inviter)
 
     # Validate emails
     # And add limit
@@ -92,6 +92,10 @@ class Story < ApplicationRecord
       # Add the user as a contributor if they are not already
       contributions.create(user:) unless contributed?(user)
     end
+  end
+
+  def invitable?(inviter)
+    inviter && (contributed?(inviter) || inviter == user) && contributors.length < MAX_CONTRIBUTORS
   end
 
   def contributed?(user)
