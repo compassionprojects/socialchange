@@ -22,7 +22,7 @@ class StoriesController < ApplicationController
     end
 
     @q = policy_scope(Story).includes(:user).ransack(params[:q])
-    @stories = @q.result(distinct: true).page(params[:page])
+    @stories = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def search
