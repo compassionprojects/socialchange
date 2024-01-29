@@ -13,4 +13,3 @@
     <%= link_to t(".discussions"), story_discussions_path(story), class: class_names('nav-link', { active: current_page?(story_discussions_path(story)) || (@discussion && current_page?(story_discussion_path(story, @discussion))) }) %>
   </li>
 </ul>
-
