@@ -38,10 +38,10 @@
       <%= render "users/you", user: story.user %>
     </div>
     <%= turbo_frame_tag :story_contributors do %>
-      <%= render "contributors", story:  %>
+      <%= render "stories/contributors", story:  %>
     <% end %>
     <%= turbo_frame_tag :invite_contributors do %>
-      <%= render "invite_contributors", story:  %>
+      <%= render "stories/invite_contributors", story:  %>
     <% end %>
   </div>
 </div>
