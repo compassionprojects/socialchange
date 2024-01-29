@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby File.read(".ruby-version").strip
 
 # Rails specific
-gem "pg", "~> 1.1"                # Use postgresql as the database for Active Record
+gem "pg", "~> 1.5"                # Use postgresql as the database for Active Record
 gem "puma", "~> 6.4"              # Use the Puma web server [https://github.com/puma/puma]
 gem "rails", "~> 7.1.2"
 gem "sprockets-rails"             # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
