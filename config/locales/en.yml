@@ -96,6 +96,9 @@ en:
       translations_available_in_html: "Translations available in %{languages}"
       translations_missing_for_html: "This story hasn't been translated to %{languages}"
       contributors: "Contributors"
+    nav:
+      story: "Story"
+      discussions: "Discussions"
     invite_contributors:
       invite_contributors: "Invite contributors"
     contributors:

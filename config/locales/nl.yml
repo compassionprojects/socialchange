@@ -96,6 +96,9 @@ nl:
       translations_available_in_html: "Beschikbare vertalingen in %{languages}"
       translations_missing_for_html: "Dit verhaal is niet vertaald in %{languages}"
       contributors: "Contributors"
+    nav:
+      story: "Story"
+      discussions: "Discussions"
     invite_contributors:
       invite_contributors: "Invite contributors"
     contributors:
