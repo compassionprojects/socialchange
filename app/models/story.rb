@@ -19,9 +19,6 @@ class Story < ApplicationRecord
 
   after_create_commit :notify
 
-  # @todo: remove status
-  enum :status, %i[draft published]
-
   translates :title, :description, :outcomes, :source
 
   validates :title, :description, :country, presence: true
