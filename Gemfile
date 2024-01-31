@@ -22,7 +22,7 @@ gem "turbo-rails"                 # Hotwire's SPA-like page accelerator [https:/
 gem "devise", "~> 4.9"
 gem "devise_invitable", "~> 2.0"
 gem "responders", "~> 3.1.0"
-gem "devise-i18n", "~> 1.10"
+gem "devise-i18n", "~> 1.12"
 gem "invisible_captcha", "~> 2.1"
 
 # Locales
