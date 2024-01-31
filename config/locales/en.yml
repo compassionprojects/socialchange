@@ -61,7 +61,7 @@ en:
       body_html: "Hi %{user_first_name}, a new discussion has been posted on your Social Change Story '<i>%{story_title}</i>'. You may check it out by clicking on the below link."
     notify_new_post:
       subject: "A new post has been added on the discussion '%{title}'"
-      body_html: "Hi %{user_first_name}, a new post has been added to the discussion <strong>%{discussion_title}</strong> in the Social Change Story '<i>%{story_title}</i>'. You may check it out by clicking on the below link."
+      body_html: "Hi %{user_first_name}, a new post has been added in the Social Change Story '<i>%{story_title}</i>' under the discussion <strong>%{discussion_title}</strong>. You may check it out by clicking on the below link."
     invite_contributor:
       subject: "You have been added as a contributor to a Social Change Story '%{title}'"
       body_invite_html: "Hi, you have been added as a contributor to NVC Social Change story <strong>%{story_title}</strong>. Please accept the invite by clicking on the below link and making an account."
