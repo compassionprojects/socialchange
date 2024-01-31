@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
   include LocaleConcerns
-  # protect_from_forgery with: :exception
 
   # @todo remove these after most features have been developed
   # after_action :verify_authorized, except: %i[index show] # only for development
