@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  devise_for :users, controllers: {registrations: "users/registrations"}
+  devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
 
   scope "(:lang)", lang: /#{I18n.available_locales.join('|')}/ do
     resources :stories do

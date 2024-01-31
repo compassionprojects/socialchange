@@ -16,6 +16,12 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   config.secret_key = ENV["SECRET_KEY"]
 
+  # added in devise 4.9
+  # https://github.com/heartcombo/devise/blob/main/CHANGELOG.md#490---2023-02-17
+  #
+  config.responder.error_status = :unprocessable_entity
+  config.responder.redirect_status = :see_other
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'

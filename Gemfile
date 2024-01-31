@@ -19,8 +19,11 @@ gem "stimulus-rails"              # Hotwire's modest JavaScript framework [https
 gem "turbo-rails"                 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 
 # Authentication and authorisation
-gem "devise", "~> 4.8"
+gem "devise", "~> 4.9"
 gem "devise_invitable", "~> 2.0"
+gem "responders", "~> 3.1.0"
+gem "devise-i18n", "~> 1.10"
+gem "invisible_captcha", "~> 2.1"
 
 # Locales
 gem "rails-i18n", "~> 7.0"
@@ -46,6 +49,12 @@ gem "discard", "~> 1.2"
 
 # Pagination
 gem "kaminari", "~> 1.2"
+
+# Notifications
+gem "noticed", "~> 1.6"
+
+# Error reporting
+gem "bugsnag", "~> 6.26"
 
 gem "country_select", "~> 8.0.3"
 gem "trix-rails", require: "trix"
@@ -104,11 +113,4 @@ end
 gem "aws-sdk-s3", require: false
 gem "image_processing", ">= 1.2"
 
-gem "devise-i18n", "~> 1.10"
-
 gem "dockerfile-rails", ">= 1.5", group: :development
-
-gem "bugsnag", "~> 6.26"
-gem "noticed", "~> 1.6"
-
-gem "invisible_captcha", "~> 2.1"
