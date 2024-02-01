@@ -2,7 +2,7 @@
 #
 class DiscussionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_story, only: %i[new create index]
+  before_action :set_story, only: %i[new create index show]
   before_action :set_discussion, except: %i[new create index]
 
   def new
@@ -69,6 +69,7 @@ class DiscussionsController < ApplicationController
   end
 
   def set_discussion
-    @discussion = policy_scope(Discussion).includes(:user).find(params[:id])
+    @discussion = @story.discussions.find(params[:id])
+    # @discussion = policy_scope(Discussion).includes(:user).find_by(id: params[:id], story_id: params[:story_id])
   end
 end
