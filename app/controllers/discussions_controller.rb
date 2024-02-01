@@ -31,7 +31,7 @@ class DiscussionsController < ApplicationController
   end
 
   def show
-    @discussion = @story.discussions.find(params[:id])
+    @discussion = @story.discussions.kept.find(params[:id])
     @posts = policy_scope(Post).includes(:user).where(discussion: @discussion).order(created_at: :asc).page(params[:page])
   end
 
