@@ -26,6 +26,10 @@ class CategoryPolicy < ApplicationPolicy
     signed_in?
   end
 
+  def destroy?
+    super && record.stories.empty?
+  end
+
   # Allowed attributes to be updated
   # can also use `permitted_attributes_for_create`, `permitted_attributes_for_update`
   def permitted_attributes
