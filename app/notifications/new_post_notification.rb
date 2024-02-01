@@ -29,9 +29,9 @@ class NewPostNotification < Noticed::Base
     # skip when recipient is the post creator
     return false if recipient.id == post.user.id
     if recipient.id == discussion.user.id # discussion owner
-      recipient.preference.notify_new_post_on_discussion
+      recipient.preference&.notify_new_post_on_discussion
     else # any participants in post
-      recipient.preference.notify_any_post_in_discussion
+      recipient.preference&.notify_any_post_in_discussion
     end
   end
 
