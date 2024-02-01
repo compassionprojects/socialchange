@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_31_104830) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_01_113721) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -41,6 +41,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_104830) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
   create_table "contributions", force: :cascade do |t|
@@ -147,8 +154,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_104830) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "discarded_at"
+    t.bigint "category_id"
     t.index "((title ->> 'en'::text)) gin_trgm_ops, ((description ->> 'en'::text)) gin_trgm_ops, ((outcomes ->> 'en'::text)) gin_trgm_ops, ((source ->> 'en'::text)) gin_trgm_ops", name: "index_stories_on_title_desc_out_src_en", using: :gin
     t.index "((title ->> 'nl'::text)) gin_trgm_ops, ((description ->> 'nl'::text)) gin_trgm_ops, ((outcomes ->> 'nl'::text)) gin_trgm_ops, ((source ->> 'nl'::text)) gin_trgm_ops", name: "index_stories_on_title_desc_out_src_nl", using: :gin
+    t.index ["category_id"], name: "index_stories_on_category_id"
     t.index ["discarded_at"], name: "index_stories_on_discarded_at"
     t.index ["updater_id"], name: "index_stories_on_updater_id"
     t.index ["user_id"], name: "index_stories_on_user_id"
@@ -222,6 +231,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_104830) do
   add_foreign_key "posts", "users"
   add_foreign_key "posts", "users", column: "updater_id"
   add_foreign_key "preferences", "users"
+  add_foreign_key "stories", "categories"
   add_foreign_key "stories", "users"
   add_foreign_key "stories", "users", column: "updater_id"
   add_foreign_key "story_updates", "stories"
