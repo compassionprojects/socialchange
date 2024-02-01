@@ -11,7 +11,7 @@ class StoryPolicy < ApplicationPolicy
 
     def resolve
       # get only undiscarded stories
-      scope.kept.includes(:story_updates).order(created_at: :desc)
+      scope.kept.order(created_at: :desc)
     end
 
     private

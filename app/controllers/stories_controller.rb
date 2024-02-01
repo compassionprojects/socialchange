@@ -21,7 +21,7 @@ class StoriesController < ApplicationController
       end
     end
 
-    @q = policy_scope(Story).includes(:user).ransack(params[:q])
+    @q = policy_scope(Story).includes(:user, :story_updates).ransack(params[:q])
     @stories = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
