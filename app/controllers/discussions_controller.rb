@@ -3,7 +3,7 @@
 class DiscussionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_story, only: %i[new create index show]
-  before_action :set_discussion, except: %i[new create index]
+  before_action :set_discussion, except: %i[new create index show]
 
   def new
     @discussion = Discussion.new(**creator, story: @story)
@@ -31,6 +31,7 @@ class DiscussionsController < ApplicationController
   end
 
   def show
+    @discussion = @story.discussions.find(params[:id])
     @posts = policy_scope(Post).includes(:user).where(discussion: @discussion).order(created_at: :asc).page(params[:page])
   end
 
@@ -69,7 +70,6 @@ class DiscussionsController < ApplicationController
   end
 
   def set_discussion
-    @discussion = @story.discussions.find(params[:id])
-    # @discussion = policy_scope(Discussion).includes(:user).find_by(id: params[:id], story_id: params[:story_id])
+    @discussion = policy_scope(Discussion).includes(:user).find(params[:id])
   end
 end

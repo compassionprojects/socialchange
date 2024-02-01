@@ -69,8 +69,8 @@ class StoryUpdatesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_story_update
+    # @todo perhaps find the story_update from within the story scope?
     @story_update = policy_scope(StoryUpdate).find(params[:id])
   end
 end
