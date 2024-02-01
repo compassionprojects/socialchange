@@ -21,6 +21,7 @@ class StoryDashboard < Administrate::BaseDashboard
     source: Fields::Mobility::Text.with_options(searchable: true),
     start_date: Field::Date,
     title: Fields::Mobility::String.with_options(searchable: true),
+    category: Field::BelongsTo,
     updater: Field::BelongsTo.with_options(scope: -> { User.kept }),
     user: Field::BelongsTo.with_options(scope: -> { User.kept }),
     created_at: Field::DateTime,
@@ -36,6 +37,7 @@ class StoryDashboard < Administrate::BaseDashboard
     id
     title
     user
+    category
     created_at
   ].freeze
 
@@ -43,6 +45,7 @@ class StoryDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    category
     title
     description
     outcomes
@@ -60,6 +63,7 @@ class StoryDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    category
     title
     description
     outcomes

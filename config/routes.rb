@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :discussions
     resources :posts
     resources :story_updates
+    resources :categories
 
     root to: "users#enter"
   end
