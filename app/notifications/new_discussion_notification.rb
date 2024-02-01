@@ -25,7 +25,7 @@ class NewDiscussionNotification < Noticed::Base
   # Make sure recipient is not the discussion creator himself
   # Also check if recipient has a preference enabled to be notified
   def email_notifications?
-    recipient.preference.notify_new_discussion_on_story && recipient.id != discussion.user.id
+    recipient.preference&.notify_new_discussion_on_story && recipient.id != discussion.user.id
   end
 
   def discussion
