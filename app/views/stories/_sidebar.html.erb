@@ -25,6 +25,11 @@
     </span>
   </div>
 
+  <div class="my-2 d-flex align-items-center">
+    <i class="bi bi-pencil"></i>
+    <span class="mx-2"><%= t('.last_updated') %> <%= time_ago(story.updated_at) %></span>
+  </div>
+
   <% if story.missing_translations.length > 0 && can_edit?(story) %>
     <div class="border border-warning my-lg-5 mt-4 rounded p-3">
       <%= t('.translations_missing_for_html', languages: story.missing_translations.map { |x| content_tag :span, t("locales.#{x}"), class: "text-warning" }.join(", ").html_safe) %>

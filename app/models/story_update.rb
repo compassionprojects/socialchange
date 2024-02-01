@@ -3,7 +3,7 @@ class StoryUpdate < ApplicationRecord
   include Discard::Model
   include Translatable
 
-  belongs_to :story
+  belongs_to :story, touch: true
   belongs_to :user
   belongs_to :updater, class_name: "User"
 

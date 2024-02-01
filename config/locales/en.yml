@@ -96,6 +96,7 @@ en:
       translations_available_in_html: "Translations available in %{languages}"
       translations_missing_for_html: "This story hasn't been translated to %{languages}"
       contributors: "Contributors"
+      last_updated: "Last updated"
     nav:
       story: "Story"
       discussions: "Discussions"
