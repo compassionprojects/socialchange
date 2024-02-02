@@ -9,7 +9,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::String.with_options(searchable: true),
+    name: Fields::Mobility::String.with_options(searchable: true),
     stories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime

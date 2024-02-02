@@ -7,8 +7,8 @@ class StoryUpdate < ApplicationRecord
   belongs_to :user
   belongs_to :updater, class_name: "User"
 
-  validates :title, :description, presence: true
   translates :title, :description
+  validates :title, :description, presence: true
 
   def self.ransackable_attributes(auth_object = nil)
     %w[title description]
