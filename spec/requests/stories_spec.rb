@@ -43,14 +43,16 @@ describe "/stories", type: :request do
 
     describe "POST /create" do
       context "with valid parameters" do
+        let!(:category) { create(:category) }
+
         it "creates a new Story" do
           expect do
-            post stories_url, params: {story: attributes_for(:story)}
+            post stories_url, params: {story: attributes_for(:story, category_id: category.id)}
           end.to change(Story, :count).by(1)
         end
 
         it "redirects to the created story" do
-          post stories_url, params: {story: attributes_for(:story)}
+          post stories_url, params: {story: attributes_for(:story, category_id: category.id)}
           expect(response).to redirect_to(story_url(Story.last))
         end
 
