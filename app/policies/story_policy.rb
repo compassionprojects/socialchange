@@ -26,7 +26,7 @@ class StoryPolicy < ApplicationPolicy
   # Allowed attributes to be updated
   # can also use `permitted_attributes_for_create`, `permitted_attributes_for_update`
   def permitted_attributes
-    %i[title description country outcomes source] + [documents: []]
+    %i[title description country outcomes source category_id] + [documents: []]
   end
 
   def resource

@@ -14,6 +14,12 @@ describe Story do
       it { is_expected.to be_invalid }
     end
 
+    describe "category" do
+      subject { build(:story, category: nil) }
+
+      it { is_expected.to be_invalid }
+    end
+
     describe "user" do
       subject { build(:story, user: nil) }
 
