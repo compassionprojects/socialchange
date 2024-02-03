@@ -20,9 +20,6 @@ class StoryDashboard < Administrate::BaseDashboard
     outcomes: Fields::Mobility::Text.with_options(searchable: true),
     source: Fields::Mobility::Text.with_options(searchable: true),
     start_date: Field::Date,
-    status: Field::Select.with_options(searchable: false, collection: lambda { |field|
-                                                                        field.resource.class.send(field.attribute.to_s.pluralize).keys
-                                                                      }, include_blank: true),
     title: Fields::Mobility::String.with_options(searchable: true),
     updater: Field::BelongsTo.with_options(scope: -> { User.kept }),
     user: Field::BelongsTo.with_options(scope: -> { User.kept }),
@@ -39,7 +36,6 @@ class StoryDashboard < Administrate::BaseDashboard
     id
     title
     user
-    status
     created_at
   ].freeze
 
@@ -47,7 +43,6 @@ class StoryDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    status
     title
     description
     outcomes
@@ -90,10 +85,7 @@ class StoryDashboard < Administrate::BaseDashboard
     # unfortunately administrate doesn't support `lang:en,nl`
     # i.e, it doesn't take comma separated values, so array.split(",") is not
     # necessary below, however, this would be a "nice to have", so we leave it as is
-    lang: ->(resources, attrs) { resources.where("title ?& array[:keys]", keys: attrs.split(",")) },
-
-    # Status filters for "draft" or "published"
-    status: ->(resources, attrs) { resources.where(status: attrs) }
+    lang: ->(resources, attrs) { resources.where("title ?& array[:keys]", keys: attrs.split(",")) }
   }.freeze
 
   # Overwrite this method to customize how stories are displayed
