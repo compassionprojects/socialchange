@@ -100,13 +100,11 @@ class StoriesController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_story
     @story = policy_scope(Story).with_attached_documents.includes(:user, story_updates: [:user]).find(params[:id])
   end
 
   def permitted_attrs
-    # We remove new_category from the attributes as it doesn't exist on the model
     permitted_attributes(@story).merge({category_id: resolve_category_id})
   end
 
@@ -121,8 +119,12 @@ class StoriesController < ApplicationController
     if story_params[:new_category].present?
       # @todo
       # when a new_category name already exists but in a different case,
-      # it returns a record without an id - then it errors. Fix this.
-      # From a user perspective, this is ok for now, he can select the existing category.
+      # it returns a record without an id - then it errors. This must be fixed.
+      # This is an issue with Mobility and query_scopes.
+      #
+      # From a user perspective, this is ok for now, he can select an existing category.
+      # But the message should reflect that the category already exists.
+      #
       Category.i18n.find_or_create_by(name: story_params[:new_category]).id
     else
       @story.category_id
