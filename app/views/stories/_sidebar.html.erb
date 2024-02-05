@@ -1,4 +1,11 @@
 <div class="story-sidebar sticky-top">
+  <% if story.category.present? %>
+    <div class="my-2 d-flex align-items-center">
+      <i class="bi bi-tag"></i>
+      <span class="mx-2"><%= story.category.name %></span>
+    </div>
+  <% end %>
+
   <div class="my-2 d-flex align-items-center">
     <i class="text-body-tertiary bi bi-geo-alt"></i>
     <span class="mx-2"><%= story.country_name %></span>
