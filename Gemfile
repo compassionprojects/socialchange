@@ -84,7 +84,7 @@ end
 group :test do
   gem "rspec-rails", "~> 6.0.0"
   gem "factory_bot_rails", "~> 6.2"
-  gem "faker", "~> 3.0"
+  gem "faker", "~> 3.2"
   gem "pundit-matchers", "~> 3.1"
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
