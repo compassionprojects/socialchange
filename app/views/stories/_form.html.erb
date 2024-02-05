@@ -1,4 +1,4 @@
-<%= form_with(model: story) do |form| %>
+<%= form_with(model: story, data: { controller: "story-form" }) do |form| %>
   <% if story.errors.any? %>
     <div class="alert alert-danger">
       <ul class="mb-0">
@@ -20,8 +20,21 @@
   </div>
 
   <div class="mb-3">
+    <%= form.label :category, :class => "form-label" %>
+    <%= form.collection_select(:category_id, Category.all.to_a << OpenStruct.new(id: -1, name: 'Other'), :id, :name,
+      { :include_blank => t("common.please_select") },
+      {
+        :class => "form-control",
+        required: true,
+        data: { action: "change->story-form#isNewCategory", story_form_target: "category" }
+      })
+    %>
+    <%= form.text_field :new_category, :class => "form-control d-none mt-2", data: { story_form_target: "other" } %>
+  </div>
+
+  <div class="mb-3">
     <%= form.label :country, :class => "form-label" %>
-    <%= form.country_select :country, { include_blank: true }, { :class => "form-control" } %>
+    <%= form.country_select :country, { :include_blank => t("common.please_select") }, { :class => "form-control" } %>
   </div>
 
   <div class="mb-3">

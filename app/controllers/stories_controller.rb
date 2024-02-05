@@ -44,8 +44,8 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(**creator)
-    @story.assign_attributes(permitted_attributes(@story))
     authorize @story
+    @story.assign_attributes(permitted_attrs)
 
     respond_to do |format|
       if @story.save
@@ -60,15 +60,9 @@ class StoriesController < ApplicationController
 
   def update
     authorize @story
+
     respond_to do |format|
-      attrs = permitted_attributes(@story).reject { |x| x["documents"] }
-      if @story.update(**attrs, updater: current_user)
-        # Append documents using .attach
-        if params[:story][:documents].present?
-          params[:story][:documents].each do |doc|
-            @story.documents.attach(doc)
-          end
-        end
+      if update_story
         format.html { redirect_to story_url(@story), notice: I18n.t("stories.updated") }
         format.json { render :show, status: :ok, location: @story }
       else
@@ -98,8 +92,40 @@ class StoriesController < ApplicationController
 
   private
 
+  def update_story
+    attrs = permitted_attrs.reject { |x| x["documents"] }
+    if @story.update(**attrs, updater: current_user)
+      story_params[:documents].each { |doc| @story.documents.attach(doc) } if story_params[:documents].present?
+      true
+    end
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_story
     @story = policy_scope(Story).with_attached_documents.includes(:user, story_updates: [:user]).find(params[:id])
+  end
+
+  def permitted_attrs
+    # We remove new_category from the attributes as it doesn't exist on the model
+    permitted_attributes(@story).merge({category_id: resolve_category_id})
+  end
+
+  def resolve_category_id
+    # If an existing categroy is selected, use that
+    return story_params[:category_id] if story_params[:category_id].to_i > 0
+
+    # Otherwise create a new category if it doesn't already exist.
+    # Once https://github.com/shioyama/mobility/pull/480 is merged, we can use
+    # the default query scope like Category.find_or_create_by
+    #
+    if story_params[:new_category].present?
+      Category.i18n.find_or_create_by(name: story_params[:new_category]).id
+    else
+      @story.category_id
+    end
+  end
+
+  def story_params
+    params[:story]
   end
 end

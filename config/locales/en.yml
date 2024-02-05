@@ -209,6 +209,7 @@ en:
     edit: "Edit"
     delete: "Delete"
     add: "Add"
+    please_select: "-- Please select --"
   pundit:
     default: "You cannot perform this action."
     user_policy:

@@ -211,6 +211,7 @@ nl:
     edit: "Edit"
     delete: "Verwijder"
     add: "Add"
+    please_select: "-- Please select --"
   pundit:
     default: "U kunt deze actie niet uitvoeren."
     user_policy:
