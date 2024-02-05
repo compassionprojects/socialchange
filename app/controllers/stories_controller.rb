@@ -119,6 +119,10 @@ class StoriesController < ApplicationController
     # the default query scope like Category.find_or_create_by
     #
     if story_params[:new_category].present?
+      # @todo
+      # when a new_category name already exists but in a different case,
+      # it returns a record without an id - then it errors. Fix this.
+      # From a user perspective, this is ok for now, he can select the existing category.
       Category.i18n.find_or_create_by(name: story_params[:new_category]).id
     else
       @story.category_id
