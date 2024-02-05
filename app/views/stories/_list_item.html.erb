@@ -12,6 +12,11 @@
         <i class="bi bi-geo-alt"></i> <%= story.country_name %><span class="mx-1"></span>
       </span>
     <% end %>
+    <% if story.category.present? %>
+      <span class="mx-2">
+        <i class="bi bi-tag"></i><span class="mx-1"><%= story.category.name %></span>
+      </span>
+    <% end %>
     <% if story.story_updates.length > 0 %>
       <span class="mx-2">
         <i class="bi bi-megaphone"></i> <%= story.story_updates.length %>
