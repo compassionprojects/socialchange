@@ -163,7 +163,7 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
-    faker (3.0.0)
+    faker (3.2.3)
       i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
     ffi-compiler (1.0.1)
@@ -505,7 +505,7 @@ DEPENDENCIES
   dockerfile-rails (>= 1.5)
   dotenv-rails (~> 2.8)
   factory_bot_rails (~> 6.2)
-  faker (~> 3.0)
+  faker (~> 3.2)
   guard
   guard-rspec
   image_processing (>= 1.2)
