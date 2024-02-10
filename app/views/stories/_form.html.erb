@@ -21,7 +21,7 @@
 
   <div class="mb-3">
     <%= form.label :category, :class => "form-label" %>
-    <%= form.collection_select(:category_id, Category.all.to_a << OpenStruct.new(id: -1, name: 'Other'), :id, :name,
+    <%= form.collection_select(:category_id, Category.all.to_a << OpenStruct.new(id: -1, name: t('.category_other')), :id, :name,
       { :include_blank => t("common.please_select") },
       {
         :class => "form-control",
