@@ -77,7 +77,7 @@ group :development do
   gem "dockerfile-rails", ">= 1.5"
 
   # code quality and formatting
-  gem "standard-rails", "~> 0.1.0"
+  gem "standard-rails", "~> 1.0.2"
   gem "standard", "~> 1.33.0"
 end
 
