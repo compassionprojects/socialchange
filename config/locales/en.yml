@@ -208,6 +208,7 @@ en:
     remove: "Remove"
     edit: "Edit"
     delete: "Delete"
+    add: "Add"
   pundit:
     default: "You cannot perform this action."
     user_policy:

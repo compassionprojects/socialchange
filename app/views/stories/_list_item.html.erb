@@ -6,7 +6,7 @@
   <p class="mb-1">
     <%= sanitize(story.description(fallback: I18n.available_locales).truncate(400), tags: []) %>
   </p>
-  <div class="text-muted mt-1">
+  <div class="text-body-tertiary mt-2">
     <% if story.country %>
       <span>
         <i class="bi bi-geo-alt"></i> <%= story.country_name %><span class="mx-1"></span>

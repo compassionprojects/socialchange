@@ -1,32 +1,32 @@
 <div class="story-sidebar sticky-top">
   <div class="my-2 d-flex align-items-center">
-    <i class="bi bi-geo-alt"></i>
+    <i class="text-body-tertiary bi bi-geo-alt"></i>
     <span class="mx-2"><%= story.country_name %></span>
   </div>
 
   <% if story.documents.attached? %>
     <div class="my-2 d-flex align-items-center">
-      <i class="bi bi-paperclip"></i>
+      <i class="text-body-tertiary bi bi-paperclip"></i>
       <span class="mx-2"><%= t('.num_attached_documents', count: story.documents.length) %></span>
     </div>
   <% end %>
 
   <% if story.story_updates.length > 0 %>
     <div class="my-2 d-flex align-items-center">
-      <i class="bi bi-megaphone"></i>
+      <i class="text-body-tertiary bi bi-megaphone"></i>
       <span class="mx-2"><%= t('.num_story_updates', count: story.story_updates.length) %></span>
     </div>
   <% end %>
 
   <div class="my-2 d-flex align-items-start">
-    <i class="bi bi-translate"></i>
+    <i class="text-body-tertiary bi bi-translate"></i>
     <span class="mx-2">
       <%= t(".translations_available_in_html", languages: story.translated_in.map { |x| link_to t("locales.#{x}"), story_path(story, lang: x), class: "text-success" }.join(", ").html_safe) %>
     </span>
   </div>
 
   <div class="my-2 d-flex align-items-center">
-    <i class="bi bi-pencil"></i>
+    <i class="text-body-tertiary bi bi-clock"></i>
     <span class="mx-2"><%= t('.last_updated') %> <%= time_ago(story.updated_at) %></span>
   </div>
 
