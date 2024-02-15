@@ -522,7 +522,6 @@ DEPENDENCIES
   responders (~> 3.1.0)
   rspec-rails (~> 6.0.0)
   selenium-webdriver
-  sprockets-rails
   standard (~> 1.33.0)
   standard-rails (~> 1.0.2)
   stimulus-rails
