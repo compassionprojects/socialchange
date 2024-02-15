@@ -27,7 +27,7 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   def destroy?
-    super && record.stories.empty?
+    super && record.kept_stories.empty?
   end
 
   # Allowed attributes to be updated

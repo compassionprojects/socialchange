@@ -23,6 +23,9 @@ gem "mobility-ransack", "~> 1.2.2"
 # Soft deletions
 gem "discard", "~> 1.2"
 
+# Hierarchical data
+gem "ancestry", "~> 4.3"
+
 # Authentication
 gem "devise", "~> 4.9"
 gem "devise_invitable", "~> 2.0"
