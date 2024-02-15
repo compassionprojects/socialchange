@@ -10,7 +10,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Fields::Mobility::String.with_options(searchable: true),
-    stories: Field::HasMany,
+    kept_stories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -23,7 +23,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     name
-    stories
+    kept_stories
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -31,7 +31,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
-    stories
+    kept_stories
     created_at
     updated_at
   ].freeze
