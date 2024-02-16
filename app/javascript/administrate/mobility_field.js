@@ -1,6 +1,6 @@
 // Field customisations for administrate mobility (translation) fields
 
-//= require trix
+import "trix";
 
 $(document).ready(function() {
   // Styling
