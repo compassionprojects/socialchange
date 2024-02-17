@@ -1,4 +1,8 @@
 
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'admin_category_tree.js' %>
+<% end %>
+
 <%#
 # Index
 
@@ -34,6 +38,8 @@ It renders the `_table` partial to display details about the resources.
 %>
 
 <section class="main-content__body main-content__body--flush" data-controller="category-tree">
+  <%= react_component "CategoryTree", items: @categories, form_authenticity_token: %>
+
   <%= render(
     "collection",
     collection_presenter: page,

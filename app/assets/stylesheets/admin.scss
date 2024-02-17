@@ -1,0 +1,27 @@
+@import 'react-complex-tree/lib/style';
+@import './administrate/mobility_field';
+@import './administrate/pagination';
+
+.rct-tree-root {
+  padding-top: 20px !important;
+}
+
+.rct-tree-item-title-container {
+  padding: 10px;
+}
+
+.rct-tree-item-button-actions {
+  width: 100%;
+
+  form {
+    display: inline !important;
+  }
+}
+
+button.rct-tree-item-button {
+  font-weight: normal !important;
+  &:hover {
+    background-color: transparent !important;
+    color: #000 !important;
+  }
+}
