@@ -104,6 +104,10 @@ GEM
       aws-sigv4 (~> 1.4)
     aws-sigv4 (1.5.2)
       aws-eventstream (~> 1, >= 1.0.2)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.6)
@@ -160,6 +164,7 @@ GEM
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
+    execjs (2.9.1)
     factory_bot (6.4.5)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.4.3)
@@ -355,6 +360,12 @@ GEM
       ffi (~> 1.0)
     rdoc (6.6.2)
       psych (>= 4.0.0)
+    react-rails (3.2.0)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     regexp_parser (2.9.0)
     reline (0.4.2)
       io-console (~> 0.5)
@@ -522,6 +533,7 @@ DEPENDENCIES
   pundit-matchers (~> 3.1)
   rails (~> 7.1.2)
   rails-i18n (~> 7.0)
+  react-rails (~> 3.2)
   responders (~> 3.1.0)
   rspec-rails (~> 6.0.0)
   selenium-webdriver

@@ -2,7 +2,7 @@
   "name": "socialchange",
   "private": "true",
   "scripts": {
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css ./app/assets/stylesheets/admin.scss:./app/assets/builds/admin.css  --no-source-map --load-path=node_modules",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
   },
   "dependencies": {
@@ -13,8 +13,11 @@
     "bootstrap": "~5.3.2",
     "bootstrap-icons": "^1.11.3",
     "esbuild": "^0.20.0",
+    "react": "^18.2.0",
+    "react-complex-tree": "^2.3.4",
+    "react-dom": "^18.2.0",
+    "react_ujs": "^3.2.0",
     "sass": "^1.70.0",
-    "sortablejs": "^1.15.2",
     "trix": "^2.0.10"
   },
   "packageManager": "yarn@1.22.19"

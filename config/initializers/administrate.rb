@@ -3,8 +3,7 @@
 #
 
 Administrate::Engine.add_javascript "admin"
-Administrate::Engine.add_stylesheet "administrate/mobility_field"
-Administrate::Engine.add_stylesheet "administrate/pagination"
+Administrate::Engine.add_stylesheet "admin"
 
 # @todo customize dashboard path as well so that we can put all
 # dashboards under administrate namespace
