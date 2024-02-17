@@ -4,6 +4,7 @@ import 'react_ujs';
 import { UncontrolledTreeEnvironment, Tree, StaticTreeDataProvider } from 'react-complex-tree';
 
 const base_action_path = '/admin/categories';
+const cx = (...classNames) => classNames.filter(cn => !!cn).join(' ');
 
 export default function CategoryTree({ items, form_authenticity_token }) {
   const treeRef = React.useRef();
@@ -14,9 +15,15 @@ export default function CategoryTree({ items, form_authenticity_token }) {
   // Make sure expand/collapse icons are rendered properly on item drag/drop
   // https://github.com/lukasbach/react-complex-tree/pull/70#issuecomment-1196395999
   dataProvider.onChangeItemChildren = function (itemId, newChildren) {
-    this.data.items[itemId].hasChildren = newChildren.length > 0;
+    this.data.items[itemId].isFolder = newChildren.length > 0;
     this.data.items[itemId].children = newChildren;
     this.onDidChangeTreeDataEmitter.emit([itemId]);
+  };
+
+  const headers = {
+    'X-CSRF-Token': form_authenticity_token,
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
   };
 
   function updateTree(items, target) {
@@ -25,11 +32,7 @@ export default function CategoryTree({ items, form_authenticity_token }) {
     fetch(`${base_action_path}/update_tree`, {
       method: 'post',
       credentials: 'include',
-      headers: {
-        'X-CSRF-Token': form_authenticity_token,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+      headers,
       body: JSON.stringify({ id, parent_id })
     }).then(res => {
       if (!res.ok) console.log('Something went wrong');
@@ -46,14 +49,57 @@ export default function CategoryTree({ items, form_authenticity_token }) {
         canDropOnFolder={true}
         canDropOnNonFolder={true}
         canSearchByStartingTyping={true}
-        renderDepthOffset={40}
         viewState={{
           'root': {
             expandedItems: Object.keys(treeData).map(f => parseInt(f)).filter(x => x)
           }
         }}
         onDrop={updateTree}
-        >
+        renderItem={({ item, depth, children, title, context, arrow }) => {
+          const InteractiveComponent = context.isRenaming ? 'div' : 'button';
+          const type = context.isRenaming ? undefined : 'button';
+          return (
+            <li
+              {...(context.itemContainerWithChildrenProps)}
+              className={cx(
+                'rct-tree-item-li',
+                item.isFolder && 'rct-tree-item-li-isFolder',
+                context.isSelected && 'rct-tree-item-li-selected',
+                context.isExpanded && 'rct-tree-item-li-expanded',
+                context.isFocused && 'rct-tree-item-li-focused',
+                context.isDraggingOver && 'rct-tree-item-li-dragging-over',
+                context.isSearchMatching && 'rct-tree-item-li-search-match'
+              )}>
+              <div
+                {...(context.itemContainerWithoutChildrenProps)}
+                style={{ paddingLeft: `${(depth + 1) * 20}px` }}
+                className={cx(
+                  'rct-tree-item-title-container',
+                  item.isFolder && 'rct-tree-item-title-container-isFolder',
+                  context.isSelected && 'rct-tree-item-title-container-selected',
+                  context.isExpanded && 'rct-tree-item-title-container-expanded',
+                  context.isFocused && 'rct-tree-item-title-container-focused',
+                  context.isDraggingOver &&
+                    'rct-tree-item-title-container-dragging-over',
+                  context.isSearchMatching &&
+                    'rct-tree-item-title-container-search-match'
+                )}>
+                {arrow}
+                <InteractiveComponent
+                  type={type}
+                  {...(context.interactiveElementProps)}
+                  className={cx('rct-tree-item-button')}>
+                  {title}
+                  {context.viewStateFlags.activeItems ? ' (marked as active)' : ''}
+                </InteractiveComponent>
+                <a href={`${base_action_path}/${item.data.id}`} className="btn btn-link">
+                  View
+                </a>
+              </div>
+              {children}
+            </li>
+          );
+        }}>
         <Tree treeId="root" rootItem="root" treeLabel="Root" ref={treeRef} />
       </UncontrolledTreeEnvironment>
     </div>

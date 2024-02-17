@@ -1,13 +1,10 @@
 @import 'react-complex-tree/lib/style';
+@import 'react-complex-tree/lib/style-modern';
 @import './administrate/mobility_field';
 @import './administrate/pagination';
 
 .rct-tree-root {
-  padding-top: 20px !important;
-}
-
-.rct-tree-item-title-container {
-  padding: 10px;
+  margin: 20px;
 }
 
 .rct-tree-item-button-actions {
