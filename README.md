@@ -2,7 +2,7 @@
 
 # Social Change Stories
 
-An effort to collect all social change stories where NVC is a part of. Along side, it offers a community to run and support many of these projects.
+An effort to collect all social change stories where [Nonviolent-Communication](https://en.wikipedia.org/wiki/Nonviolent_Communication) is a part of. Along side, it offers a community to run and support many of these projects.
 
 ## Requirements
 
