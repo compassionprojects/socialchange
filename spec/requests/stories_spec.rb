@@ -56,18 +56,6 @@ describe "/stories", type: :request do
           expect(response).to redirect_to(story_url(Story.last))
         end
 
-        it "creates a new category when new category is specified" do
-          expect do
-            post stories_url, params: {story: attributes_for(:story, category_id: -1, new_category: "New category")}
-          end.to change(Category, :count).by(1)
-        end
-
-        it "does not create a new category when the name is same as an existing category" do
-          expect do
-            post stories_url, params: {story: attributes_for(:story, category_id: -1, new_category: category.name)}
-          end.to change(Category, :count).by(0)
-        end
-
         xit "queues a background job to notify users" do
           ActiveJob::Base.queue_adapter = :test # enable test helpers
           # create a user who can be notified with a preference
@@ -102,14 +90,6 @@ describe "/stories", type: :request do
           patch story_url(story), params: {story: new_attributes}
           story.reload
           expect(story.title).to eql(new_attributes[:title])
-        end
-
-        it "creates a new category if specified" do
-          story = create(:story, user:)
-          new_category = "New category"
-          patch story_url(story), params: {story: {category_id: -1, new_category:}}
-          story.reload
-          expect(story.category.name).to eql(new_category)
         end
 
         it "redirects to the story" do
