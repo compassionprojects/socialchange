@@ -105,8 +105,6 @@ nl:
     contributors:
       invited: "Invited"
       leave_story: "Leave story"
-    form:
-      category_other: "Anders"
   contributions:
     new:
       title: "Invite contributors"
