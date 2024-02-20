@@ -30,9 +30,9 @@ describe "/discussions", type: :request do
       it "renders all discussions of the story" do
         discussions = [create(:discussion, story:), create(:discussion, story:)]
         get story_discussions_url(story)
-        expect(response).to have_http_status(:ok)
         expect(response.body).to include(discussions.first.title)
         expect(response.body).to include(discussions.last.title)
+        expect(response).to have_http_status(:ok)
       end
     end
 
