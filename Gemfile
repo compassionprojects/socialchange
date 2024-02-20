@@ -7,7 +7,7 @@ ruby File.read(".ruby-version").strip
 # Rails specific
 gem "pg", "~> 1.5"                # Use postgresql as the database for Active Record
 gem "puma", "~> 6.4"              # Use the Puma web server [https://github.com/puma/puma]
-gem "rails", "~> 7.1.2"
+gem "rails", "~> 7.1.3"
 
 # Frontend asset bundling
 gem "cssbundling-rails", "~> 1.1"
