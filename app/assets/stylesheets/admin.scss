@@ -5,6 +5,7 @@
 
 .rct-tree-root {
   margin: 20px;
+  font-family: unset;
 }
 
 .rct-tree-item-button-actions {
@@ -13,6 +14,11 @@
   form {
     display: inline !important;
   }
+}
+
+.rct-tree-item-li {
+  font-size: unset;
+  padding: 5px 0;
 }
 
 button.rct-tree-item-button {

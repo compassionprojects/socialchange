@@ -105,30 +105,7 @@ class StoriesController < ApplicationController
   end
 
   def permitted_attrs
-    permitted_attributes(@story).merge({category_id: resolve_category_id})
-  end
-
-  def resolve_category_id
-    # If an existing categroy is selected, use that
-    return story_params[:category_id] if story_params[:category_id].to_i > 0
-
-    # Otherwise create a new category if it doesn't already exist.
-    # Once https://github.com/shioyama/mobility/pull/480 is merged, we can use
-    # the default query scope like Category.find_or_create_by
-    #
-    if story_params[:new_category].present?
-      # @todo
-      # when a new_category name already exists but in a different case,
-      # it returns a record without an id - then it errors. This must be fixed.
-      # This is an issue with Mobility and query_scopes.
-      #
-      # From a user perspective, this is ok for now, he can select an existing category.
-      # But the message should reflect that the category already exists.
-      #
-      Category.i18n.find_or_create_by(name: story_params[:new_category]).id
-    else
-      @story.category_id
-    end
+    permitted_attributes(@story)
   end
 
   def story_params
