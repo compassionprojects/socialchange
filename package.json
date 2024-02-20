@@ -1,9 +1,11 @@
 {
   "name": "socialchange",
-  "private": "true",
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css ./app/assets/stylesheets/admin.scss:./app/assets/builds/admin.css  --no-source-map --load-path=node_modules",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+  },
+  "engines": {
+    "node": "18.16.1"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
