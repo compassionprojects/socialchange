@@ -46,7 +46,7 @@ gem "devise-i18n", "~> 1.12"
 gem "kaminari", "~> 1.2"
 
 # Notifications
-gem "noticed", "~> 1.6"
+gem "noticed", github: "excid3/noticed", branch: "main"
 
 # Error reporting
 gem "bugsnag", "~> 6.26"

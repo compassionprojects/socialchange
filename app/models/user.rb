@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :discussions, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_one :preference, dependent: :destroy
-  has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :notifications, as: :recipient, dependent: :destroy, class_name: "Noticed::Notification"
   has_many :contributions, dependent: :destroy
   has_many :contributed_stories, through: :contributions, source: :story
 

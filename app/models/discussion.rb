@@ -7,7 +7,8 @@ class Discussion < ApplicationRecord
   belongs_to :story
   belongs_to :updater, class_name: "User"
   has_many :posts, dependent: :destroy
-  has_noticed_notifications
+  has_many :noticed_events, as: :record, dependent: :destroy, class_name: "Noticed::Event"
+  has_many :notifications, through: :noticed_events, class_name: "Noticed::Notification"
 
   validates :title, :description, presence: true
 
@@ -37,6 +38,6 @@ class Discussion < ApplicationRecord
   private
 
   def notify
-    NewDiscussionNotification.with(discussion: self, story:).deliver_later([story.user])
+    NewDiscussionNotifier.with(record: self, story:).deliver_later([story.user])
   end
 end

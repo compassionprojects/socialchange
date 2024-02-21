@@ -11,7 +11,7 @@
         <% end %>
       </span>
       <span>
-        <%= link_to notification.to_notification.message, notification.to_notification.url, class: "text-reset" %>
+        <%= link_to notification.message, notification.url, class: "text-reset" %>
       </span>
       <small class="ms-auto"><%= time_ago(notification.created_at) %></small>
     </div>
