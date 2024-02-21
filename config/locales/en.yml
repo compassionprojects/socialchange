@@ -44,14 +44,19 @@ en:
   notifications:
     index:
       notifications: "Notifications"
-    new_story_notification:
-      message: "A new story '%{title}' was published"
-    new_discussion_notification:
-      message: "A new discussion was added %{title} on your Social Change story '%{story_title}'"
-    new_post_notification:
-      message: "A new post was added on the discussion '%{discussion_title}'"
-    invite_contributor_notification:
-      message: "You have been added as a contributor to '%{story_title}'"
+  notifiers:
+    new_story_notifier:
+      notification:
+        message: "A new story '%{title}' was published"
+    new_discussion_notifier:
+      notification:
+        message: "A new discussion was added %{title} on your Social Change story '%{story_title}'"
+    new_post_notifier:
+      notification:
+        message: "A new post was added on the discussion '%{discussion_title}'"
+    invite_contributor_notifier:
+      notification:
+        message: "You have been added as a contributor to '%{story_title}'"
   notification_mailer:
     notify_new_story:
       subject: "A new NVC Social Change Story '%{title}' was published"

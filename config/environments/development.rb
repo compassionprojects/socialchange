@@ -41,6 +41,9 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Default url options for locale based routing
+  config.action_controller.default_url_options = {lang: I18n.locale, host: ENV["DOMAIN_NAME"]}
+
   # Default app url
   config.action_mailer.default_url_options = {host: ENV["DOMAIN_NAME"], port: 3000, lang: I18n.locale}
 

@@ -2,5 +2,5 @@ require "rails_helper"
 
 # @todo add tests
 
-describe NewDiscussionNotification do
+describe NewStoryNotifier do
 end

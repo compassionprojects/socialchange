@@ -7,6 +7,6 @@ class Contribution < ApplicationRecord
   private
 
   def invite_contributor
-    InviteContributorNotification.with(story:).deliver_later([user])
+    InviteContributorNotifier.with(record: user, story:).deliver_later([user])
   end
 end

@@ -15,8 +15,8 @@ class Story < ApplicationRecord
   has_many_attached :documents
   has_many :contributions, dependent: :destroy
   has_many :contributors, through: :contributions, source: :user
-
-  has_noticed_notifications
+  has_many :noticed_events, as: :record, dependent: :destroy, class_name: "Noticed::Event"
+  has_many :notifications, through: :noticed_events, class_name: "Noticed::Notification"
 
   after_create_commit :notify
 
@@ -107,6 +107,6 @@ class Story < ApplicationRecord
   private
 
   def notify
-    NewStoryNotification.with(story: self).deliver_later(User.with_notify_new_story_preference)
+    NewStoryNotifier.with(record: self).deliver_later(User.with_notify_new_story_preference)
   end
 end
