@@ -1,6 +1,6 @@
 # NewPostNotifier
 #
-class NewPostNotifier < Noticed::Event
+class NewPostNotifier < ApplicationNotifier
   validates :record, presence: true
 
   deliver_by :email do |config|
@@ -13,11 +13,11 @@ class NewPostNotifier < Noticed::Event
 
   notification_methods do
     def message
-      t(".message", discussion_title: params[:discussion].title)
+      t(".message", discussion_title: event.discussion.title)
     end
 
     def url
-      story_discussion_path(params[:story], params[:discussion])
+      story_discussion_path(event.story, event.discussion)
     end
   end
 
