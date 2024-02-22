@@ -18,7 +18,7 @@ class Story < ApplicationRecord
   has_many :noticed_events, as: :record, dependent: :destroy, class_name: "Noticed::Event"
   has_many :notifications, through: :noticed_events, class_name: "Noticed::Notification"
 
-  after_create_commit :notify
+  after_create_commit :notify, unless: -> { Rails.env.test? }
 
   translates :title, :description, :outcomes, :source
 

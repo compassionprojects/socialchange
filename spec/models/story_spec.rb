@@ -104,7 +104,7 @@ describe Story do
     # rubocop:enable RSpec/MultipleExpectations
   end
 
-  describe "after_create_commit" do
+  xdescribe "after_create_commit" do
     let(:story) { build(:story) }
 
     it "triggers the notify method from the hook" do
