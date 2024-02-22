@@ -1,6 +1,6 @@
 # Invite a story contributor
 #
-class InviteContributorNotifier < Noticed::Event
+class InviteContributorNotifier < ApplicationNotifier
   validates :record, presence: true
 
   deliver_by :email do |config|
@@ -12,7 +12,7 @@ class InviteContributorNotifier < Noticed::Event
 
   notification_methods do
     def message
-      t(".message", story_title: story.title)
+      t(".message", story_title: event.story.title)
     end
 
     def url

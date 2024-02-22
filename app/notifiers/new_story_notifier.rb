@@ -2,7 +2,7 @@
 # :notify_new_story in their preferences, except for the story creator (or story
 # collaborators)
 
-class NewStoryNotifier < Noticed::Event
+class NewStoryNotifier < ApplicationNotifier
   validates :record, presence: true
 
   deliver_by :email do |config|
