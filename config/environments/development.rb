@@ -33,6 +33,9 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # Default url options for locale based routing
+  config.action_controller.default_url_options = {lang: I18n.locale, host: ENV["DOMAIN_NAME"]}
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :digitalocean
 
@@ -42,9 +45,6 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.action_mailer.preview_paths << Rails.root.join("spec/mailers/previews")
-
-  # Default url options for locale based routing
-  config.action_controller.default_url_options = {lang: I18n.locale, host: ENV["DOMAIN_NAME"]}
 
   # Default app url
   config.action_mailer.default_url_options = {host: ENV["DOMAIN_NAME"], port: 3000, lang: I18n.locale}
