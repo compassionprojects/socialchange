@@ -106,7 +106,14 @@ class Story < ApplicationRecord
 
   private
 
+  # Note that we are not checking for recepient.preference.notify_new_story
+  # here becasue this has already been filtered out in the deliver_later call
+  def can_notify?(recipient)
+    recipient.id != user.id
+  end
+
   def notify
-    NewStoryNotifier.with(record: self).deliver_later(User.with_notify_new_story_preference)
+    recepients = User.with_notify_new_story_preference.select { |u| can_notify?(u) }
+    NewStoryNotifier.with(record: self).deliver_later(recepients) unless recepients.empty?
   end
 end
