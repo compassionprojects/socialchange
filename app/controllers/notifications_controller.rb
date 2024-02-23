@@ -9,6 +9,6 @@ class NotificationsController < ApplicationController
   private
 
   def mark_notifications_as_read
-    current_user.notifications.mark_as_read!
+    current_user.notifications.mark_as_read
   end
 end
