@@ -1,4 +1,6 @@
 class NotificationsController < ApplicationController
+  before_action :authenticate_user!
+
   after_action :mark_notifications_as_read, only: :index
   def index
     @notifications = current_user.notifications.newest_first
