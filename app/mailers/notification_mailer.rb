@@ -3,7 +3,7 @@ class NotificationMailer < ApplicationMailer
 
   def notify_new_story
     @user = params[:recipient]
-    @story = params[:story]
+    @story = params[:record]
 
     # make sure that the email is always sent in the language preferred
     # by the user
@@ -17,7 +17,7 @@ class NotificationMailer < ApplicationMailer
 
   def notify_new_discussion
     @user = params[:recipient]
-    @discussion = params[:discussion]
+    @discussion = params[:record]
     @story = params[:story]
 
     # make sure that the email is always sent in the language preferred
@@ -34,7 +34,7 @@ class NotificationMailer < ApplicationMailer
     @user = params[:recipient]
     @discussion = params[:discussion]
     @story = params[:story]
-    @post = params[:post]
+    @post = params[:record]
 
     # make sure that the email is always sent in the language preferred
     # by the user
@@ -47,7 +47,7 @@ class NotificationMailer < ApplicationMailer
   end
 
   def invite_contributor
-    @user = params[:recipient]
+    @user = params[:record]
     @story = params[:story]
 
     unless @user.confirmed?
