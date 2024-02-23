@@ -37,7 +37,13 @@ class Discussion < ApplicationRecord
 
   private
 
+  # Make sure recipient is not the discussion creator himself
+  # Also check if recipient has a preference enabled to be notified
+  def can_notify?(recipient)
+    recipient.preference&.notify_new_discussion_on_story && recipient.id != user.id
+  end
+
   def notify
-    NewDiscussionNotifier.with(record: self, story:).deliver_later([story.user])
+    NewDiscussionNotifier.with(record: self, story:).deliver_later([story.user]) if can_notify?(story.user)
   end
 end

@@ -6,7 +6,6 @@ class NewPostNotifier < ApplicationNotifier
   deliver_by :email do |config|
     config.mailer = "NotificationMailer"
     config.method = :notify_new_post
-    config.if = :email_notifications?
   end
 
   required_params :discussion, :story
@@ -18,21 +17,6 @@ class NewPostNotifier < ApplicationNotifier
 
     def url
       story_discussion_path(event.story, event.discussion)
-    end
-  end
-
-  # @todo save to db if email_notification?
-
-  # we send notifications to all participants who have set their preference
-  # and also to the discussion creator if preference is set
-  def email_notifications?(notification)
-    recipient = notification.recipient
-    # skip when recipient is the post creator
-    return false if recipient.id == record.user.id
-    if recipient.id == discussion.user.id # discussion owner
-      recipient.preference&.notify_new_post_on_discussion
-    else # any participants in post
-      recipient.preference&.notify_any_post_in_discussion
     end
   end
 

@@ -8,7 +8,6 @@ class NewStoryNotifier < ApplicationNotifier
   deliver_by :email do |config|
     config.mailer = "NotificationMailer"
     config.method = :notify_new_story
-    config.if = :email_notifications?
   end
 
   notification_methods do
@@ -19,16 +18,5 @@ class NewStoryNotifier < ApplicationNotifier
     def url
       story_path(record)
     end
-  end
-
-  # @todo save to db if email_notification?
-
-  # @todo make sure this checks for story collaborators as well when
-  # collaboration feature is ready.
-  # Note that we are not checking for recepient.preference.notify_new_story
-  # here becasue this has already been filtered out in the deliver_later call
-  def email_notifications?(notification)
-    recipient = notification.recipient
-    recipient.id != record.user.id
   end
 end
