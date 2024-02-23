@@ -41,6 +41,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.preview_paths << Rails.root.join("spec/mailers/previews")
+
   # Default url options for locale based routing
   config.action_controller.default_url_options = {lang: I18n.locale, host: ENV["DOMAIN_NAME"]}
 
