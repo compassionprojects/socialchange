@@ -152,18 +152,15 @@ nl:
   home:
     index:
       home: "Social Change Stories"
-      intro_content: "Dit project is een wereldwijde inspanning om alle verhalen over sociale verandering te verzamelen waarvan geweldloze communicatie deel heeft uitgemaakt om het beleid te beïnvloeden en de schade van strafsystemen te verminderen."
+      intro_content: "Een centrum voor verhalen van sociale transformatie, waar Geweldloze Communicatie (NVC) dient als een hoeksteen, met als doel beleid vorm te geven en systematische hervormingen te bevorderen."
       explore: "Ontdek"
+      signup: "Aanmelden"
       about: "Over"
-      about_content_html: "<p>Het doel van dit project is om de impact van NVC in sociale verandering te laten zien om beleid te beïnvloeden en de schade van strafsystemen te verminderen.</p>
+      about_content_html: "<p>Het doel van dit initiatief is om de transformerende kracht van Geweldloze Communicatie (NVC) in het bevorderen van sociale verandering te illustreren, met een specifieke focus op het beïnvloeden van beleid en het verminderen van de negatieve impact van strafsysteem.</p>
 
-      <p>De huidige situatie is dat er niet één plek op het internet is waar je alle verhalen over sociale verandering waarbij NVC betrokken is kunt vinden. Ze zijn allemaal verspreid en dat maakt het moeilijk om ze te vinden, te inspireren, te leren en actie te ondernemen.</p>
+      <p>Op dit moment bestaat er geen gecentraliseerd platform voor verhalen van sociale verandering geworteld in NVC-principes. Dit platform streeft ernaar om deze lacune te vullen door deze verhalen te verzamelen en voor een breed publiek toegankelijk te maken. Wij geloven dat door deze verhalen te versterken, we individuen kunnen inspireren om zich in te zetten voor betekenisvolle actie en positieve verandering binnen hun gemeenschappen te bewerkstelligen.</p>
 
-      <p>Met onze centralisatie van alle verhalen hopen we 1) de impact van NVC te laten zien 2) mensen over de hele wereld elkaar te laten inspireren door hun verhalen te vertellen, elkaar te inspireren 3) mensen over de hele wereld met elkaar in contact te laten komen en een gemeenschap op te bouwen rond en in actie te komen.</p>
-
-      <p>Als je geïnteresseerd bent om mee te helpen, deel dan deze pagina met de relevante mensen.</p>
-
-      <p>Wij zijn gewoon een stel mensen die geïnspireerd zijn door NVC en de kracht ervan, dus zijn we dit project begonnen. We doen dit alles open en transparant. Als je dit project nuttig vindt en er waarde aan hecht, voel je dan vrij om te doneren - we gebruiken opencollective dat volledige transparantie biedt over hoe je donaties zullen worden gebruikt.</p>"
+      <p>Bent u een ervaren NVC-trainer of beoefenaar met verhalen om te delen? Wij nodigen u uit om uw ervaringen bij te dragen aan onze groeiende verzameling. Samen kunnen we een beweging op gang brengen naar een empathischer en rechtvaardiger samenleving.</p>"
   helpers:
     submit:
       story:

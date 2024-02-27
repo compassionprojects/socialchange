@@ -152,16 +152,15 @@ en:
   home:
     index:
       home: "Social Change Stories"
-      intro_content: "This project is a global effort to collect all social change stories where Nonviolent Communication has been a part of to influence policy and lessen the harms of punitive systems."
+      intro_content: "A hub for narratives of social transformation, where Nonviolent Communication (NVC) serves as a cornerstone, aiming to shape policy and drive systemic reform."
       explore: "Explore"
+      signup: "Sign up"
       about: "About"
-      about_content_html: "<p>The goal of this project is to show the impact of NVC in social change to influence policy and lessen the harms of punitive systems.</p>
+      about_content_html: "<p>The aim of this initiative is to illustrate the transformative power of Nonviolent Communication (NVC) in driving social change, with a specific focus on influencing policy and mitigating the negative impacts of punitive systems.</p>
 
-      <p>Current situation is that there is no one place on the internet where you can find all social change stories where NVC is involved. They are all spread over, which makes it difficult to find.</p>
+      <p>Currently, there exists no centralized repository for narratives of social change rooted in NVC principles. This platform endeavors to fill that void by aggregating these stories and making them readily accessible to a wide audience. Our belief is that by amplifying these narratives, we can inspire individuals to engage in meaningful action and effect positive change within their communities.</p>
 
-      <p>With our centralising of all stories, we hope to 1) show the impact of NVC 2) let people around the world inspire each other by telling their stories 3) let people around the world engage with each other, build a community around and take action.</p>
-
-      <p>If you are interested in helping out, please share this page with relevant people. We are just a bunch of people inspired by NVC and what it can bring to our lives. We are doing all of this openly and transparently. If you find this project meaningful and see any value feel free to donate - we use opencollective which offers complete transparency on how your donations will be utilised.</p>"
+      <p>Are you a seasoned NVC trainer or practitioner with stories to share? We invite you to contribute your experiences to our growing collection. Together, we can catalyze a movement towards a more empathetic and just society.</p>"
   helpers:
     submit:
       story:
