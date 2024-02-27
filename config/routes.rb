@@ -9,9 +9,9 @@ Rails.application.routes.draw do
         match "search" => "stories#search", :via => %i[get post], :as => :search
         delete "remove_documents/:id" => "stories#remove_documents", :as => :remove_documents
       end
-      resources :story_updates, as: :updates, shallow: true, shallow_prefix: "story"
+      resources :story_updates, as: :updates, shallow: true, shallow_prefix: "story", except: %i[show index]
       resources :discussions, shallow: true do
-        resources :posts
+        resources :posts, except: %i[show index]
       end
     end
     get "stories/:story_id/discussions/:id", to: "discussions#show", as: :story_discussion
