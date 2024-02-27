@@ -15,7 +15,9 @@
         <%= t('.about') %>
       </h2>
       <p><%= t('.about_content_html') %></p>
-      <%= link_to t('.signup'), new_registration_path(:user), class: "btn btn-primary" %>
+      <div class="text-center">
+        <%= link_to t('.signup'), new_registration_path(:user), class: "btn btn-primary" %>
+      </div>
     </section>
   </div>
 </div>
