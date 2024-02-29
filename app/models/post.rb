@@ -11,8 +11,6 @@ class Post < ApplicationRecord
 
   validates :body, presence: true
 
-  # @todo remove the unless filter after fixing the tests
-  # same issue as discussion model
   after_create_commit :notify
 
   private
