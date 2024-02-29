@@ -104,7 +104,7 @@ describe Story do
     # rubocop:enable RSpec/MultipleExpectations
   end
 
-  xdescribe "after_create_commit" do
+  describe "after_create_commit" do
     let(:story) { build(:story) }
 
     it "triggers the notify method from the hook" do
@@ -153,11 +153,10 @@ describe Story do
         end.to change { User.count }.by(2)
       end
 
-      xit "invites user only once even if invited multiple times" do
-        ActiveJob::Base.queue_adapter = :test
+      it "invites users only once even their emails were repeated" do
         expect do
           story.invite_contributors(emails + emails, story.user)
-        end.to have_enqueued_job.twice
+        end.to change { User.count }.by(2)
       end
 
       it "adds contributions" do

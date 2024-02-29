@@ -18,7 +18,7 @@ class Story < ApplicationRecord
   has_many :noticed_events, as: :record, dependent: :destroy, class_name: "Noticed::Event"
   has_many :notifications, through: :noticed_events, class_name: "Noticed::Notification"
 
-  after_create_commit :notify, unless: -> { Rails.env.test? }
+  after_create_commit :notify
 
   translates :title, :description, :outcomes, :source
 
@@ -107,8 +107,10 @@ class Story < ApplicationRecord
   private
 
   # Note that we are not checking for recepient.preference.notify_new_story
-  # here becasue this has already been filtered out in the deliver_later call
+  # here becasue this has already been filtered out in the deliver_later call.
+  #
   def can_notify?(recipient)
+    # Here we make sure the story creator is not the same as the recepient.
     recipient.id != user.id
   end
 

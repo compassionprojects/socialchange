@@ -68,25 +68,25 @@ describe "/discussions", type: :request do
       end
     end
 
-    xdescribe "creating a new discussion" do
-      before { ActiveJob::Base.queue_adapter = :test }
-
-      it "notifies strory creator" do
-        story_one = create(:story, user: create(:user))
-        expect do
-          post story_discussions_url(story_one), params: {discussion: attributes_for(:discussion)}
-        end.to have_enqueued_job(Noticed::DeliveryMethods::Email).with(hash_including(notification_class: NewDiscussionNotification.name))
-        expect(ApplicationMailer.deliveries.count).to eql(1)
+    describe "creating a new discussion" do
+      context "with a preference to be notified" do
+        it "queues a job to notify" do
+          story_one = create(:story, user: create(:user_with_preference))
+          expect do
+            post story_discussions_url(story_one), params: {discussion: attributes_for(:discussion)}
+          end.to have_enqueued_job(Noticed::EventJob)
+        end
       end
 
-      it "does not notify story creator" do
-        story_two = create(:story, user: create(:user, preference: create(:preference, notify_new_discussion_on_story: false)))
-        expect do
-          post story_discussions_url(story_two), params: {discussion: attributes_for(:discussion)}
-          # it does trigger the job but then filtered out in `if: email_notifications?` filter
-          # so there's no emails sent
-        end.to have_enqueued_job(Noticed::DeliveryMethods::Email).with(hash_including(notification_class: NewDiscussionNotification.name))
-        expect(ApplicationMailer.deliveries.count).to eql(0)
+      context "with a preference to NOT be notified" do
+        it "does not queue a job to notify" do
+          story_two = create(:story, user: create(:user, preference: create(:preference, notify_new_discussion_on_story: false)))
+          expect do
+            post story_discussions_url(story_two), params: {discussion: attributes_for(:discussion)}
+            # it does trigger the job but then filtered out in `if: email_notifications?` filter
+            # so there's no emails sent
+          end.not_to have_enqueued_job
+        end
       end
     end
 

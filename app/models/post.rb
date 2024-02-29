@@ -13,7 +13,7 @@ class Post < ApplicationRecord
 
   # @todo remove the unless filter after fixing the tests
   # same issue as discussion model
-  after_create_commit :notify, unless: -> { Rails.env.test? }
+  after_create_commit :notify
 
   private
 

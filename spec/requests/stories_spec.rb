@@ -43,27 +43,23 @@ describe "/stories", type: :request do
 
     describe "POST /create" do
       context "with valid parameters" do
-        let!(:category) { create(:category) }
-
         it "creates a new Story" do
           expect do
-            post stories_url, params: {story: attributes_for(:story, category_id: category.id)}
+            post stories_url, params: {story: attributes_for(:story_with_category)}
           end.to change(Story, :count).by(1)
         end
 
         it "redirects to the created story" do
-          post stories_url, params: {story: attributes_for(:story, category_id: category.id)}
+          post stories_url, params: {story: attributes_for(:story_with_category)}
           expect(response).to redirect_to(story_url(Story.last))
         end
 
-        xit "queues a background job to notify users" do
-          ActiveJob::Base.queue_adapter = :test # enable test helpers
+        it "queues a background job to notify users" do
           # create a user who can be notified with a preference
           create(:user, preference: create(:preference, notify_new_story: true))
           expect do
-            post stories_url, params: {story: attributes_for(:story)}
-          end.to have_enqueued_job(Noticed::DeliveryMethods::Email).with(hash_including(notification_class: NewStoryNotification.name))
-          expect(ApplicationMailer.deliveries.count).to eql(1)
+            post stories_url, params: {story: attributes_for(:story_with_category)}
+          end.to have_enqueued_job(Noticed::EventJob)
         end
       end
 
