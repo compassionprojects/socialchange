@@ -18,6 +18,8 @@
     <%= f.label :remember_me, t('users.remember_me'), :class => "form-check-label" %>
   </div>
 
+  <%= f.invisible_captcha :dummie_hpot_field %>
+
   <div class="actions">
     <%= f.submit t('users.login'), :class => "btn btn-primary", data: { turbo: false } %>
   </div>

@@ -10,6 +10,8 @@
     <%= f.email_field :email, autofocus: true, :class => "form-control" %>
   </div>
 
+  <%= f.invisible_captcha :dummie_hpot_field %>
+
   <div class="actions">
     <%= f.submit t('users.reset_password'), :class => "btn btn-primary", data: { turbo: false } %>
   </div>
