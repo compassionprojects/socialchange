@@ -34,7 +34,7 @@ Rails.application.configure do
   config.action_controller.allow_forgery_protection = false
 
   # Default url options for locale based routing
-  config.action_controller.default_url_options = {lang: I18n.locale}
+  config.action_controller.default_url_options = routes.default_url_options = {lang: I18n.locale}
 
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test

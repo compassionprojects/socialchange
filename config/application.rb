@@ -26,5 +26,12 @@ module Socialchange
 
     # set default email sender
     config.mailer_default_from = ENV["DOMAIN_EMAIL_ADDRESS"]
+
+    # @todo - this should not be required and default_url_options should be
+    # obeyed. It's a workaround for now.
+    # include the default_url_options method in Notifiers
+    config.to_prepare do
+      Noticed::Notification.include NotificationExtensions
+    end
   end
 end
