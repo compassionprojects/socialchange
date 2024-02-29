@@ -2,7 +2,7 @@ class Contribution < ApplicationRecord
   belongs_to :user
   belongs_to :story, touch: true
 
-  after_create_commit :invite_contributor, unless: -> { Rails.env.test? }
+  after_create_commit :invite_contributor
 
   private
 
