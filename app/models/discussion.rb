@@ -19,7 +19,7 @@ class Discussion < ApplicationRecord
   # ActiveRecord::StatementInvalid:
   #   PG::UnableToSend: insufficient data in "T" message
   #
-  after_create_commit :notify, unless: -> { Rails.env.test? }
+  after_create_commit :notify
 
   # After a topic is discarded, discard it's posts
   #

@@ -8,5 +8,9 @@ FactoryBot.define do
     category
     user
     updater factory: :user
+
+    factory :story_with_category do
+      add_attribute(:category_id) { create(:category).id }
+    end
   end
 end

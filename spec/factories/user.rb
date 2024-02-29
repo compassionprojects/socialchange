@@ -7,6 +7,10 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password(min_length: 8) }
 
+    factory :user_with_preference do
+      preference { association(:preference, user: instance) }
+    end
+
     factory :user_with_stories do
       transient do
         stories_count { 5 }
