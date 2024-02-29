@@ -17,7 +17,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   # Default url options for locale based routing
-  config.action_controller.default_url_options = {lang: I18n.locale, host: ENV["DOMAIN_NAME"]}
+  config.action_controller.default_url_options = routes.default_url_options = {lang: I18n.locale, host: ENV["DOMAIN_NAME"]}
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).

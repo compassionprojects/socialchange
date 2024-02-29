@@ -34,7 +34,7 @@ Rails.application.configure do
   end
 
   # Default url options for locale based routing
-  config.action_controller.default_url_options = {lang: I18n.locale, host: ENV["DOMAIN_NAME"]}
+  config.action_controller.default_url_options = routes.default_url_options = {lang: I18n.locale, host: ENV["DOMAIN_NAME"]}
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :digitalocean
