@@ -153,10 +153,11 @@ describe Story do
         end.to change { User.count }.by(2)
       end
 
-      it "invites users only once even their emails were repeated" do
+      it "enqueues jobs to notify invites" do
         expect do
+          # repeated emails should not enqueue the job twice
           story.invite_contributors(emails + emails, story.user)
-        end.to change { User.count }.by(2)
+        end.to have_enqueued_job(Noticed::EventJob).exactly(:twice)
       end
 
       it "adds contributions" do
