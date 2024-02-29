@@ -12,7 +12,7 @@ gem "rails", "~> 7.1.3"
 # Frontend asset bundling
 gem "cssbundling-rails", "~> 1.1"
 gem "jbuilder"                    # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jsbundling-rails", "~> 1.2"
+gem "jsbundling-rails", "~> 1.3"
 gem "stimulus-rails"              # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "turbo-rails"                 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 
