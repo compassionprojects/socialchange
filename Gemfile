@@ -79,7 +79,7 @@ group :development do
 
   # code quality and formatting
   gem "standard-rails", "~> 1.0.2"
-  gem "standard", "~> 1.33.0"
+  gem "standard", "~> 1.34.0"
 end
 
 group :test do
