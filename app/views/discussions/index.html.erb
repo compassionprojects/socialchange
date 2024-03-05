@@ -14,7 +14,7 @@
   </div>
   <div class="col-lg-3 my-2 my-lg-0">
     <% if user_signed_in? %>
-      <%= link_to t(".new_discussion"), new_story_discussion_path, :class => "btn btn-primary", data: { turbo_frame: "modal" } %>
+      <%= link_to t(".new_discussion"), new_story_discussion_path, class: "btn btn-primary", data: { turbo_frame: "modal" } %>
     <% end %>
   </div>
 </div>

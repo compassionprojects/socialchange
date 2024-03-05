@@ -48,7 +48,7 @@
         <h2>
           <%= t("stories.show.story_updates") %>
           <%= link_to t(".new_story_update"), new_story_update_path(story),
-            :class => "btn btn-sm btn-outline-primary", data: { turbo_frame: "modal" } if can_add_story_update?(story) %>
+            class: "btn btn-sm btn-outline-primary", data: { turbo_frame: "modal" } if can_add_story_update?(story) %>
         </h2>
         <%= turbo_frame_tag :story_updates do %>
           <% story.story_updates.each_with_index do |story_update, idx| %>

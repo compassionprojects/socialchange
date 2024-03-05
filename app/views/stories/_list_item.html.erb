@@ -1,5 +1,5 @@
 <div id="<%= dom_id story %>" class="py-4 <%= 'border-top' if index != 0 %>">
-  <div class="h4"><%= link_to story.title(fallback: I18n.available_locales), story, :class => "text-reset text-decoration-none" %></div>
+  <div class="h4"><%= link_to story.title(fallback: I18n.available_locales), story, class: "text-reset text-decoration-none" %></div>
   <div class="small text-muted mb-2">
     <%= time_ago(story.created_at) %> <%= t("posted_by", name: story.user.name) %>
   </div>

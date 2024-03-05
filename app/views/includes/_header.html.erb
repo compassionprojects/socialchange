@@ -20,11 +20,11 @@
           </ul>
         </li>
         <li class="nav-item">
-          <%= link_to t('nav.list_stories'), stories_path, :class => "nav-link" %>
+          <%= link_to t('nav.list_stories'), stories_path, class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to t('nav.add_stories'), new_story_path, :class => "nav-link" %>
+            <%= link_to t('nav.add_stories'), new_story_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown <%= 'nav-unread-notifications' if current_user.unread_notifications? %>">
             <a class="nav-link dropdown-toggle nav-account-dropdown" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
@@ -32,28 +32,28 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <%= link_to t('users.invite'), new_user_invitation_path, :class => "dropdown-item" %>
+                <%= link_to t('users.invite'), new_user_invitation_path, class: "dropdown-item" %>
               </li>
               <li>
-                <%= link_to t('users.preferences'), preferences_path, :class => "dropdown-item" %>
+                <%= link_to t('users.preferences'), preferences_path, class: "dropdown-item" %>
               </li>
               <li>
-                <%= link_to t('users.notifications'), notifications_path, :class => "dropdown-item notifications" %>
+                <%= link_to t('users.notifications'), notifications_path, class: "dropdown-item notifications" %>
               </li>
               <li>
-                <%= link_to t('users.profile'), edit_user_registration_path, :class => "dropdown-item" %>
+                <%= link_to t('users.profile'), edit_user_registration_path, class: "dropdown-item" %>
               </li>
               <li>
-                <%= link_to t('users.logout'), destroy_user_session_path, data: { turbo_method: :delete }, :class => "dropdown-item" %>
+                <%= link_to t('users.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
               </li>
             </ul>
           </li>
         <% else %>
           <li class="nav-item">
-              <%= link_to t('users.signup'), new_registration_path(:user), :class => "nav-link" %>
+              <%= link_to t('users.signup'), new_registration_path(:user), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to t('users.login'), new_user_session_path, :class => "nav-link" %>
+            <%= link_to t('users.login'), new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>

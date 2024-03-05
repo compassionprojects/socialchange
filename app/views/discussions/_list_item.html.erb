@@ -1,5 +1,5 @@
 <div id="<%= dom_id discussion %>" class="<%= class_names('pb-4', { 'border-top pt-4': index != 0, 'pt-2': index == 0 }) %>">
-  <div class="h4"><%= link_to discussion.title, story_discussion_path(@story, discussion), :class => "text-reset text-decoration-none" %></div>
+  <div class="h4"><%= link_to discussion.title, story_discussion_path(@story, discussion), class: "text-reset text-decoration-none" %></div>
   <div class="small text-muted mb-2">
     <%= time_ago(discussion.created_at) %> <%= t("posted_by", name: discussion.user.name) %>
   </div>

@@ -14,10 +14,10 @@
 
     <div class="d-flex mb-4">
       <% if can_edit?(@discussion) %>
-        <%= link_to t("common.edit"), edit_discussion_path(@discussion), :class => "btn btn-link p-0" %>&nbsp;
+        <%= link_to t("common.edit"), edit_discussion_path(@discussion), class: "btn btn-link p-0" %>&nbsp;
       <% end %>
       <% if can_destroy?(@discussion) %>
-        <%= button_to t("common.delete"), discussion_path(@discussion), method: :delete, :class => "btn btn-link text-danger py-0", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } } %>
+        <%= button_to t("common.delete"), discussion_path(@discussion), method: :delete, class: "btn btn-link text-danger py-0", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } } %>
       <% end %>
     </div>
 
@@ -35,7 +35,7 @@
   </div>
   <div class="col-lg-3 mt-3 mt-lg-0">
     <% if user_signed_in? %>
-      <%= link_to t(".new_post"), new_discussion_post_path(@discussion), :class => "btn btn-primary", data: { turbo_frame: "modal" } %>
+      <%= link_to t(".new_post"), new_discussion_post_path(@discussion), class: "btn btn-primary", data: { turbo_frame: "modal" } %>
     <% end %>
   </div>
 </div>

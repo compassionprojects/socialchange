@@ -8,10 +8,10 @@
     </div>
     <div class="d-flex">
       <% if can_edit?(post) %>
-        <%= link_to t("common.edit"), edit_post_path(post), :class => "btn btn-sm btn-link px-0" %>&nbsp;
+        <%= link_to t("common.edit"), edit_post_path(post), class: "btn btn-sm btn-link px-0" %>&nbsp;
       <% end %>
       <% if can_destroy?(post) %>
-        <%= button_to t("common.delete"), post, method: :delete, :class => "btn btn-sm btn-link text-danger", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } }  %>
+        <%= button_to t("common.delete"), post, method: :delete, class: "btn btn-sm btn-link text-danger", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } }  %>
       <% end %>
     </div>
   </div>

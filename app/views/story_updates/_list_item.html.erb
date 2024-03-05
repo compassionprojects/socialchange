@@ -9,10 +9,10 @@
     </p>
     <div class="d-flex">
       <% if can_edit?(story_update) %>
-        <%= link_to t("common.edit"), edit_story_update_path(story_update), :class => "btn btn-sm btn-link px-0" %>&nbsp;
+        <%= link_to t("common.edit"), edit_story_update_path(story_update), class: "btn btn-sm btn-link px-0" %>&nbsp;
       <% end %>
       <% if can_destroy?(story_update) %>
-        <%= button_to t("common.delete"), story_update, method: :delete, :class => "btn btn-sm btn-link text-danger", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } }  %>
+        <%= button_to t("common.delete"), story_update, method: :delete, class: "btn btn-sm btn-link text-danger", form: { data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } }  %>
       <% end %>
     </div>
   </div>

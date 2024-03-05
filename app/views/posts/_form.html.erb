@@ -10,11 +10,11 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :body, :class => "form-label" %>
+    <%= form.label :body, class: "form-label" %>
     <%= form.trix_editor :body, required: true, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.submit :class => "btn btn-primary" %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

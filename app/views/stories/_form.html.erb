@@ -10,34 +10,34 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :title, :class => "form-label" %>
-    <%= form.text_field :title, required: true, :class => "form-control" %>
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, required: true, class: "form-control" %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :description, :class => "form-label" %>
+    <%= form.label :description, class: "form-label" %>
     <%= form.trix_editor :description, required: true, class: "form-control" %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :category, :class => "form-label" %>
+    <%= form.label :category, class: "form-label" %>
     <%= form.grouped_collection_select(:category_id, Category.roots, :children, :name, :id, :name,
-      { :include_blank => t("common.please_select") },
+      { include_blank: t("common.please_select") },
       {
-        :class => "form-control",
+        class: "form-control",
         required: true
       })
     %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :country, :class => "form-label" %>
-    <%= form.country_select :country, { :include_blank => t("common.please_select") }, { :class => "form-control" } %>
+    <%= form.label :country, class: "form-label" %>
+    <%= form.country_select :country, { include_blank: t("common.please_select") }, { class: "form-control" } %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :documents, :class => "form-label" %>
-    <%= form.file_field :documents, multiple: true, direct_upload: true, :class => "form-control", :accept => ".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf" %>
+    <%= form.label :documents, class: "form-label" %>
+    <%= form.file_field :documents, multiple: true, direct_upload: true, class: "form-control", accept: ".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf" %>
   </div>
 
   <div class="my-5">
@@ -68,16 +68,16 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :outcomes, :class => "form-label" %>
+    <%= form.label :outcomes, class: "form-label" %>
     <%= form.trix_editor :outcomes, class: "form-control" %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :source, :class => "form-label" %>
+    <%= form.label :source, class: "form-label" %>
     <%= form.trix_editor :source, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.submit :class => "btn btn-primary" %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

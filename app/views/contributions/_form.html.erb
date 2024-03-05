@@ -1,6 +1,6 @@
 <%= form_with(model: [contribution.story, contribution]) do |form| %>
   <div class="mb-3">
-    <%= form.label :emails, :class => "form-label" %>
+    <%= form.label :emails, class: "form-label" %>
     <%= form.text_area :emails, required: true, class: "form-control", placeholder: t('.placeholder') %>
     <div class="form-text">
       <%= t('.help_html', count: Story::MAX_CONTRIBUTORS) %>
@@ -8,6 +8,6 @@
   </div>
 
   <div>
-    <%= form.submit t('.invite'), :class => "btn btn-primary" %>
+    <%= form.submit t('.invite'), class: "btn btn-primary" %>
   </div>
 <% end %>
