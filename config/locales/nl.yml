@@ -218,6 +218,10 @@ nl:
     default: "U kunt deze actie niet uitvoeren."
     user_policy:
       update?: "U bent niet bevoegd om deze actie uit te voeren."
+  devise:
+    failure:
+      user:
+        deleted_account: Het lijkt erop dat je je account hebt verwijderd. Neem contact met ons op als je ondersteuning nodig hebt.
   activerecord:
     attributes:
       user:

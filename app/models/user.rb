@@ -54,16 +54,23 @@ class User < ApplicationRecord
     @permissions ||= roles.flat_map(&:permissions).map(&:name).uniq
   end
 
-  def active_for_authentication?
-    super && !discarded?
-  end
-
   def after_confirmation
     create_default_preference
   end
 
   def unread_notifications?
     notifications.unread.count > 0
+  end
+
+  # Devise soft delete methods
+  # https://github.com/heartcombo/devise/wiki/How-to:-Soft-delete-a-user-when-user-deletes-account#4--update-the-user-model-with-soft_delete-method--check-if-user-is-active-when-authenticating
+  #
+  def active_for_authentication?
+    super && !discarded?
+  end
+
+  def inactive_message
+    (!discarded?) ? super : :deleted_account
   end
 
   private
