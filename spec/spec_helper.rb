@@ -18,6 +18,15 @@ require "pundit/rspec"
 require "pundit/matchers"
 require "capybara/rspec"
 
+# Configure capybara
+# https://rubydoc.info/github/teamcapybara/capybara/master/Capybara.configure
+#
+Capybara.configure do |config|
+  config.ignore_hidden_elements = false
+end
+
+# Rspec configuration
+#
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
