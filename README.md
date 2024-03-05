@@ -6,8 +6,9 @@ An effort to collect all social change stories where [Nonviolent-Communication](
 
 ## Requirements
 
-- ruby 3.2.2 (use [rbenv](https://github.com/rbenv/rbenv) to manage ruby versions)
-- postgres 14.5
+- ruby 3.3.0 (use [rbenv](https://github.com/rbenv/rbenv) to manage ruby versions)
+- postgres >= 14.5
+- nodejs >= 20.x
 
 ## Development
 
