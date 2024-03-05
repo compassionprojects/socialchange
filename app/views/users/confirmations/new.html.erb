@@ -6,12 +6,12 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="mb-3">
-    <%= f.label :email, :class => "form-label" %>
-    <%= f.email_field :email, autofocus: true, :class => "form-control", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    <%= f.label :email, class: "form-label" %>
+    <%= f.email_field :email, autofocus: true, class: "form-control", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
 
   <div class="actions">
-    <%= f.submit t('users.resend_confirmation'), :class => "btn btn-primary", data: { turbo: false } %>
+    <%= f.submit t('users.resend_confirmation'), class: "btn btn-primary", data: { turbo: false } %>
   </div>
 <% end %>
 

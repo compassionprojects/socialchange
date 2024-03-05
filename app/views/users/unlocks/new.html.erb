@@ -6,12 +6,12 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="mb-3">
-    <%= f.label :email, :class => "form-label" %>
-    <%= f.email_field :email, autofocus: true, :class => "form-control" %>
+    <%= f.label :email, class: "form-label" %>
+    <%= f.email_field :email, autofocus: true, class: "form-control", required: true %>
   </div>
 
   <div class="actions">
-    <%= f.submit t('users.unlock'), :class => "btn btn-primary", data: { turbo: false } %>
+    <%= f.submit t('users.unlock'), class: "btn btn-primary", data: { turbo: false } %>
   </div>
 <% end %>
 
