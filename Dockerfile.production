@@ -68,8 +68,17 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl imagemagick libvips postgresql-client nodejs && \
+    apt-get install --no-install-recommends -y curl imagemagick libvips postgresql-client nodejs libjemalloc2 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# Enable jemalloc (installed in the prev step) for better memory performance
+# https://fly.io/docs/rails/cookbooks/deploy/#jemalloc
+# And enable YJIT for better Ruby performance
+# https://fly.io/docs/rails/cookbooks/deploy/#yjit
+#
+ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2 \
+    MALLOC_CONF=dirty_decay_ms:1000,narenas:2,background_thread:true \
+    RUBY_YJIT_ENABLE=1
 
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
@@ -83,16 +92,6 @@ USER rails:rails
 # Deployment options
 ENV RAILS_LOG_TO_STDOUT="1" \
     RAILS_SERVE_STATIC_FILES="true"
-
-# Enable jemalloc for better memory performance
-# https://fly.io/docs/rails/cookbooks/deploy/#jemalloc
-# And enable YJIT for better Ruby performance
-# https://fly.io/docs/rails/cookbooks/deploy/#yjit
-#
-RUN apt-get install libjemalloc2
-ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2 \
-    MALLOC_CONF=dirty_decay_ms:1000,narenas:2,background_thread:true \
-    RUBY_YJIT_ENABLE=1
 
 # Entrypoint sets up the container.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
