@@ -6,6 +6,7 @@
 app = "socialchange"
 primary_region = "ams"
 console_command = "bin/rails console"
+swap_size_mb = 128
 
 [build]
   dockerfile = "Dockerfile.production"
