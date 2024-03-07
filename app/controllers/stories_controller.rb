@@ -101,7 +101,11 @@ class StoriesController < ApplicationController
   end
 
   def set_story
-    @story = policy_scope(Story).with_attached_documents.includes(:user, story_updates: [:user]).find(params[:id])
+    # we only want to eager load associations when showing the story but not
+    # when modifying it
+    preload = [:user, :contributors, story_updates: [:user]] if action_name == "show"
+
+    @story = policy_scope(Story).with_attached_documents.includes(preload).find(params[:id])
   end
 
   def permitted_attrs
