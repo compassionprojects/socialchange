@@ -57,6 +57,7 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 # Misc gems required for the app
 gem "country_select", "~> 8.0.3"
 gem "trix-rails", require: "trix"
+gem "react-rails", "~> 3.2"
 
 # Storing objects/images/documents
 gem "aws-sdk-s3", require: false
@@ -87,12 +88,10 @@ group :test do
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 3.2"
   gem "pundit-matchers", "~> 3.1"
+  gem "capybara"
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   # @todo check if these are required and remove if not
-  gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem "react-rails", "~> 3.2"
