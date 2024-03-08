@@ -7,13 +7,13 @@ local:
   root: <%= Rails.root.join("storage") %>
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-digitalocean:
+tigris:
   service: S3
-  endpoint: <%= ENV["DO_ENDPOINT"] %>
-  access_key_id: <%= ENV["DO_ACCESS_KEY"] %>
-  secret_access_key: <%= ENV["DO_ACCESS_SECRET"] %>
-  region: <%= ENV["DO_REGION"] %>
-  bucket: <%= ENV["DO_BUCKET"] %>
+  endpoint: <%= ENV["AWS_ENDPOINT_URL_S3"] %>
+  access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
+  secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
+  region: <%= ENV["AWS_REGION"] %>
+  bucket: <%= ENV["BUCKET_NAME"] %>
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:

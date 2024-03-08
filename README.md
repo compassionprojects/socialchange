@@ -51,17 +51,17 @@ We are using jsonb fields to store translated content. We use [mobility](https:/
 
 Ideally we'd like to use to_tsvector FTS but there needs to be some work done on upstream. See #23 for more info.
 
-## File uploads
-
-We are using digitalocean with rails active_storage to store attachments in the cloud. Credentials can be obtained from Madhu
-
 ## RBAC
 
 We use a simple role based authorization system with permissions. Inspired by [this article](https://ngaunhien.net/blog/simple-rbac-implementation-with-rails). This gives us fine grained control on which user can do what.
 
+## File uploads
+
+We are using [tigris](https://fly.io/docs/reference/tigris) (S3 compatible object storage) with rails active_storage to store attachments in the cloud. They offer free allowance together with fly.io.
+
 ## Deployment
 
-The app is deployed to [fly.io](https://fly.io).
+We use [fly.io](https://fly.io) as our deployment platform.
 
 To deploy:
 
@@ -69,7 +69,7 @@ To deploy:
 fly deploy
 ```
 
-and the production branch is automatically deployed to fly.
+and the production branch is automatically deployed to fly using github actions.
 
 ## Analytics
 
