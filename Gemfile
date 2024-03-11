@@ -55,7 +55,7 @@ gem "bugsnag", "~> 6.26"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Misc gems required for the app
-gem "country_select", "~> 8.0.3"
+gem "country_select", "~> 9.0.0"
 gem "trix-rails", require: "trix"
 gem "react-rails", "~> 3.2"
 
