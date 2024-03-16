@@ -3,6 +3,10 @@
 class User < ApplicationRecord
   include Discard::Model
 
+  # Encrypt email attribute
+  # We use deterministic encryption to allow searching by email (esp when inviting)
+  encrypts :email, deterministic: true, downcase: true
+
   has_and_belongs_to_many :roles
 
   has_many :stories, dependent: :destroy
