@@ -1131,10 +1131,10 @@ randombytes@^2.1.0:
   dependencies:
     safe-buffer "^5.1.0"
 
-react-complex-tree@^2.3.5:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/react-complex-tree/-/react-complex-tree-2.3.5.tgz#f5151c8f4330c9128ec308f60f35187f91bd0cdc"
-  integrity sha512-l2z1y/N0Mh0WtBntj2NcJxvHfhqie8cBhO6e5XsIKjjKDj2w1rv4TGaAfiCVpgT/zjzdTWiPKVmt5hionIbbCw==
+react-complex-tree@^2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/react-complex-tree/-/react-complex-tree-2.3.7.tgz#313fe5d20189cb34e0dd2ddca1f021fa0a98394f"
+  integrity sha512-kXrclNM7OExMlATPnQIAsoIExhFrhu/l3tWZGlf5LN9ld5rBeW/AW6uNUAg38kqWNLrbjKc9xSyZ6M/nVTQkrA==
 
 react-dom@^18.2.0:
   version "18.2.0"
