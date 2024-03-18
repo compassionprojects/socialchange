@@ -30,7 +30,7 @@ gem "ancestry", "~> 4.3"
 gem "devise", "~> 4.9"
 gem "devise_invitable", "~> 2.0"
 gem "responders", "~> 3.1.0"
-gem "invisible_captcha", "~> 2.2"
+gem "invisible_captcha", "~> 2.3"
 
 # Authorisation
 gem "pundit", "~> 2.2"
