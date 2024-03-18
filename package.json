@@ -19,7 +19,7 @@
     "react-complex-tree": "^2.3.5",
     "react-dom": "^18.2.0",
     "react_ujs": "^3.2.0",
-    "sass": "^1.71.1",
+    "sass": "^1.72.0",
     "trix": "^2.0.10"
   },
   "packageManager": "yarn@1.22.19"
