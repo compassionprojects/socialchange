@@ -74,3 +74,9 @@ and the production branch is automatically deployed to fly using github actions.
 ## Analytics
 
 We are using umami.is service for measuring traffic and usage of the website. You can view the usage [here](https://analytics.eu.umami.is/share/mySj64rsFfYO3Y0p/socialchange)
+
+## Error reporting
+
+For error reporting we are using bugsnag. We would like to thank them for a free account
+
+<a href="https://bugsnag.com"><img src="https://github.com/user-attachments/assets/466dc739-008e-416f-b40f-c7998f700588" height="100"></a>
